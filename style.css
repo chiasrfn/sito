@@ -1,0 +1,125 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Century, sans-serif;
+    /*background-image: radial-gradient(circle, var(--dark-green), var(--light-green)); */
+}
+
+:root{
+    --light-green: #16f21a;
+    --dark-green: #057408;
+    --black: #000;
+    --white: #fff;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    overflow:  hidden;
+    position: relative;
+    padding-left: 8%;
+    padding-right: 8%;
+    box-sizing: border-box;
+}
+
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#bg1 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('immagini/Carte_piacentine_al_completo.jpg');
+    animation: fadeInOut 40s infinite ease-in-out;
+}
+
+#bg2 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('immagini/Carte_napoletane_al_completo.jpg');
+    animation: fadeInOut 40s infinite ease-in-out;
+    animation-delay: 10s; /* Delays the animation of the second image */
+}
+
+.logo{
+    width: 20px;
+    cursor: pointer;
+}
+
+
+.fascia_bianca {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px 0; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  }
+
+ 
+.fascia_bianca_content {
+    max-width: 1000px;
+    margin: 0 auto; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+nav {
+    flex: 1;
+    text-align: right;
+}
+
+nav ul li {
+    list-style: none;
+    display: inline-block;
+    margin-top: 10px;
+    min-height: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 17px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--black);
+    font-size: 17px;
+    padding: 5px 15px;
+    border: 1px solid transparent;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+nav ul li a:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+
+.row{
+    display: flex;
+    height: 88%;
+    align-items:center;
+}
+
+.col{
+    flex-basis: 50%;
+}
+
+h1{
+    color: var(--black);
+    font-size: 100px;
+}
+
+p{
+    color: var(--black);
+    font-size: 15px;
+    line-height: 20px;  
+}
+
