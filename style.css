@@ -21,7 +21,6 @@
     position: relative;
     box-sizing: border-box;
     background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('immagini/Carte_napoletane_al_completo.jpg');
-    opacity: 0.85;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -130,6 +129,25 @@ nav ul li a:hover {
 
 /*parte restante del sito*/
 
+table, th, td {
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+table{
+    width: 100%;
+    height: 100vh; 
+}
+
+td {
+    width: 10%; /* larghezza standard */
+    height: 11.11%; /* altezza standard */
+}
+td[colspan="5"] {
+    width: 50%; /* 50px * 5 */
+}
+
+
 .row{
     display: flex;
     height: 88%;
@@ -151,7 +169,7 @@ nav ul li a:hover {
 
 .conteinercard:hover > .card{
     cursor: pointer;
-    transform:  translate(75%) rotateY(180deg);
+    transform:  rotateY(180deg);
   }
 
 .card{
@@ -175,8 +193,6 @@ nav ul li a:hover {
 
 .front{
     background-image: url(immagini/retro2.jpg);
-    display: inline-block;
-    text-align: center;
     cursor: pointer;
     background-position: center;
     background-size: cover;
@@ -184,7 +200,7 @@ nav ul li a:hover {
 
 .back{
     background-color: var(--white);
-    transform: translate(25%) rotateY(180deg);
+    transform: rotateY(180deg);
     display: flex;
     flex-direction: column;
     justify-content: center;
