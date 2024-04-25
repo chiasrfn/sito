@@ -12,12 +12,7 @@
     --white: #fff;
 }
 
-button {
-    border: none;
-    cursor: pointer;
-    appearance: none;
-    background-color: inherit;
-}
+/*sfondi e caratteristiche generali*/
 
 .container{
     width: 100%;
@@ -25,7 +20,8 @@ button {
     overflow:  hidden;
     position: relative;
     box-sizing: border-box;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('immagini/Carte_napoletane_al_completo.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('immagini/Carte_napoletane_al_completo.jpg');
+    opacity: 0.85;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -38,6 +34,7 @@ button {
     animation: change 30s infinite ease-in-out;
 }
 
+/*
 @keyframes change {
     0%{
         background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('immagini/Carte_piacentine_al_completo.jpg');
@@ -48,6 +45,15 @@ button {
     100%{
         background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('immagini/Carte_piacentine_al_completo.jpg');
     }
+}*/
+
+/*fascia superiore*/
+
+button {
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
 }
 
 
@@ -122,6 +128,8 @@ nav ul li a:hover {
 }
 
 
+/*parte restante del sito*/
+
 .row{
     display: flex;
     height: 88%;
@@ -132,40 +140,54 @@ nav ul li a:hover {
     flex-basis: 50%;
 }
 
-h1{
-    color: var(--black);
-    font-size: 100px;
-}
-
-p{
-    color: var(--black);
-    font-size: 15px;
-    line-height: 20px;  
-}
-.card{
-    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); 
+.conteinercard{
     width: 204.6px;
     height: 283.6px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    perspective: 400px;
+}
+
+.conteinercard:hover > .card{
+    cursor: pointer;
+    transform:  translate(75%) rotateY(180deg);
+  }
+
+.card{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 1.5s;
+    transform-style: preserve-3d;
+}
+
+.front,
+.back {
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+    box-shadow: 0 0 2px 4px rgba(255, 255, 255, 0.1); 
+    position: absolute;
+    backface-visibility: hidden;
+    
+}
+
+.front{
+    background-image: url(immagini/retro2.jpg);
     display: inline-block;
     text-align: center;
-    border-radius: 20px;
-    padding: 15px 25px;
-    margin: 10px 15px;
-    box-sizing: border-box;
     cursor: pointer;
-    cursor: pointer;
-    background-image: url(immagini/retro2.jpg);
     background-position: center;
     background-size: cover;
-    transition: transform 1s;
 }
 
-.card:hover{
-    transform: rotateY(180deg);
-    background-image: linear-gradient(rgba(255, 255, 255), rgba(255, 255, 255));
-
-}
-
-.card:after{
-    transform: rotateY(-180deg);
+.back{
+    background-color: var(--white);
+    transform: translate(25%) rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
 }
