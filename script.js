@@ -34,3 +34,21 @@ function closeModal(modal) {
   modal.classList.remove('active')
   overlay.classList.remove('active')
 }
+
+$(document).ready(function() {
+    function cur() {
+        var frasi = [ 
+            "le carte sono antiche",
+            "bisogna impare a giocarci",
+            "le carte sono il passatempo preferito di molte generazioni"
+        ],
+        i = 0;
+        setInterval(function(){
+            $('#frasi').fadeOut(function(){
+                $(this).html(frasi[(i = (i + 1) % frasi.length)]).fadeIn();
+            });
+        }, 8000);  // Aumentato il tempo a 3000 millisecondi (3 secondi) per migliore leggibilità
+    }
+
+    cur();  // Chiama la funzione nome quando il documento è pronto
+});
