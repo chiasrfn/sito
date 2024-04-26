@@ -145,7 +145,7 @@ nav ul li a:hover {
     transform: rotate(360deg);
 }
 
-.login{
+.header{
     padding: 5px 15px;
     font-size: 20px;
     border: none;
@@ -155,7 +155,7 @@ nav ul li a:hover {
     transition: transform 0.3s ease-in-out; 
 }
 
-.login:hover{
+.header:hover{
     background-color: var(--dark-green);
     color: var(--white);
 }
