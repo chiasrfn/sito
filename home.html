@@ -13,14 +13,17 @@
 <body>
   <header>
     <img src="immagini/logo2.jpg" class="logo" margine-top="0px">
-    <button class="bheader storico">Storico</button>
-    <button data-modal-target=#loginmodal class="bheader login">Login</button>
-    <button class="btn-gear" >
-      <i class="bi bi-gear-fill"></i>
-    </button>
+    <div class="button-container">
+      <button class="bheader storico" id="storico">Storico</button>
+      <button data-modal-target=#loginmodal class="bheader login">Login</button>
+      <button data-modal-target=#gearmodal class="btn-gear" >
+        <i class="bi bi-gear-fill"></i>
+      </button>
+    </div>
   </header>
 
   <!--parte di codice dedicata al modal-->
+  <!--login-->
   <div id="loginmodal" class="modal">
     <div class="modal-header">
       <div class="title">titolo</div>
@@ -32,13 +35,26 @@
   </div>
   <div id="overlay"></div>
 
+  <!--gear-->
+  <div id="gearmodal" class="modal">
+    <div class="modal-header">
+      <div class="title">titolo</div>
+      <button data-close-button class="close-button">&times;</button>
+    </div>
+    <div class="modal-body">
+      Lorem ipsum dolor sit amet consectetur adipisicing.
+    </div>
+  </div>
+  <div id="overlay"></div>
+
+
   <div class="container">
     <table>
       <tr>
           <td colspan=10 rowspan=10>
             <div class="cur">
               <h1 id="titolocur">Curiosità</h1>
-              <h3><span id="frasi">le carte sono </span></h3>
+              <h2><span id="frasi">Le carte sono </span></h2>
             </div>
           </td>
           <td></td>
@@ -64,7 +80,7 @@
                 <div class="back">
                   <h2>Briscola</h2>
                   <p>DESCRIZIONE</p>
-                  <button class="buttoncard briscola">Gioca</button>
+                  <button class="buttoncard briscola" id="buttonBriscola">Gioca</button>
                 </div>
               </div>
             </div>

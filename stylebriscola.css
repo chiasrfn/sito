@@ -1,0 +1,94 @@
+/*proprietà generali*/
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif, sans-serif;
+    /*background-image: radial-gradient(circle, var(--dark-green), var(--light-green)); */
+}
+
+
+:root{
+    --dark-green: 	#2c6d48;
+    --dark-dark-green: #163c27;
+    --black: #000;
+    --white: #fff;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
+}
+
+/*fascia superiore*/
+
+header{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    display: flex;
+    padding: 4px 10px;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 0 0; 
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+}
+
+
+header .logo{
+    position: relative;
+    width: 3.5em;
+    cursor: pointer;
+}
+
+.button-container{
+    display: flex;
+    justify-content: center; 
+    align-items: right;   
+    flex-wrap: nowrap; 
+    vertical-align: right;
+    display: inline-block;
+    text-align: right;
+    margin-top: 0.1em;
+    min-height: 10px;
+    margin-left: auto;
+    margin-bottom: 1px;
+    font-size: 22px;
+    
+}
+
+.bheader{
+    vertical-align: right; 
+    text-decoration: none;
+    padding: 0px 6px;
+    font-size: 20px;
+    background-color: transparent;
+    color: var(--dark-green);
+    cursor: pointer;
+    margin-right: auto;
+}
+
+.bheader:hover{
+    background-color: var(--dark-green);
+    color: var(--white);
+}
+
+
+.btn-gear {
+    padding: 5px 5px;
+    font-size: 25px;
+    border: none;
+    background-color: transparent;
+    color: var(--dark-green);
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.btn-gear:hover{
+    transform: rotate(360deg);
+}

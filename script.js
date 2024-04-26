@@ -52,3 +52,8 @@ $(document).ready(function() {
 
     cur();  // Chiama la funzione nome quando il documento è pronto
 });
+
+var tastoBriscola = document.getElementById(buttonBriscola);
+buttonBriscola.addEventListener('click', function() {
+    window.location.href = 'briscola.html';
+})
