@@ -1,0 +1,251 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Century, sans-serif;
+    /*background-image: radial-gradient(circle, var(--dark-green), var(--light-green)); */
+}
+
+:root{
+    --dark-green: 	#2c6d48;
+    --black: #000;
+    --white: #fff;
+}
+
+/*sfondi e caratteristiche generali*/
+
+.video{
+  z-index: 000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;  
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    overflow:  hidden;
+    position: relative;
+    box-sizing: border-box;
+    background-image: url(/immagini/sfondo1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: change 60s infinite ease-in-out;
+}
+
+@keyframes change{
+    0%
+    {
+        background-image: url(immagini/sfondo1.jpg);
+    }
+    20%
+    {
+        background-image: url(immagini/sfondo2.jpg);
+    }
+    40%
+    {
+        background-image: url(immagini/sfondo3.jpg);
+    }
+    60%
+    {
+        background-image: url(immagini/sfondo4.jpg);
+    }
+    80%{
+        background-image: url(immagini/sfondo5.jpg);
+    }
+    100%
+    {
+        background-image: url(immagini/sfondo1.jpg);
+    }
+}
+
+/*fascia superiore*/
+
+button {
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
+}
+
+
+.logo{
+    width: 4.5%;
+    cursor: pointer;
+}
+
+.logo:hover{
+    width: 10%;
+}
+
+
+.fascia_bianca {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 0.5em 0; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  }
+
+ 
+.fascia_bianca_content {
+    max-width: auto;
+    margin: 0 auto; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.5em;
+    display: flex; 
+}
+
+nav {
+    flex: 1;
+    text-align: right;
+}
+
+nav ul li {
+    list-style: none;
+    display: inline-block;
+    margin-top: 10px;
+    min-height: 22px;
+    margin-right: 10px;
+    margin-left: auto;
+    font-size: 25px;
+}
+
+nav ul li a {
+    display: inline-block;
+    vertical-align: middle; 
+    text-decoration: none;
+    color: var(--dark-green);
+    font-size: 22px;
+    padding: 5px 15px;
+    border: 1px solid transparent;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+nav ul li a:hover {
+    background-color: var(--dark-green);
+    color: var(--white);
+}
+
+
+.btn-gear {
+    padding: 5px 5px;
+    font-size: 30px;
+    border: none;
+    background-color: transparent;
+    color: var(--dark-green);
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.btn-gear:hover{
+    transform: rotate(360deg);
+}
+
+
+/*parte restante del sito*/
+
+table, th, td {
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+table{
+    width: 100%;
+    height: 100vh; 
+}
+
+td {
+    width: 10%; /* larghezza standard */
+    height: 11.11%; /* altezza standard */
+}
+td[colspan="5"] {
+    width: 50%; /* 50px * 5 */
+}
+
+/*carte*/
+
+.conteinercard{
+    width: 204.6px;
+    height: 283.6px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    perspective: 400px;
+}
+
+.conteinercard:hover > .card{
+    cursor: pointer;
+    transform:  rotateY(180deg);
+  }
+
+.card{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 1.5s;
+    transform-style: preserve-3d;
+}
+
+.front,
+.back {
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+    box-shadow: 0 0 2px 4px rgba(0, 0, 0, 0.1); 
+    position: absolute;
+    backface-visibility: hidden;
+    
+}
+
+.front{
+    background-image: url(immagini/retro5.jpg);
+    cursor: pointer;
+    background-position: center;
+    background-size: cover;
+}
+
+.back{
+    background-color: var(--white);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+}
+
+
+/*bottoni delle carte*/
+.buttoncard{
+    border: var(--black);
+    position: relative;
+    color: var(--black);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    font-weight: 200;
+    padding: 7px 20px;
+    transition: 0.5s;
+}
+
+.buttoncard:hover{
+    background: var(--dark-green);
+    color: var(--white);
+    letter-spacing: 0.25em;
+}
