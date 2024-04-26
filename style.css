@@ -3,7 +3,7 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: Century, sans-serif;
+    font-family: 'Times New Roman', Times, serif, sans-serif;
     /*background-image: radial-gradient(circle, var(--dark-green), var(--light-green)); */
 }
 
@@ -79,8 +79,6 @@ header{
     left:0;
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 4px 10px;
     background-color: rgba(255, 255, 255, 0.85);
     padding: 0 0; 
@@ -97,39 +95,37 @@ header .logo{
     cursor: pointer;
 }
 
-header nav {
-    flex: 1;
-    text-align: right;
-}
-
-
-header ul li {
+header .bheader{
     list-style: none;
     display: inline-block;
-    margin-top: 0.2em;
-    min-height: 20px;
+    margin-top: 0.1em;
+    min-height: 10px;
     margin-right: 10px;
     margin-left: auto;
-    margin-bottom: 1px;;
-    font-size: 25px;
+    margin-bottom: 1px;
+    font-size: 22px;
 }
 
-nav ul li a {
+.bheader{
     display: inline-block;
-    vertical-align: middle; 
+    vertical-align: left; 
     text-decoration: none;
-    color: var(--dark-green);
+    padding: 0px 6px;
     font-size: 20px;
-    padding: 5px 15px;
-    border: 1px solid transparent;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    background-color: transparent;
+    color: var(--dark-green);
+    cursor: pointer;
+    margin-left: auto;
 }
 
-nav ul li a:hover {
+.bheader:hover{
     background-color: var(--dark-green);
     color: var(--white);
 }
 
+.bheader .storico{
+    
+}
 
 .btn-gear {
     padding: 5px 5px;
@@ -143,27 +139,6 @@ nav ul li a:hover {
 
 .btn-gear:hover{
     transform: rotate(360deg);
-}
-
-.bheader{
-    padding: 5px 15px;
-    font-size: 20px;
-    border: none;
-    background-color: transparent;
-    color: var(--dark-green);
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out; 
-}
-
-.bheader:hover{
-    background-color: var(--dark-green);
-    color: var(--white);
-}
-
-.banner{
-    position: relative;
-    width: 100%;
-    height: 100
 }
 
 /*parte restante del sito*/
@@ -196,6 +171,7 @@ td[colspan="10"] {
     align-items: center;
     justify-content: center;
     perspective: 600px;
+    cursor: pointer;
 }
 
 .conteinercard:hover > .card{
@@ -239,6 +215,23 @@ td[colspan="10"] {
     gap: 3rem;
 }
 
+/*Curiosità che cambiano*/
+.cur{
+    padding: auto;
+    margin: 5em;
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+#titolocur{
+    font-size: 60px; 
+    color: var(--dark-green);
+    margin: 10px 0; 
+    text-align: left; 
+}
+
+h3{
+
+}
 
 /*bottoni delle carte*/
 .buttoncard{
@@ -260,11 +253,13 @@ td[colspan="10"] {
     letter-spacing: 0.25em;
 }
 
+
+
 <!--parte di codice dedicata al modal-->
 *, *::after, *::before {
     box-sizing: border-box;
   }
-  
+
   .modal {
     position: fixed;
     top: 50%;
@@ -278,11 +273,11 @@ td[colspan="10"] {
     width: 500px;
     max-width: 80%;
   }
-  
+
   .modal.active {
     transform: translate(-50%, -50%) scale(1);
   }
-  
+
   .modal-header {
     padding: 10px 15px;
     display: flex;
@@ -290,12 +285,12 @@ td[colspan="10"] {
     align-items: center;
     border-bottom: 1px solid black;
   }
-  
+
   .modal-header .title {
     font-size: 1.25rem;
     font-weight: bold;
   }
-  
+
   .modal-header .close-button {
     cursor: pointer;
     border: none;
@@ -304,11 +299,11 @@ td[colspan="10"] {
     font-size: 1.25rem;
     font-weight: bold;
   }
-  
+
   .modal-body {
     padding: 10px 15px;
   }
-  
+
   #overlay {
     position: fixed;
     opacity: 0;
@@ -320,7 +315,7 @@ td[colspan="10"] {
     background-color: rgba(0, 0, 0, .5);
     pointer-events: none;
   }
-  
+
   #overlay.active {
     opacity: 1;
     pointer-events: all;
