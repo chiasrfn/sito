@@ -12,13 +12,25 @@
 <body>
   <header>
     <img src="immagini/logo2.jpg" class="logo" margine-top="0px">
-    <button class="header storico">Storico</button>
-    <button class="header logico">Login</button>
+    <button class="bheader storico">Storico</button>
+    <button data-modal-target=#loginmodal class="bheader login">Login</button>
     <button class="btn-gear" >
       <i class="bi bi-gear-fill"></i>
     </button>
   </header>
 
+  <!--parte di codice dedicata al modal-->
+  <div id="loginmodal" class="modal">
+    <div class="modal-header">
+      <div class="title">titolo</div>
+      <button data-close-button class="close-button">&times;</button>
+    </div>
+    <div class="modal-body">
+      Lorem ipsum dolor sit amet consectetur adipisicing.
+    </div>
+  </div>
+  <div id="overlay"></div>
+  
   <div class="container">
     <table>
       <tr>
@@ -159,5 +171,6 @@
 
   </table>
   </div>
+  <script src="script.js"></script>
 </body>
 </html>
