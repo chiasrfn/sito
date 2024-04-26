@@ -5,6 +5,7 @@
     /*background-image: radial-gradient(circle, var(--dark-green), var(--light-green)); */
 }
 
+
 :root{
     --dark-green: 	#2c6d48;
     --black: #000;
@@ -79,19 +80,19 @@ button {
 
 
 .logo{
-    width: 4.5%;
+    width: 3.5em;
     cursor: pointer;
 }
 
 .fascia_bianca {
     background-color: rgba(255, 255, 255, 0.85);
-    padding: 0.5em 0; 
+    padding: 0 0; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 10;
+    z-index: 1000;
   }
 
  
@@ -102,7 +103,6 @@ button {
     justify-content: space-between;
     align-items: center;
     padding: 0 0.5em;
-    display: flex; 
 }
 
 nav {
@@ -113,10 +113,11 @@ nav {
 nav ul li {
     list-style: none;
     display: inline-block;
-    margin-top: 10px;
-    min-height: 22px;
+    margin-top: 0.2em;
+    min-height: 20px;
     margin-right: 10px;
     margin-left: auto;
+    margin-bottom: 1px;;
     font-size: 25px;
 }
 
@@ -125,7 +126,7 @@ nav ul li a {
     vertical-align: middle; 
     text-decoration: none;
     color: var(--dark-green);
-    font-size: 22px;
+    font-size: 20px;
     padding: 5px 15px;
     border: 1px solid transparent;
     transition: background-color 0.2s ease, color 0.2s ease;
@@ -139,7 +140,7 @@ nav ul li a:hover {
 
 .btn-gear {
     padding: 5px 5px;
-    font-size: 30px;
+    font-size: 25px;
     border: none;
     background-color: transparent;
     color: var(--dark-green);
@@ -155,6 +156,7 @@ nav ul li a:hover {
 /*parte restante del sito*/
 
 table, th, td {
+    border: 1px solid #000;
     border-collapse: collapse;
     padding: 5px;
 }
@@ -162,25 +164,26 @@ table, th, td {
 table{
     width: 100%;
     height: 100vh; 
+    margin-top: 2.5em;
 }
 
 td {
-    width: 10%; /* larghezza standard */
+    width: 5%; /* larghezza standard */
     height: 11.11%; /* altezza standard */
 }
-td[colspan="5"] {
+td[colspan="10"] {
     width: 50%; /* 50px * 5 */
 }
 
-/*carte*/
+/*carte, proporzione tra altezza e larghezza 1.386*/
 
 .conteinercard{
-    width: 204.6px;
-    height: 283.6px;
+    height: 228.69px;
+    width: 165px;
     box-sizing: border-box;
     align-items: center;
     justify-content: center;
-    perspective: 400px;
+    perspective: 600px;
 }
 
 .conteinercard:hover > .card{
@@ -200,7 +203,7 @@ td[colspan="5"] {
 .back {
     width: 100%;
     height: 100%;
-    border-radius: 1.5rem;
+    border-radius: 1rem;
     box-shadow: 0 0 2px 4px rgba(0, 0, 0, 0.1); 
     position: absolute;
     backface-visibility: hidden;
