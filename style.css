@@ -1,3 +1,5 @@
+/*proprietà generali*/
+
 *{
     margin: 0;
     padding: 0;
@@ -12,17 +14,16 @@
     --white: #fff;
 }
 
-/*sfondi e caratteristiche generali*/
-
-.video{
-  z-index: 000;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;  
+button {
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
 }
+
+
+
+/*sfondi e caratteristiche generali*/
 
 .container{
     width: 100%;
@@ -41,6 +42,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     animation: change 60s infinite ease-in-out;
+    overflow-y: scroll;
 }
 
 @keyframes change{
@@ -71,46 +73,37 @@
 
 /*fascia superiore*/
 
-button {
-    border: none;
-    cursor: pointer;
-    appearance: none;
-    background-color: inherit;
+header{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 10px;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 0 0; 
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
 }
 
 
-.logo{
+header .logo{
+    position: relative;
     width: 3.5em;
     cursor: pointer;
 }
 
-.fascia_bianca {
-    background-color: rgba(255, 255, 255, 0.85);
-    padding: 0 0; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-  }
-
- 
-.fascia_bianca_content {
-    max-width: auto;
-    margin: 0 auto; 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 0.5em;
-}
-
-nav {
+header nav {
     flex: 1;
     text-align: right;
 }
 
-nav ul li {
+
+header ul li {
     list-style: none;
     display: inline-block;
     margin-top: 0.2em;
@@ -152,11 +145,15 @@ nav ul li a:hover {
     transform: rotate(360deg);
 }
 
+.banner{
+    position: relative;
+    width: 100%;
+    height: 100
+}
 
 /*parte restante del sito*/
 
 table, th, td {
-    border: 1px solid #000;
     border-collapse: collapse;
     padding: 5px;
 }
@@ -164,7 +161,7 @@ table, th, td {
 table{
     width: 100%;
     height: 100vh; 
-    margin-top: 2.5em;
+    margin-top: 2em;
 }
 
 td {
