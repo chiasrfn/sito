@@ -145,6 +145,21 @@ nav ul li a:hover {
     transform: rotate(360deg);
 }
 
+.login{
+    padding: 5px 15px;
+    font-size: 20px;
+    border: none;
+    background-color: transparent;
+    color: var(--dark-green);
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out; 
+}
+
+.login:hover{
+    background-color: var(--dark-green);
+    color: var(--white);
+}
+
 .banner{
     position: relative;
     width: 100%;
@@ -221,7 +236,7 @@ td[colspan="10"] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5rem;
+    gap: 3rem;
 }
 
 
