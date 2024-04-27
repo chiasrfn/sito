@@ -11,16 +11,47 @@
   </head>
 <body>
     <header>
-        <img src="immagini/logo2.jpg" class="logo" margine-top="0px">
-        <div class="button-container">
-          <button class="bheader storico" id="storico">Storico</button>
-          <button data-modal-target=#loginmodal class="bheader login">Login</button>
-          <button data-modal-target=#gearmodal class="btn-gear" >
-            <i class="bi bi-gear-fill"></i>
-          </button>
-        </div>
-      </header>
-    
-    
+      <img src="immagini/logo2.jpg" class="logo" margine-top="0px">
+      <div class="button-container">
+        <button class="bheader storico" id="storico">Storico</button>
+        <button data-modal-target=#loginmodal class="bheader login">Login</button>
+        <button data-modal-target=#gearmodal class="btn-gear" >
+          <i class="bi bi-gear-fill"></i>
+        </button>
+      </div>
+    </header>
+  
+  <!--parte di codice dedicata al modal-->
+  <!--login-->
+  <div id="loginmodal" class="modal">
+    <div class="modal-header">
+      <div class="title">Briscola</div>
+      <button data-close-button class="close-button">&times;</button>
+    </div>
+    <div class="modal-body">
+      Lorem ipsum dolor sit amet consectetur adipisicing.
+    </div>
+  </div>
+  <div id="overlay"></div>
+
+  <!--gear-->
+  <div id="gearmodal" class="modal">
+    <div class="modal-header">
+      <div class="title">titolo</div>
+      <button data-close-button class="close-button">&times;</button>
+    </div>
+    <div class="modal-body">
+      Lorem ipsum dolor sit amet consectetur adipisicing.
+    </div>
+  </div>
+  <div id="overlay"></div>
+
+  <div class="container">
+    <div class="left-side">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, rem fugiat. Impedit amet voluptatibus, quo tenetur mollitia exercitationem praesentium asperiores dolorum fuga illo sed perferendis iste ipsa ex nisi! Laboriosam, voluptatem. Perferendis nihil iusto unde ducimus, quidem eaque magni, asperiores quas nobis eum architecto quos, distinctio illum accusantium velit culpa!</div>
+    <div class="right-side">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet nihil fuga aspernatur adipisci quam, magni quasi porro laboriosam quia? Tempore provident in dolores quam esse hic ex dolore ea voluptatibus ipsum voluptatum, porro ut, commodi quae quis dolor quibusdam quas consectetur nihil adipisci placeat. Provident voluptas at autem ducimus unde.</div>
+  </div>
+
+
+  <script src="scriptbriscola.js"></script>
 </body>
 </html>
