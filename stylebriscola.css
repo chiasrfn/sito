@@ -196,9 +196,12 @@ header{
 
 .left-side {
     flex: 2;
+    display: flex;
 }
+
 .right-side {
     flex: 1;
+    display: flex;
 }
 
 
@@ -222,20 +225,26 @@ header{
 /*CPU*/
 
 .conteinercardcpu{
-  height: 25%;
-  width: 100%;
-  margin-top: 10px;
-  vertical-align: right;
+  display: flex;
+  vertical-align: top;
   display: inline-block;
-  position: fixed;
-  align-items: right;   
-  flex-wrap: nowrap; 
-  text-align: right;
+  align-items: left; 
+  text-align: left;
 }
 
 /*Utente*/
 
 .containercardutente{
+  display: flex;
+  display: inline-block;
+  align-items: left; 
+  text-align: left;
+
+}
+
+/*Giocate*/
+.containercardgiocate{
+  display: flex;
 
 }
 
