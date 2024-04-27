@@ -35,11 +35,31 @@ function closeModal(modal) {
   overlay.classList.remove('active')
 }
 
+var tastoBriscola = document.getElementById(buttonBriscola);
+buttonBriscola.addEventListener('click', function() {
+    window.location.href = 'briscola.html';
+})
+
+var tastoTresette = document.getElementById(buttonTresette);
+buttonTresette.addEventListener('click', function() {
+    window.location.href = 'tresette.html';
+})
+
+var tastoTraversone = document.getElementById(buttonTraversone);
+buttonTraversone.addEventListener('click', function() {
+    window.location.href = 'traversone.html';
+})
+
+var tastoScopa = document.getElementById(buttonScopa);
+buttonScopa.addEventListener('click', function() {
+    window.location.href = 'scopa.html';
+})
+
 $(document).ready(function() {
     function cur() {
         var frasi = [ 
-            "le carte sono antiche",
-            "bisogna impare a giocarci",
+            "L’ipotesi più accreditata vede nascere le carte da gioco in Cina, circa tra il 600 al 900",
+            "Furono portate in Europa dalle truppe moresche o dai mercanti veneziani, per il commercio di spezie e seta",
             "le carte sono il passatempo preferito di molte generazioni"
         ],
         i = 0;
@@ -47,13 +67,8 @@ $(document).ready(function() {
             $('#frasi').fadeOut(function(){
                 $(this).html(frasi[(i = (i + 1) % frasi.length)]).fadeIn();
             });
-        }, 8000);  // Aumentato il tempo a 3000 millisecondi (3 secondi) per migliore leggibilità
+        }, 8000);  // Aumentato il tempo a 8000 millisecondi (8 secondi) per migliore leggibilità
     }
 
     cur();  // Chiama la funzione nome quando il documento è pronto
 });
-
-var tastoBriscola = document.getElementById(buttonBriscola);
-buttonBriscola.addEventListener('click', function() {
-    window.location.href = 'briscola.html';
-})

@@ -98,10 +98,9 @@ header{
     z-index: 10000;
 }
 
-
-header .logo{
+.logo{
     position: relative;
-    width: 3.5em;
+    width: 4em;
     cursor: pointer;
 }
 
