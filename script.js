@@ -55,6 +55,12 @@ buttonScopa.addEventListener('click', function() {
     window.location.href = 'scopa.html';
 })
 
+/*
+var loginlock=document.getElementById(login-lock-btn);
+login-lock-btn.addEventListener('click', function(){
+  login-lock-btn.i.class = 'bi bi-lock-fill-open';
+})*/
+
 $(document).ready(function() {
     function cur() {
         var frasi = [ 

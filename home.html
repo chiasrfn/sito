@@ -7,7 +7,6 @@
     <title>Giochi di carte</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
 <body>
@@ -28,13 +27,35 @@
   <!--login-->
   <div id="loginmodal" class="modal">
     <div class="modal-header">
-      <div class="title">titolo</div>
+      <h1 id="titleLogin">Login</h1>
       <button data-close-button class="close-button">&times;</button>
     </div>
-    <div class="modal-body">
-      Lorem ipsum dolor sit amet consectetur adipisicing.
+    <div class="modal-input">
+      <input type="text" placeholder="Nome Utente" required>
+      <i class="bi bi-person-fill"></i>
     </div>
+    <div class="modal-input">
+      <input type="password" placeholder="Password" required>
+      <i class="bi bi-lock-fill"></i>
+    </div>
+    <div class="modal-remember">
+      <label>
+        <input type="checkbox" id="remember">Salva
+      </label>
+      <a href="forgot.html">Hai dimenticato la password?</a>
+    </div>
+
+    <button type="submit" class="modal-btn">Login</button>
+
+    <div class="modal-register">
+      <p>Non hai un account?
+        <a href="registrati.html">Registrati</a>
+      </p>
+    </div>
+  
+
   </div>
+
   <div id="overlay"></div>
 
   <!--gear-->
@@ -44,7 +65,10 @@
       <button data-close-button class="close-button">&times;</button>
     </div>
     <div class="modal-body">
-      Lorem ipsum dolor sit amet consectetur adipisicing.
+      <input type="text" placeholder="Nome utente" required>
+    </div>
+    <div class="modal-body">
+      <input type="password" placeholder="Password" required>
     </div>
   </div>
   <div id="overlay"></div>
