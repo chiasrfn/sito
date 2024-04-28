@@ -10,18 +10,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
 <body>
-    <header>
-        <a href="home.html">
-            <img src="immagini/logo2.jpg" class="logo" margine-top="0px">
-        </a>
-        <div class="button-container">
-            <button class="bheader storico" id="storico">Storico</button>
-            <button data-modal-target=#loginmodal class="bheader login">Login</button>
-            <button data-modal-target=#gearmodal class="btn-gear" >
-                <i class="bi bi-gear-fill"></i>
-            </button>
-        </div>
-    </header>
+  <header>
+      <a href="home.html">
+          <img src="immagini/logo2.jpg" class="logo" margine-top="0px">
+      </a>
+      <div class="button-container">
+          <button class="bheader storico" id="storico">Storico</button>
+          <button data-modal-target=#loginmodal class="bheader login">Login</button>
+          <button data-modal-target=#gearmodal class="btn-gear" >
+              <i class="bi bi-gear-fill"></i>
+          </button>
+      </div>
+  </header>
   
   <!--parte di codice dedicata al modal-->
   <!--login-->
@@ -50,34 +50,42 @@
 
   <div class="container">
 
+    
+
     <div class="left-side">
 
-           <div class="containercardcpu">
+      <div class="paddingmargintop" id="paddingmargintopcpu"></div>
 
-        <div class="conteinercard">
+      <div class="containercardcpu">
+
+
+        <div class="paddingcard" id="paddingcardleft"></div>
+
+        <div class="conteinercard cpu" id="conteinercardcpu1">
           <div class="card" id="cardcpu1">
             <div class="front" id="frontcardcpu1">
-              1 cpu
             </div>
             <div class="back" id="backcardcpu1">
               </div>
           </div>
         </div>
 
-        <div class="conteinercard"> 
+        <div class="paddingcard"></div>
+
+        <div class="conteinercard cpu"> 
           <div class="card" id="cardcpu2">
             <div class="front" id="frontcardcpu2">
-              2 cpu
             </div>
             <div class="back" id="backcardcpu2">
               </div>
           </div>
         </div>
 
-        <div class="conteinercard"> 
+        <div class="paddingcard"></div>
+
+        <div class="conteinercard cpu"> 
           <div class="card" id="cardcpu3">
             <div class="front" id="frontcardcpu3">
-              3 cpu
             </div>
             <div class="back" id="backcardcpu3">
             </div>
@@ -85,65 +93,75 @@
         </div>
 
       </div>
-
-      <div class="containercardutente">
-        <div class="conteinercard">
-          <div class="card" id="cardutenete1">
-            <div class="front" id="frontcardutente1">
-              1
-            </div>
-            <div class="back" id="backcardutente1">
-              </div>
-          </div>
-        </div>
-        <div class="conteinercard"> 
-          <div class="card" id="cardutente2">
-            <div class="front" id="frontcardutente2">
-              2
-            </div>
-            <div class="back" id="backcardutente2">
-              </div>
-          </div>
-        </div>
-        <div class="conteinercard"> 
-          <div class="card" id="cardutente3">
-            <div class="front" id="frontcardutente3">
-              3
-            </div>
-            <div class="back" id="backcardutente3">
-              </div>
-          </div>
-        </div>
-        </div>
-      </div>
+      
 
       <div class="containercardgiocate">
-        <div class="conteinercard">
+
+        <div class="paddingcard" id="paddingcardgiocate"></div>
+
+        <div class="conteinercard utente">
           <div class="card" id="cardutenetegiocata">
             <div class="front" id="frontcardutentegiocata">
-              utentegiocata
             </div>
             <div class="back" id="backcardutentegiocata">
               </div>
           </div>
         </div>
-        <div class="conteinercard"> 
+
+        <div class="paddingcard"></div>
+
+        <div class="conteinercard utente"> 
           <div class="card" id="cardcpugiocata">
             <div class="front" id="frontcardcpugiocata">
-              cpugiocata
             </div>
             <div class="back" id="backcardcpugiocata">
               </div>
           </div>
         </div>
+
       </div>
 
+
+      <div class="containercardutente">
+
+        <div class="paddingcard" id="paddingcardleft"></div>
+
+        <div class="conteinercard">
+          <div class="card" id="cardutenete1">
+            <div class="front" id="frontcardutente1">
+            </div>
+            <div class="back" id="backcardutente1">
+              </div>
+          </div>
+        </div>
+
+        <div class="paddingcard"></div>
+
+        <div class="conteinercard"> 
+          <div class="card" id="cardutente2">
+            <div class="front" id="frontcardutente2">
+            </div>
+            <div class="back" id="backcardutente2">
+              </div>
+          </div>
+        </div>
+
+        <div class="paddingcard"></div>
+
+        <div class="conteinercard"> 
+          <div class="card" id="cardutente3">
+            <div class="front" id="frontcardutente3">
+            </div>
+            <div class="back" id="backcardutente3">
+              </div>
+          </div>
+        </div>
+      </div>
     </div>
- 
 
 
     <div class="right-side">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet nihil fuga aspernatur adipisci quam, magni quasi porro laboriosam quia? Tempore provident in dolores quam esse hic ex dolore ea voluptatibus ipsum voluptatum, porro ut, commodi quae quis dolor quibusdam quas consectetur nihil adipisci placeat. Provident voluptas at autem ducimus unde.</div>
+      <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad debitis sequi ipsum odio, facilis deserunt! Aut in sequi illo minus maiores, possimus expedita vero nostrum molestiae totam est reprehenderit? Delectus?</h1>
     </div>
   </div>
 
