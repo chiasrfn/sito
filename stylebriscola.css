@@ -327,7 +327,7 @@ header{
   box-sizing: border-box;
   justify-content: space-evenly;
   gap: 1em;
-  background-image: url(immagini/sfondo1.jpg);
+  background-image: url(../sito-main/immagini/sfondo1.jpg);
   background-position: center;
   background-size: cover;
   text-align: center;
@@ -421,7 +421,7 @@ justify-content: center;
 display: flex;
 flex-direction: column;
 color: black;
-background-image: url(/immagini/retro_carta2.jpg);
+background-image: url(../sito-main/immagini/retro_carta2.jpg);
 }
 
 
@@ -435,7 +435,7 @@ align-items: center;
 gap: 3rem;
 background-position: center;
 background-size: cover;
-background-image: url(/immagini/carte_napoletane/40.jpg);
+background-image: url(../sito-main/immagini/carte_napoletane/40.jpg);
 }
 
 

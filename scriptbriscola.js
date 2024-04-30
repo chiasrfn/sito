@@ -38,6 +38,7 @@ function closeModal(modal) {
 
 
 
+// inizio briscola
 
 const SEMI = {
   COPPE: 'Coppe',
@@ -79,9 +80,123 @@ function mescolaMazzo(mazzo) {
 
 let mazzoDiCarte = [];
 
+
+function distribuisciCarte() {
+  // Rimuove carte precedenti
+  manoGiocatore = [];
+  manoCPU = [];
+
+  // Distribuisce 3 carte
+  for (let i = 0; i < 3; i++) {
+    manoGiocatore.push(pescaCarta());
+    manoCPU.push(pescaCarta());
+  }
+
+  // Aggiorna interfaccia utente
+}
+
+// Pesca carta dal mazzo
+function pescaCarta() {
+  return mazzoDiCarte.pop();
+}
+
+let manoGiocatore = [];
+let manoCPU = [];
+
+let cartaBriscola;
+
+// Carta di Briscola
+function pescaBriscola() {
+  cartaBriscola = pescaCarta();
+}
+
+let turnoUtente = Math.random() < 0.5; // true se l'utente inizia, false altrimenti
+
+if (turnoUtente) {
+  console.log("L'utente inizia a giocare.");
+} else {
+  console.log("La CPU inizia a giocare.");
+}
+
+// Funzione per il turno dell'utente
+function turnoUtenteGioca() {
+  // Implementa logica per turno dell'utente
+}
+
+// Funzione per il turno della CPU
+function turnoCPUGioca() {
+  // Implementa logica per turno della CPU
+}
+
+
+
+function calcolaPercorsoImmagine(seme, valore) {
+  const numeriCarte = {
+    'Denari': {
+      'Asso': 1, 'Due': 2, 'Tre': 3, 'Quattro': 4, 'Cinque': 5,
+      'Sei': 6, 'Sette': 7, 'Fante': 8, 'Cavallo': 9, 'Re': 10
+    },
+    'Bastoni': {
+      'Asso': 11, 'Due': 12, 'Tre': 13, 'Quattro': 14, 'Cinque': 15,
+      'Sei': 16, 'Sette': 17, 'Fante': 18, 'Cavallo': 19, 'Re': 20
+    },
+    'Coppe': {
+      'Asso': 21, 'Due': 22, 'Tre': 23, 'Quattro': 24, 'Cinque': 25,
+      'Sei': 26, 'Sette': 27, 'Fante': 28, 'Cavallo': 29, 'Re': 30
+    },
+    'Spade': {
+      'Asso': 31, 'Due': 32, 'Tre': 33, 'Quattro': 34, 'Cinque': 35,
+      'Sei': 36, 'Sette': 37, 'Fante': 38, 'Cavallo': 39, 'Re': 40
+    }
+  };
+
+  // Ottiene il numero della carta in base al seme e al valore
+  const numeroCarta = numeriCarte[seme][valore];
+
+  // Ritorna il percorso completo
+  return `url(../sito-main/immagini/carte_napoletane/${numeroCarta}.jpg)`;
+}
+
+
+
+
+
+function caricaCarte() {
+  const carte = manoGiocatore
+
+  carte.forEach((carta, index) => {
+    const cardFront = document.getElementById(`frontcardutente${index + 1}`);
+    const cardBack = document.getElementById(`backcardutente${index + 1}`);
+
+    cardFront.style.backgroundImage = `url(../sito-main/immagini/retro_carta2.jpg)`;
+    cardBack.style.backgroundImage = calcolaPercorsoImmagine(carta.seme, carta.valore);
+  });
+}
+
+
+
+
+
+
+
+
+// Inizializzazione delle carte e del turno al caricamento della pagina
 window.onload = function() {
   mazzoDiCarte = creaMazzo();
   mazzoDiCarte = mescolaMazzo(mazzoDiCarte);
-  console.log(mazzoDiCarte); // Stampa il mazzo di carte mescolato nella console
+  distribuisciCarte(); // Distribuisce le carte ai giocatori
+  pescaBriscola(); // Pesca la carta di Briscola
+  console.log("Mano del giocatore:", manoGiocatore);
+  console.log("Mano del CPU:", manoCPU);
+  console.log("Carta di Briscola:", cartaBriscola);
+  console.log(mazzoDiCarte);
+  // Turno iniziale
+  if (turnoUtente) {
+    turnoUtenteGioca();
+  } else {
+    turnoCPUGioca();
+  }
+  caricaCarte()
 }
+
 
