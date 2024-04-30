@@ -25,10 +25,10 @@
 
   <!--parte di codice dedicata al modal-->
   <!--login-->
-  <div id="loginmodal" class="modal">
+  <div id="loginmodal" class="modal login">
     <div class="modal-header">
       <h1 id="titleLogin">Login</h1>
-      <button data-close-button class="close-button">&times;</button>
+      <button data-close-button class="close-button" id="close-button-login">&times;</button>
     </div>
     <div class="modal-input">
       <input type="text" placeholder="Nome Utente" required>
@@ -59,16 +59,17 @@
   <div id="overlay"></div>
 
   <!--gear-->
-  <div id="gearmodal" class="modal">
-    <div class="modal-header">
-      <div class="title">titolo</div>
-      <button data-close-button class="close-button">&times;</button>
+  <div id="gearmodal" class="modal gear">
+    <div class="modal-header" id="modal-header-gear">
+      <div class="title">Impostazioni</div>
+      <button data-close-button class="close-button" id="close-button-gear">&times;</button>
     </div>
-    <div class="modal-body">
-      <input type="text" placeholder="Nome utente" required>
-    </div>
-    <div class="modal-body">
-      <input type="password" placeholder="Password" required>
+    <div class="modal-imp1">
+      Impostazione 1
+      <input type="checkbox" class="checkboximpost" id="impost1">
+      <label class="buttonimpost" for="impost1">
+        <span class="slider"></span>
+      </label>
     </div>
   </div>
   <div id="overlay"></div>
@@ -80,7 +81,7 @@
           <td colspan=10 rowspan=10>
             <div class="cur">
               <h1 id="titolocur">Curiosità</h1>
-              <h2><span id="frasi">Le carte sono </span></h2>
+              <h2><span id="frasi">Le carte sono motivo di unione sociale</span></h2>
             </div>
           </td>
           <td></td>
@@ -106,7 +107,7 @@
                 <div class="back">
                   <h2>Briscola</h2>
                   <p>DESCRIZIONE</p>
-                  <button class="buttoncard" id="buttonBriscola">Gioca</button>
+                  <a href="briscola.html" class="linkgioca">Gioca</a>
                 </div>
               </div>
             </div>
@@ -120,7 +121,7 @@
                 <div class="back">
                   <h2>Tresette</h2>
                   <p>DESCRIZIONE</p>
-                  <button class="buttoncard" id="buttonTresette">Gioca</button>
+                  <a href="tresette.html" class="linkgioca">Gioca</a>
                 </div>
               </div>
             </div>
@@ -166,7 +167,7 @@
               <div class="back">
                 <h2>Traversone</h2>
                 <p>DESCRIZIONE</p>
-                <button class="buttoncard" id="buttonTraversone">Gioca</button>
+                <a href="traversone.html" class="linkgioca">Gioca</a>
               </div>
             </div>
           </div>
@@ -180,7 +181,7 @@
               <div class="back">
                 <h2>Scopa</h2>
                 <p>DESCRIZIONE</p>
-                <button class="buttoncard" id="buttonScopa">Gioca</button>
+                <a href="scopa.html" class="linkgioca">Gioca</a>
               </div>
             </div>
           </div>

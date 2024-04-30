@@ -25,25 +25,51 @@
   
   <!--parte di codice dedicata al modal-->
   <!--login-->
-  <div id="loginmodal" class="modal">
+  <div id="loginmodal" class="modal login">
     <div class="modal-header">
-      <div class="title">Briscola</div>
-      <button data-close-button class="close-button">&times;</button>
+      <h1 id="titleLogin">Login</h1>
+      <button data-close-button class="close-button" id="close-button-login">&times;</button>
     </div>
-    <div class="modal-body">
-      Lorem ipsum dolor sit amet consectetur adipisicing.
+    <div class="modal-input">
+      <input type="text" placeholder="Nome Utente" required>
+      <i class="bi bi-person-fill"></i>
     </div>
+    <div class="modal-input">
+      <input type="password" placeholder="Password" required>
+      <i class="bi bi-lock-fill"></i>
+    </div>
+    <div class="modal-remember">
+      <label>
+        <input type="checkbox" id="remember">Salva
+      </label>
+      <a href="forgot.html">Hai dimenticato la password?</a>
+    </div>
+
+    <button type="submit" class="modal-btn">Login</button>
+
+    <div class="modal-register">
+      <p>Non hai un account?
+        <a href="registrati.html">Registrati</a>
+      </p>
+    </div>
+  
+
   </div>
+
   <div id="overlay"></div>
 
   <!--gear-->
-  <div id="gearmodal" class="modal">
-    <div class="modal-header">
-      <div class="title">titolo</div>
-      <button data-close-button class="close-button">&times;</button>
+  <div id="gearmodal" class="modal gear">
+    <div class="modal-header" id="modal-header-gear">
+      <div class="title">Impostazioni</div>
+      <button data-close-button class="close-button" id="close-button-gear">&times;</button>
     </div>
-    <div class="modal-body">
-      Lorem ipsum dolor sit amet consectetur adipisicing.
+    <div class="modal-imp1">
+      Impostazione 1
+      <input type="checkbox" class="checkboximpost" id="impost1">
+      <label class="buttonimpost" for="impost1">
+        <span class="slider"></span>
+      </label>
     </div>
   </div>
   <div id="overlay"></div>

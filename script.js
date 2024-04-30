@@ -35,25 +35,6 @@ function closeModal(modal) {
   overlay.classList.remove('active')
 }
 
-var tastoBriscola = document.getElementById(buttonBriscola);
-buttonBriscola.addEventListener('click', function() {
-    window.location.href = 'briscola.html';
-})
-
-var tastoTresette = document.getElementById(buttonTresette);
-buttonTresette.addEventListener('click', function() {
-    window.location.href = 'tresette.html';
-})
-
-var tastoTraversone = document.getElementById(buttonTraversone);
-buttonTraversone.addEventListener('click', function() {
-    window.location.href = 'traversone.html';
-})
-
-var tastoScopa = document.getElementById(buttonScopa);
-buttonScopa.addEventListener('click', function() {
-    window.location.href = 'scopa.html';
-})
 
 /*
 var loginlock=document.getElementById(login-lock-btn);
@@ -65,8 +46,8 @@ $(document).ready(function() {
     function cur() {
         var frasi = [ 
             "L’ipotesi più accreditata vede nascere le carte da gioco in Cina, circa tra il 600 al 900",
-            "Furono portate in Europa dalle truppe moresche o dai mercanti veneziani, per il commercio di spezie e seta",
-            "le carte sono il passatempo preferito di molte generazioni"
+            "Furono portate in Europa dalle truppe moresche o dai mercanti veneziani, per il commercio di spezie e seta"
+
         ],
         i = 0;
         setInterval(function(){
