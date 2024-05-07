@@ -5,6 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        table, th, td {
+        border: black solid 2px;
+        border-collapse: collapse;
+        padding: 5px;
+        }
+
+        table{
+        display: flex;
+        width: 100%;
+        height: 100vh; 
+        margin-top: 2em;
+        }
+        td[colspan="10"] {
+        width: 50%; /* 50px * 5 */
+        }
+        
+        td {
+        width: 10%; /* larghezza standard */
+        height: 11.11%; /* altezza standard */
+        }
+        td[colspan="9"] {
+        width: 50%; /* 50px * 5 */
+        }
 
     </style>
 </head>

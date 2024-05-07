@@ -1,6 +1,10 @@
 const openModalButtons = document.querySelectorAll('[data-modal-target]')
 const closeModalButtons = document.querySelectorAll('[data-close-button]')
 const overlay = document.getElementById('overlay')
+const overlayg = document.getElementById('overlayg')
+const openModalGioca= document.getElementById('gioca');
+const cerchi= document.querySelectorAll('.cerchi')
+
 
 openModalButtons.forEach(button => {
   button.addEventListener('click', () => {
@@ -35,6 +39,37 @@ function closeModal(modal) {
   if (modal == null) return
   modal.classList.remove('active')
   overlay.classList.remove('active')
+}
+
+/*bottone gioca*/
+openModalGioca.forEach(button => {
+  button.addEventListener('click', () => {
+    const modal = document.querySelector(button.dataset.modalTarget)
+    openModal(modal)
+    const cerchio = document.querySelectorAll('.cerchio')
+    openModalG(cerchio)
+  })
+})
+
+overlayg.addEventListener('click', () => {
+  const cerchio = document.querySelectorAll('.cerchio.active')
+  cerchio.forEach(cerchio => {
+    closeModalG(cerchio)
+  })
+})
+
+
+function openModalG(cerchio) {
+  if (cerchio == null) return
+  cergio.classList.add('active')
+  overlayg.classList.add('active')
+
+}
+
+function closeModalG(cerchio) {
+  if (cerchio == null) return
+  cerchio.classList.remove('active')
+  overlayg.classList.remove('active')
 }
 
 
