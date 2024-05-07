@@ -15,6 +15,7 @@
       <img src="immagini/logo2.jpg" class="logo" margine-top="0px">
     </a>
     <div class="button-container">
+      <button data-modal-target=#giocamodal class="bheader gioca" id="gioca">Gioca</button>
       <button class="bheader storico" id="storico">Storico</button>
       <button data-modal-target=#loginmodal class="bheader login">Login</button>
       <button data-modal-target=#gearmodal class="btn-gear" >
@@ -71,6 +72,15 @@
         <span class="slider"></span>
       </label>
     </div>
+  </div>
+  <div id="overlay"></div>
+
+  <!--Gioca-->
+  <div id="giocamodal" class="modal gioca">
+    <label class="cerchi" id="cerchio1"></label>
+    <label class="cerchi" id="cerchio2"></label>
+    <label class="cerchi" id="cerchio3"></label>
+    <label class="cerchi" id="cerchio4"></label>
   </div>
   <div id="overlay"></div>
 
@@ -215,6 +225,7 @@
         <td></td>
         <td></td>
     </tr>
+    
   </table>
   </div>
   <script src="script.js"></script>
