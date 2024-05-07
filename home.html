@@ -15,7 +15,6 @@
       <img src="immagini/logo2.jpg" class="logo" margine-top="0px">
     </a>
     <div class="button-container">
-      <button data-modal-target=#giocamodal class="bheader gioca" id="gioca">Gioca</button>
       <button class="bheader storico" id="storico">Storico</button>
       <button data-modal-target=#loginmodal class="bheader login">Login</button>
       <button data-modal-target=#gearmodal class="btn-gear" >
@@ -75,38 +74,78 @@
   </div>
   <div id="overlay"></div>
 
-  <!--Gioca-->
-  <div id="giocamodal" class="modal gioca">
-    <label class="cerchi" id="cerchio1"></label>
-    <label class="cerchi" id="cerchio2"></label>
-    <label class="cerchi" id="cerchio3"></label>
-    <label class="cerchi" id="cerchio4"></label>
-  </div>
-  <div id="overlay"></div>
-
 
   <div class="container">
-    <table>
-      <tr>
-          <td colspan=10 rowspan=10>
-            <div class="cur">
-              <h1 id="titolocur">Curiosità</h1>
-              <h2><span id="frasi">Le carte sono motivo di unione sociale</span></h2>
-            </div>
-          </td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-      </tr>
+    <div class="left-side" >
+      <div class="cur">
+        <h1 id="titolocur">Curiosità</h1>
+        <h2><span id="frasi">Le carte sono motivo di unione sociale</span></h2>
+      </div>
+    </div>
 
-      <tr>
+    <div class="right-side">
+      <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td colspan=3 rowspan=3>
+              <div class="conteinercard">
+                <div class="card">
+                  <div class="front">
+                  </div>
+                  <div class="back">
+                    <h2>Briscola</h2>
+                    <p>DESCRIZIONE</p>
+                    <a href="briscola.html" class="linkgioca">Gioca</a>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td></td>
+            <td colspan=3 rowspan=3>
+              <div class="conteinercard">
+                <div class="card">
+                  <div class="front">
+                  </div>
+                  <div class="back">
+                    <h2>Tresette</h2>
+                    <p>DESCRIZIONE</p>
+                    <a href="tresette.html" class="linkgioca">Gioca</a>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        
+        <tr>
           <td></td>
           <td></td>
           <td colspan=3 rowspan=3>
@@ -115,9 +154,9 @@
                 <div class="front">
                 </div>
                 <div class="back">
-                  <h2>Briscola</h2>
+                  <h2>Traversone</h2>
                   <p>DESCRIZIONE</p>
-                  <a href="briscola.html" class="linkgioca">Gioca</a>
+                  <a href="traversone.html" class="linkgioca">Gioca</a>
                 </div>
               </div>
             </div>
@@ -129,9 +168,9 @@
                 <div class="front">
                 </div>
                 <div class="back">
-                  <h2>Tresette</h2>
+                  <h2>Scopa</h2>
                   <p>DESCRIZIONE</p>
-                  <a href="tresette.html" class="linkgioca">Gioca</a>
+                  <a href="scopa.html" class="linkgioca">Gioca</a>
                 </div>
               </div>
             </div>
@@ -165,68 +204,7 @@
           <td></td>
           <td></td>
       </tr>
-      
-      <tr>
-        <td></td>
-        <td></td>
-        <td colspan=3 rowspan=3>
-          <div class="conteinercard">
-            <div class="card">
-              <div class="front">
-              </div>
-              <div class="back">
-                <h2>Traversone</h2>
-                <p>DESCRIZIONE</p>
-                <a href="traversone.html" class="linkgioca">Gioca</a>
-              </div>
-            </div>
-          </div>
-        </td>
-        <td></td>
-        <td colspan=3 rowspan=3>
-          <div class="conteinercard">
-            <div class="card">
-              <div class="front">
-              </div>
-              <div class="back">
-                <h2>Scopa</h2>
-                <p>DESCRIZIONE</p>
-                <a href="scopa.html" class="linkgioca">Gioca</a>
-              </div>
-            </div>
-          </div>
-        </td>
-        <td></td>
-    </tr>
-
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    
-  </table>
+    </table>
   </div>
   <script src="script.js"></script>
 </body>
