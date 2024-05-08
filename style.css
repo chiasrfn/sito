@@ -60,7 +60,7 @@ height: 100Vh;
 flex: 1;
 display: flex;
 height: 100vh;
-margin-top: 20px;
+margin-top: 35px;
 }
 
 
@@ -510,9 +510,9 @@ td[colspan="10"] {
 
 .cerchio{
   position:fixed;
-  height: 150px;
-  width: 150px;
-  border-radius: 200px;
+  height: 100px;
+  width: 100px;
+  border-radius: 100px;
   background-color: rgb;
   transition: 200ms ease-in-out;
   opacity: 0;

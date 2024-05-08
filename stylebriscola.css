@@ -382,13 +382,11 @@ display: flex;
 height: 215px;
 width: 120px;
 perspective: 600px;
-cursor: pointer;
 position: relative;
 margin-top: 10px;
 }
 
-.conteinercard:hover > .card{
-cursor: pointer;
+.conteinercard.active > .card{
 transform:  rotateY(180deg);
 }
 
@@ -413,7 +411,6 @@ backface-visibility: hidden;
 
 .front{
 background-color: var(--white);
-cursor: pointer;
 background-position: center;
 background-size: cover;
 align-items: center;
@@ -438,7 +435,25 @@ background-size: cover;
 background-image: url(../sito-main/immagini/carte_napoletane/40.jpg);
 }
 
+/*carte utente*/
+.back.utente{
+  cursor: pointer;
+}
 
+.conteinercard.utente:hover{
+  transform: translate(200deg);
+}
+
+/*carte giocate*/
+.front.giocata{
+  background-image: none;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.conteinercard.giocata. > .card.giocata{
+
+}
 
 /*differenze tra i device*/
 

@@ -39,6 +39,40 @@ function closeModal(modal) {
 
 
 // inizio briscola
+const cpu1= document.getElementById('conteinercardcpu1')
+const cpu2= document.getElementById('conteinercardcpu2')
+const cpu3= document.getElementById('conteinercardcpu3')
+const mazzo= document.getElementById('conteinercardmazzo')
+const briscola= document.getElementById('conteinercardbriscola')
+const giocatac= document.getElementById('conteinercardcpugiocata')
+const giocatau= document.getElementById('conteinercardutentegiocata')
+const utente1= document.getElementById('conteinercardutente1')
+const utente2= document.getElementById('conteinercardutente2')
+const utente3= document.getElementById('conteinercardutente3')
+const conteinercard= document.querySelectorAll('.conteinercard')
+
+/*gira la carta sul retro*/
+function retro(conteinercard){
+  if(conteinercard==null) return
+  conteinercard.classList.remove('active')
+}
+/*gira la carta sul fronte*/
+function fronte(conteinercard){
+  if(conteinercard==null) return
+  conteinercard.classList.add('active')
+}
+
+/*carta utente va sul tavolo
+function tavoloutente(conteinercard){
+  if(conteinercard==null) return
+  else if(conteinercard.contains('cpu')){
+    fronte(cpu)
+    fronte(giocatac)
+  }else{
+
+  }
+  
+}*/
 
 const SEMI = {
   COPPE: 'Coppe',
@@ -93,6 +127,10 @@ function distribuisciCarte() {
   }
 
   // Aggiorna interfaccia utente
+  fronte(briscola)
+  fronte(utente1)
+  fronte(utente2)
+  fronte(utente3)
 }
 
 // Pesca carta dal mazzo
@@ -197,6 +235,7 @@ window.onload = function() {
     turnoCPUGioca();
   }
   caricaCarte()
+
 }
 
 
