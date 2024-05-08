@@ -39,53 +39,6 @@ function closeModal(modal) {
 
 
 // inizio briscola
-const contcpu1= document.getElementById('conteinercardcpu1')
-const contcpu2= document.getElementById('conteinercardcpu2')
-const contcpu3= document.getElementById('conteinercardcpu3')
-const contmazzo= document.getElementById('conteinercardmazzo')
-const contbriscola= document.getElementById('conteinercardbriscola')
-const contgiocatac= document.getElementById('conteinercardcpugiocata')
-const contgiocatau= document.getElementById('conteinercardutentegiocata')
-const contutente1= document.getElementById('conteinercardutente1')
-const contutente2= document.getElementById('conteinercardutente2')
-const contutente3= document.getElementById('conteinercardutente3')
-const conteinercard= document.querySelectorAll('.conteinercard')
-const conteinercardu=document.querySelectorAll('.conteinercard.utente')
-
-/*gira la carta sul retro*/
-function retro(conteinercard){
-  if(conteinercard==null) return
-  conteinercard.classList.remove('active')
-}
-/*gira la carta sul fronte*/
-function fronte(conteinercard){
-  if(conteinercard==null) return
-  conteinercard.classList.add('active')
-}
-
-/*carta utente va sul tavolo*/
-function tavoloutente(conteinercard){
-  if(conteinercard==null) return
-  else if(conteinercard.contains('cpu')){
-    fronte(conteinercard);
-    fronte(giocatac);
-  }
-  
-}
-
-
-
-/*rendo le carte utente cliccabili
-conteinercardu.forEach(card=>{
-  card.addEventListener('click', ()=>{
-    if(card==null) return
-    const backcardutente=card.querySelector('.back');
-    const backcardgiocatau= giocatau.querySelector('.back');
-    backcardgiocatau.backgroundImage=getComputedStyle(backcardutente).style.backgroundImage;
-    fronte(contgiocatau)
-  })
-})*/
-
 const SEMI = {
   COPPE: 'Coppe',
   SPADE: 'Spade',
@@ -125,6 +78,7 @@ function mescolaMazzo(mazzo) {
 }
 
 let mazzoDiCarte = [];
+let ngiocateU = 1;
 
 
 function distribuisciCarte() {
@@ -142,6 +96,9 @@ function distribuisciCarte() {
   fronte(contutente1)
   fronte(contutente2)
   fronte(contutente3)
+
+  //intero per capire quanto giocato utente
+  ngiocateU=1;
 }
 
 // Pesca carta dal mazzo
@@ -243,12 +200,10 @@ function caricaCarte() {
 
 
 
-
-
-
-
 // Inizializzazione delle carte e del turno al caricamento della pagina
 window.onload = function() {
+  scompare(contgiocatac);
+  scompare(contgiocatau);
   mazzoDiCarte = creaMazzo();
   mazzoDiCarte = mescolaMazzo(mazzoDiCarte);
   distribuisciCarte(); // Distribuisce le carte ai giocatori
@@ -269,4 +224,70 @@ window.onload = function() {
 
 }
 
+
+
+const contcpu1= document.getElementById('conteinercardcpu1')
+const contcpu2= document.getElementById('conteinercardcpu2')
+const contcpu3= document.getElementById('conteinercardcpu3')
+const contmazzo= document.getElementById('conteinercardmazzo')
+const contbriscola= document.getElementById('conteinercardbriscola')
+const contgiocatac= document.getElementById('conteinercardcpugiocata')
+const contgiocatau= document.getElementById('conteinercardutentegiocata')
+const contutente1= document.getElementById('conteinercardutente1')
+const contutente2= document.getElementById('conteinercardutente2')
+const contutente3= document.getElementById('conteinercardutente3')
+const conteinercard= document.querySelectorAll('.conteinercard')
+const conteinercardu=document.querySelectorAll('.conteinercard.utente')
+
+/*gira la carta sul retro*/
+function retro(conteinercard){
+  if(conteinercard==null) return
+  conteinercard.classList.remove('active')
+}
+/*gira la carta sul fronte*/
+function fronte(conteinercard){
+  if(conteinercard==null) return
+  conteinercard.classList.add('active')
+}
+
+function scompare(conteinercard){
+  if(conteinercard==null) return
+  conteinercard.classList.add('scompare')
+}
+
+function appare(conteinercard){
+  if(conteinercard==null) return
+  conteinercard.classList.remove('scompare')
+}
+
+/*carta utente va sul tavolo*/
+function tavoloutente(conteinercard){
+  if(conteinercard==null) return
+  else if(conteinercard.contains('cpu')){
+    fronte(conteinercard);
+    fronte(giocatac);
+  }
+  
+}
+
+
+
+/*rendo le carte utente cliccabili*/
+
+conteinercardu.forEach(card=>{
+    card.addEventListener('click', ()=>{
+    if(card==null) return
+    if(ngiocateU!=1) return
+    const backcardutente=card.querySelector('.back');
+    const backcardgiocatau= document.getElementById('backcardutentegiocata');
+    
+    const stile = backcardutente.style.backgroundImage;
+    backcardgiocatau.style.backgroundImage=stile;
+    console.log(stile);
+    appare(contgiocatau);
+    retro(card);
+    scompare(card);
+    ngiocateU=ngiocateU-1;
+  })
+})
 
