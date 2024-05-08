@@ -139,7 +139,6 @@ function distribuisciCarte() {
   }
 
   // Aggiorna interfaccia utente
-  fronte(contbriscola)
   fronte(contutente1)
   fronte(contutente2)
   fronte(contutente3)
@@ -208,15 +207,33 @@ function calcolaPercorsoImmagine(seme, valore) {
 }
 
 
+function caricaBriscola() {
+  const briscola = cartaBriscola
+  const cardFrontBriscola = document.getElementById('frontcardbriscola');
+  const cardBackBriscola = document.getElementById('backcardbriscola');
 
+  cardFrontBriscola.style.backgroundImage = `url(../sito-main/immagini/retro_carta2.jpg)`;
+  cardBackBriscola.style.backgroundImage = calcolaPercorsoImmagine(briscola.seme, briscola.valore);
+
+  fronte(contbriscola)
+}
 
 
 function caricaCarte() {
   const carte = manoGiocatore
+  const carteCPU = manoCPU
 
   carte.forEach((carta, index) => {
     const cardFront = document.getElementById(`frontcardutente${index + 1}`);
     const cardBack = document.getElementById(`backcardutente${index + 1}`);
+
+    cardFront.style.backgroundImage = `url(../sito-main/immagini/retro_carta2.jpg)`;
+    cardBack.style.backgroundImage = calcolaPercorsoImmagine(carta.seme, carta.valore);
+  });
+
+  carteCPU.forEach((carta, index) => {
+    const cardFront = document.getElementById(`frontcardcpu${index + 1}`);
+    const cardBack = document.getElementById(`backcardcpu${index + 1}`);
 
     cardFront.style.backgroundImage = `url(../sito-main/immagini/retro_carta2.jpg)`;
     cardBack.style.backgroundImage = calcolaPercorsoImmagine(carta.seme, carta.valore);
@@ -240,13 +257,15 @@ window.onload = function() {
   console.log("Mano del CPU:", manoCPU);
   console.log("Carta di Briscola:", cartaBriscola);
   console.log(mazzoDiCarte);
+  caricaBriscola();
+  caricaCarte();
   // Turno iniziale
   if (turnoUtente) {
     turnoUtenteGioca();
   } else {
     turnoCPUGioca();
   }
-  caricaCarte()
+
 
 }
 
