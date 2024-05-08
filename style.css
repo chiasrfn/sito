@@ -47,6 +47,7 @@ button {
   animation: change 60s infinite ease-in-out;
   overflow-y: scroll;
   overflow-x: none;
+  z-index: 1000;
 }
 
 .left-side {
@@ -167,7 +168,7 @@ table, th, td {
 }
 
 table{
-
+  align-self: center;
   width: 100%;
   height: 100vh; 
   margin-top: 2.5em;
@@ -193,7 +194,6 @@ td[colspan="10"] {
   justify-content: center;
   perspective: 600px;
   cursor: pointer;
-  z-index: 10050;
 }
 
 .conteinercard:hover > .card{
@@ -207,7 +207,6 @@ td[colspan="10"] {
   position: relative;
   transition: transform 1.5s;
   transform-style: preserve-3d;
-  z-index: 10050;
 }
 
 .front,
@@ -218,7 +217,6 @@ td[colspan="10"] {
   box-shadow: 0 0 2px 4px rgba(0, 0, 0, 0.1); 
   position: absolute;
   backface-visibility: hidden;
-  z-index: 10050;
   
 }
 
@@ -510,23 +508,18 @@ td[colspan="10"] {
 
 /*Gioca*/
 
-#giocamodal{
-  margin-left:50vh;
-  width: 50vw;
-  height: 100vh;
-  background-color:transparent;
+.cerchio{
+  position:fixed;
+  height: 150px;
+  width: 150px;
+  border-radius: 200px;
+  background-color: rgb;
+  transition: 200ms ease-in-out;
+  opacity: 0;
+  background-color: rgb(44,109,72, 0.75);
 }
 
-.cerchio{
-  opacity: 0;
-  position:fixed;
-  height: 100px;
-  width: 100px;
-  border-radius: 100px;
-  z-index: 40000;
-  background-color: rgba(255, 255, 255, 0.50);
-}
-.cerhio.active{
+.cerchio.active{
   opacity: 1;
 }
 
@@ -534,20 +527,22 @@ td[colspan="10"] {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   opacity: 0;
   transition: 200ms ease-in-out;
-  background-color: rgba(0, 0, 0, 0.70);
+  background-color: transparent;
   pointer-events: none;
   display: visible; 
-  z-index: 20000;
+  z-index: 2000;
+
 }
 
 #overlayg.active {
   opacity: 1;
   pointer-events: all;
 }
+
 
 /*differenze tra i device*/
 @media all and (max-width:786px){

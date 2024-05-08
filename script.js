@@ -1,10 +1,7 @@
 const openModalButtons = document.querySelectorAll('[data-modal-target]')
 const closeModalButtons = document.querySelectorAll('[data-close-button]')
 const overlay = document.getElementById('overlay')
-const overlayg = document.getElementById('overlayg')
-const openModalGioca= document.getElementById('gioca');
-const cerchi= document.querySelectorAll('.cerchi')
-
+const modalg= document.getElementById('giocamodal')
 
 openModalButtons.forEach(button => {
   button.addEventListener('click', () => {
@@ -41,36 +38,33 @@ function closeModal(modal) {
   overlay.classList.remove('active')
 }
 
-/*bottone gioca*/
-openModalGioca.forEach(button => {
-  button.addEventListener('click', () => {
-    const modal = document.querySelector(button.dataset.modalTarget)
-    openModal(modal)
-    const cerchio = document.querySelectorAll('.cerchio')
-    openModalG(cerchio)
-  })
+/*tasto gioca*/
+const overlayg = document.getElementById('overlayg')
+const buttongioca=document.getElementById('gioca')
+const cerchi=document.querySelectorAll('.cerchio')
+
+buttongioca.addEventListener('click', ()=>{
+  overlayg.classList.add('active')
+  cerchi.forEach(cerchio=>
+    cerchio.classList.add('active')
+  )
 })
 
 overlayg.addEventListener('click', () => {
-  const cerchio = document.querySelectorAll('.cerchio.active')
-  cerchio.forEach(cerchio => {
-    closeModalG(cerchio)
+  overlayg.classList.remove('active')
+  cerchi.forEach(cerchio => {
+    cerchio.classList.remove('active')
   })
 })
 
-
-function openModalG(cerchio) {
-  if (cerchio == null) return
-  cergio.classList.add('active')
-  overlayg.classList.add('active')
-
-}
-
-function closeModalG(cerchio) {
-  if (cerchio == null) return
-  cerchio.classList.remove('active')
-  overlayg.classList.remove('active')
-}
+cerchi.forEach(cerchio=>{
+  cerchio.addEventListener('click', () => {
+    overlayg.classList.remove('active')
+    cerchi.forEach(cerchio => {
+      cerchio.classList.remove('active')
+    })
+  })
+})
 
 
 /*

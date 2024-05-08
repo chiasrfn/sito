@@ -15,7 +15,7 @@
       <img src="immagini/logo2.jpg" class="logo" margine-top="0px">
     </a>
     <div class="button-container">
-      <button data-modal-target=#giocamodal class="bheader gioca" id="gioca">Gioca</button>
+      <button class="bheader gioca" id="gioca">Gioca</button>
       <button class="bheader storico" id="storico">Storico</button>
       <button data-modal-target=#loginmodal class="bheader login">Login</button>
       <button data-modal-target=#gearmodal class="btn-gear" >
@@ -25,6 +25,7 @@
   </header>
 
   <!--parte di codice dedicata al modal-->
+  <div id="overlay"></div>
   <!--login-->
   <div id="loginmodal" class="modal login">
     <div class="modal-header">
@@ -57,8 +58,6 @@
 
   </div>
 
-  <div id="overlay"></div>
-
   <!--gear-->
   <div id="gearmodal" class="modal gear">
     <div class="modal-header" id="modal-header-gear">
@@ -73,18 +72,10 @@
       </label>
     </div>
   </div>
-  <div id="overlay"></div>
 
-  <!--Gioca-->
-  <div id="giocamodal" class="modal gioca">
-    <label class="cerchi" id="cerchio1"></label>
-    <label class="cerchi" id="cerchio2"></label>
-    <label class="cerchi" id="cerchio3"></label>
-    <label class="cerchi" id="cerchio4"></label>
-  </div>
-  <div id="overlay"></div>
-
+  <div id="overlayg"></div>
   <div class="container">
+    <!--Gioca-->
     <div class="left-side">
       <div class="cur">
         <h1 id="titolocur">Curiosità</h1>
@@ -93,14 +84,15 @@
     </div>
 
     <div class="right-side">
-      <table style="align-self: center;">
+      <table>
         <tr>
             <td></td>
             <td></td>
             <td colspan=3 rowspan=3>
-              <div class="conteinercard">
-                <div class="card">
+              <div class="conteinercard" id="card1">
+                <div class="card" >
                   <div class="front">
+                    <div class="cerchio" id="cerchio1"></div>
                   </div>
                   <div class="back">
                     <h2>Briscola</h2>
@@ -112,9 +104,10 @@
             </td>
             <td></td>
             <td colspan=3 rowspan=3>
-              <div class="conteinercard">
+              <div class="conteinercard" id="card2">
                 <div class="card">
                   <div class="front">
+                    <div class="cerchio" id="cerchio2"></div>
                   </div>
                   <div class="back">
                     <h2>Tresette</h2>
@@ -158,9 +151,10 @@
           <td></td>
           <td></td>
           <td colspan=3 rowspan=3>
-            <div class="conteinercard">
+            <div class="conteinercard" id="card3">
               <div class="card">
                 <div class="front">
+                  <div class="cerchio" id="cerchio3"></div>
                 </div>
                 <div class="back">
                   <h2>Traversone</h2>
@@ -172,9 +166,10 @@
           </td>
           <td></td>
           <td colspan=3 rowspan=3>
-            <div class="conteinercard">
+            <div class="conteinercard" id="card4">
               <div class="card">
                 <div class="front">
+                  <div class="cerchio" id="cerchio4"></div>
                 </div>
                 <div class="back">
                   <h2>Scopa</h2>
