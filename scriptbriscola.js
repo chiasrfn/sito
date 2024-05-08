@@ -39,16 +39,16 @@ function closeModal(modal) {
 
 
 // inizio briscola
-const cpu1= document.getElementById('conteinercardcpu1')
-const cpu2= document.getElementById('conteinercardcpu2')
-const cpu3= document.getElementById('conteinercardcpu3')
-const mazzo= document.getElementById('conteinercardmazzo')
-const briscola= document.getElementById('conteinercardbriscola')
-const giocatac= document.getElementById('conteinercardcpugiocata')
-const giocatau= document.getElementById('conteinercardutentegiocata')
-const utente1= document.getElementById('conteinercardutente1')
-const utente2= document.getElementById('conteinercardutente2')
-const utente3= document.getElementById('conteinercardutente3')
+const contcpu1= document.getElementById('conteinercardcpu1')
+const contcpu2= document.getElementById('conteinercardcpu2')
+const contcpu3= document.getElementById('conteinercardcpu3')
+const contmazzo= document.getElementById('conteinercardmazzo')
+const contbriscola= document.getElementById('conteinercardbriscola')
+const contgiocatac= document.getElementById('conteinercardcpugiocata')
+const contgiocatau= document.getElementById('conteinercardutentegiocata')
+const contutente1= document.getElementById('conteinercardutente1')
+const contutente2= document.getElementById('conteinercardutente2')
+const contutente3= document.getElementById('conteinercardutente3')
 const conteinercard= document.querySelectorAll('.conteinercard')
 const conteinercardu=document.querySelectorAll('.conteinercard.utente')
 
@@ -73,23 +73,18 @@ function tavoloutente(conteinercard){
   
 }
 
-/*carta giocata utente*/
-function giocatau(conteinercard){
-  if(conteinercard==null)return
-  conteinercard.classList.remove('active')
-}
 
-/*rendo le carte utente cliccabili*/
+
+/*rendo le carte utente cliccabili
 conteinercardu.forEach(card=>{
   card.addEventListener('click', ()=>{
     if(card==null) return
     const backcardutente=card.querySelector('.back');
     const backcardgiocatau= giocatau.querySelector('.back');
-    backcardgiocatau.backgroundImage=backcardutente.backgroundImage;
-    //giocatau(card);
-    fronte(giocatau)
+    backcardgiocatau.backgroundImage=getComputedStyle(backcardutente).style.backgroundImage;
+    fronte(contgiocatau)
   })
-})
+})*/
 
 const SEMI = {
   COPPE: 'Coppe',
@@ -144,10 +139,10 @@ function distribuisciCarte() {
   }
 
   // Aggiorna interfaccia utente
-  fronte(briscola)
-  fronte(utente1)
-  fronte(utente2)
-  fronte(utente3)
+  fronte(contbriscola)
+  fronte(contutente1)
+  fronte(contutente2)
+  fronte(contutente3)
 }
 
 // Pesca carta dal mazzo
