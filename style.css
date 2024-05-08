@@ -534,7 +534,7 @@ td[colspan="10"] {
   background-color: transparent;
   pointer-events: none;
   display: visible; 
-  z-index: 2000;
+  z-index: 40000;
 
 }
 
