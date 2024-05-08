@@ -451,8 +451,10 @@ background-image: url(../sito-main/immagini/carte_napoletane/40.jpg);
   box-shadow: none;
 }
 
-.conteinercard.giocata. > .card.giocata{
 
+
+.conteinercard.giocata.active > .card.giocata{
+  transition: 200ms ease-in-out;
 }
 
 /*differenze tra i device*/

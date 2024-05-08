@@ -50,6 +50,7 @@ const utente1= document.getElementById('conteinercardutente1')
 const utente2= document.getElementById('conteinercardutente2')
 const utente3= document.getElementById('conteinercardutente3')
 const conteinercard= document.querySelectorAll('.conteinercard')
+const conteinercardu=document.querySelectorAll('.conteinercard.utente')
 
 /*gira la carta sul retro*/
 function retro(conteinercard){
@@ -62,17 +63,33 @@ function fronte(conteinercard){
   conteinercard.classList.add('active')
 }
 
-/*carta utente va sul tavolo
+/*carta utente va sul tavolo*/
 function tavoloutente(conteinercard){
   if(conteinercard==null) return
   else if(conteinercard.contains('cpu')){
-    fronte(cpu)
-    fronte(giocatac)
-  }else{
-
+    fronte(conteinercard);
+    fronte(giocatac);
   }
   
-}*/
+}
+
+/*carta giocata utente*/
+function giocatau(conteinercard){
+  if(conteinercard==null)return
+  conteinercard.classList.remove('active')
+}
+
+/*rendo le carte utente cliccabili*/
+conteinercardu.forEach(card=>{
+  card.addEventListener('click', ()=>{
+    if(card==null) return
+    const backcardutente=card.querySelector('.back');
+    const backcardgiocatau= giocatau.querySelector('.back');
+    backcardgiocatau.backgroundImage=backcardutente.backgroundImage;
+    //giocatau(card);
+    fronte(giocatau)
+  })
+})
 
 const SEMI = {
   COPPE: 'Coppe',
