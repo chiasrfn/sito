@@ -93,6 +93,15 @@ function distribuisciCarte() {
   }
 
   // Aggiorna interfaccia utente
+  //caricamento tutte carte dell'utente e cpu e scompare mazzo
+  conteinercard.forEach(card=>{
+    if(card==contgiocatac || card==contgiocatau){
+      scompare(card);
+    }else {
+      appare(card);
+    }
+  })
+
   fronte(contutente1)
   fronte(contutente2)
   fronte(contutente3)
@@ -195,6 +204,7 @@ function caricaCarte() {
     cardFront.style.backgroundImage = `url(../sito-main/immagini/retro_carta2.jpg)`;
     cardBack.style.backgroundImage = calcolaPercorsoImmagine(carta.seme, carta.valore);
   });
+
 }
 
 
@@ -220,6 +230,7 @@ window.onload = function() {
   } else {
     turnoCPUGioca();
   }
+  sceltacpu(contcpu1);
 
 
 }
@@ -260,29 +271,36 @@ function appare(conteinercard){
   conteinercard.classList.remove('scompare')
 }
 
-/*carta utente va sul tavolo*/
-function tavoloutente(conteinercard){
+
+/*gestisce la carta scelta dalla cpu*/
+async function sceltacpu(conteinercard){
   if(conteinercard==null) return
-  else if(conteinercard.contains('cpu')){
-    fronte(conteinercard);
-    fronte(giocatac);
-  }
+  const backcardcpu=conteinercard.querySelector('.card').querySelector('.back');
+  const frontcardgiocatacpu= document.getElementById('frontcardcpugiocata');
   
+  const stile = backcardcpu.style.backgroundImage;
+  frontcardgiocatacpu.style.backgroundImage=stile;
+  console.log(stile);
+
+  fronte(conteinercard);
+  await sleep(1500);
+  appare(contgiocatac);
+  scompare(conteinercard);
+  retro(conteinercard);
 }
 
 
-
-/*rendo le carte utente cliccabili*/
+/*rendo le carte utente cliccabili e le metto sul tavolo*/
 
 conteinercardu.forEach(card=>{
-    card.addEventListener('click', ()=>{
+    card.addEventListener('click',()=>{
     if(card==null) return
     if(ngiocateU!=1) return
     const backcardutente=card.querySelector('.back');
-    const backcardgiocatau= document.getElementById('backcardutentegiocata');
+    const frontcardgiocatau= document.getElementById('frontcardutentegiocata');
     
     const stile = backcardutente.style.backgroundImage;
-    backcardgiocatau.style.backgroundImage=stile;
+    frontcardgiocatau.style.backgroundImage=stile;
     console.log(stile);
     appare(contgiocatau);
     retro(card);
@@ -291,3 +309,6 @@ conteinercardu.forEach(card=>{
   })
 })
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
