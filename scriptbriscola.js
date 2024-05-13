@@ -38,7 +38,9 @@ function closeModal(modal) {
 
 
 
+
 // inizio briscola
+
 const SEMI = {
   COPPE: 'Coppe',
   SPADE: 'Spade',
@@ -69,16 +71,16 @@ function creaMazzo() {
   return mazzo;
 }
 
-function mescolaMazzo(mazzo) {
-  for (let i = mazzo.length - 1; i > 0; i--) {
+function mescolaMazzo(m) {
+  for (let i = m.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [mazzo[i], mazzo[j]] = [mazzo[j], mazzo[i]];
+    [m[i], m[j]] = [m[j], m[i]];
   }
-  return mazzo;
+  return m;
 }
 
 let mazzoDiCarte = [];
-let ngiocateU = 1;
+let ngiocateU
 
 
 function distribuisciCarte() {
@@ -91,8 +93,12 @@ function distribuisciCarte() {
     manoGiocatore.push(pescaCarta());
     manoCPU.push(pescaCarta());
   }
+  comparizioneCarte()
+}
 
-  // Aggiorna interfaccia utente
+
+function comparizioneCarte(){
+    // Aggiorna interfaccia utente
   //caricamento tutte carte dell'utente e cpu e scompare mazzo
   conteinercard.forEach(card=>{
     if(card==contgiocatac || card==contgiocatau){
@@ -107,8 +113,9 @@ function distribuisciCarte() {
   fronte(contutente3)
 
   //intero per capire quanto giocato utente
-  ngiocateU=1;
+  ngiocateU=0;
 }
+
 
 // Pesca carta dal mazzo
 function pescaCarta() {
@@ -117,8 +124,7 @@ function pescaCarta() {
 
 let manoGiocatore = [];
 let manoCPU = [];
-
-let cartaBriscola;
+let cartaBriscola
 
 // Carta di Briscola
 function pescaBriscola() {
@@ -135,17 +141,166 @@ if (turnoUtente) {
 
 // Funzione per il turno dell'utente
 function turnoUtenteGioca() {
-  // Implementa logica per turno dell'utente
+  ngiocateU=1;
 }
+
+var cartaGiocataCPU
 
 // Funzione per il turno della CPU
-function turnoCPUGioca() {
-  // Implementa logica per turno della CPU
+async function turnoCPUGioca(m,cB) {
+  await sleep(1000);
+  if (!primoGioca) {
+    if (isScartino(m[0]) && !isBriscola(m[0],cB)) {
+      giocaCartaCPU(contcpu1)
+      cartaGiocataCPU=0
+      return
+    }
+    if (isScartino(m[1]) && !isBriscola(m[1],cB)) {
+      giocaCartaCPU(contcpu2)
+      cartaGiocataCPU=1
+      return
+    }
+    if (isScartino(m[2]) && !isBriscola(m[2],cB)) {
+      giocaCartaCPU(contcpu3)
+      cartaGiocataCPU=2
+      return
+    }
+    if (isPunti(m[0]) && !isBriscola(m[0],cB)) {
+      giocaCartaCPU(contcpu1)
+      cartaGiocataCPU=0
+      return
+    }
+    if (isPunti(m[1]) && !isBriscola(m[1],cB)) {
+      giocaCartaCPU(contcpu2)
+      cartaGiocataCPU=1
+      return
+    }
+    if (isPunti(m[2]) && !isBriscola(m[2],cB)) {
+      giocaCartaCPU(contcpu3)
+      cartaGiocataCPU=2
+      return
+    }
+    if (isScartino(m[0]) && isBriscola(m[0],cB)) {
+      giocaCartaCPU(contcpu1)
+      cartaGiocataCPU=0
+      return
+    }
+    if (isScartino(m[1]) && isBriscola(m[1],cB)) {
+      giocaCartaCPU(contcpu2)
+      cartaGiocataCPU=1
+      return
+    }
+    if (isScartino(m[2]) && isBriscola(m[2],cB)) {
+      giocaCartaCPU(contcpu3)
+      cartaGiocataCPU=2
+      return
+    }
+    if (isPunti(m[0]) && isBriscola(m[0],cB)) {
+      giocaCartaCPU(contcpu1)
+      cartaGiocataCPU=0
+      return
+    }
+    if (isPunti(m[1]) && isBriscola(m[1],cB)) {
+      giocaCartaCPU(contcpu2)
+      cartaGiocataCPU=1
+      return
+    }
+    if (isPunti(m[2]) && isBriscola(m[2],cB)) {
+      giocaCartaCPU(contcpu3)
+      cartaGiocataCPU=2
+      return
+    }
+    if (isAsso(m[0]) && isBriscola(m[0],cB)) {
+      giocaCartaCPU(contcpu1)
+      cartaGiocataCPU=0
+      return
+    }
+    if (isAsso(m[1]) && isBriscola(m[1],cB)) {
+      giocaCartaCPU(contcpu2)
+      cartaGiocataCPU=1
+      return
+    }
+    if (isAsso(m[2]) && isBriscola(m[2],cB)) {
+      giocaCartaCPU(contcpu3)
+      cartaGiocataCPU=2
+      return
+    }
+    if (isAsso(m[0]) && !isBriscola(m[0],cB)) {
+      giocaCartaCPU(contcpu1)
+      cartaGiocataCPU=0
+      return
+    }
+    if (isAsso(m[1]) && !isBriscola(m[1],cB)) {
+      giocaCartaCPU(contcpu2)
+      cartaGiocataCPU=2
+      return
+    }
+    if (isAsso(m[2]) && !isBriscola(m[2],cB)) {
+      giocaCartaCPU(contcpu3)
+      cartaGiocataCPU=2
+      return
+    }
+    if (isTre(m[0]) && !isBriscola(m[0],cB)) {
+      giocaCartaCPU(contcpu1)
+      cartaGiocataCPU=0
+      return
+    }
+    if (isTre(m[1]) && !isBriscola(m[1],cB)) {
+      giocaCartaCPU(contcpu2)
+      cartaGiocataCPU=1
+      return
+    }
+    if (isTre(m[2]) && !isBriscola(m[2],cB)) {
+      giocaCartaCPU(contcpu3)
+      cartaGiocataCPU=2
+      return
+    }
+    if (isTre(m[0]) && isBriscola(m[0],cB)) {
+      giocaCartaCPU(contcpu1)
+      cartaGiocataCPU=0
+      return
+    }
+    if (isTre(m[1]) && isBriscola(m[1],cB)) {
+      giocaCartaCPU(contcpu2)
+      cartaGiocataCPU=1
+      return
+    }
+    if (isTre(m[2]) && isBriscola(m[2],cB)) {
+      giocaCartaCPU(contcpu3)
+      cartaGiocataCPU=2
+      return
+    }
+  }
+  else {
+    giocaCartaCPU(contcpu1)
+  }
 }
 
+function isBriscola(c,cB){
+  return c.seme === cB.seme
+}
 
+function isScartino(c){
+  const valoriScartini = ['Due', 'Quattro', 'Cinque', 'Sei', 'Sette'];
+  return valoriScartini.includes(c.valore);
+}
 
-function calcolaPercorsoImmagine(seme, valore) {
+function isPunti(c){
+  const valoriPunti = ['Fante', 'Cavallo', 'Re'];
+  return valoriPunti.includes(c.valore);
+}
+
+function isTre(c){
+  const valoreTre = ['Tre'];
+  return valoreTre.includes(c.valore);
+}
+
+function isAsso(c){
+  const valoreAsso = ['Asso'];
+  return valoreAsso.includes(c.valore);
+}
+
+function calcolaPercorsoImmagine(s, v) {
   const numeriCarte = {
     'Denari': {
       'Asso': 1, 'Due': 2, 'Tre': 3, 'Quattro': 4, 'Cinque': 5,
@@ -166,7 +321,7 @@ function calcolaPercorsoImmagine(seme, valore) {
   };
 
   // Ottiene il numero della carta in base al seme e al valore
-  const numeroCarta = numeriCarte[seme][valore];
+  const numeroCarta = numeriCarte[s][v];
 
   // Ritorna il percorso completo
   return `url(../sito-main/immagini/carte_napoletane/${numeroCarta}.jpg)`;
@@ -207,7 +362,7 @@ function caricaCarte() {
 
 }
 
-
+let primoGioca
 
 
 // Inizializzazione delle carte e del turno al caricamento della pagina
@@ -224,18 +379,44 @@ window.onload = function() {
   console.log(mazzoDiCarte);
   caricaBriscola();
   caricaCarte();
-  // Turno iniziale
-  if (turnoUtente) {
-    turnoUtenteGioca();
-  } else {
-    turnoCPUGioca();
-  }
-  sceltacpu(contcpu1);
+  turni(turnoUtente)
+}
 
+let puntiCPU
+let puntiUtente
+let attesa
+
+async function turno(pG) {
+  if (primoGioca) {
+    attesa = true
+    turnoUtenteGioca()
+    while (attesa) {
+      await sleep(500)
+    }
+    turnoCPUGioca(manoCPU,cartaBriscola)
+  }
+  else {
+    turnoCPUGioca(manoCPU,cartaBriscola)
+    await sleep(3000)
+    turnoUtenteGioca()
+  }
+  presa()
+}
+
+function presa() {
 
 }
 
-
+function turni(tU) {
+  if (tU) {
+    primoGioca=true
+  } else {
+    primoGioca=false
+  }
+  turno(primoGioca)
+  turno()
+  turno()
+}
 
 const contcpu1= document.getElementById('conteinercardcpu1')
 const contcpu2= document.getElementById('conteinercardcpu2')
@@ -251,44 +432,45 @@ const conteinercard= document.querySelectorAll('.conteinercard')
 const conteinercardu=document.querySelectorAll('.conteinercard.utente')
 
 /*gira la carta sul retro*/
-function retro(conteinercard){
-  if(conteinercard==null) return
-  conteinercard.classList.remove('active')
+function retro(contC){
+  if(contC==null) return
+  contC.classList.remove('active')
 }
 /*gira la carta sul fronte*/
-function fronte(conteinercard){
-  if(conteinercard==null) return
-  conteinercard.classList.add('active')
+function fronte(contC){
+  if(contC==null) return
+  contC.classList.add('active')
 }
 
-function scompare(conteinercard){
-  if(conteinercard==null) return
-  conteinercard.classList.add('scompare')
+function scompare(contC){
+  if(contC==null) return
+  contC.classList.add('scompare')
 }
 
-function appare(conteinercard){
-  if(conteinercard==null) return
-  conteinercard.classList.remove('scompare')
+function appare(contC){
+  if(contC==null) return
+  contC.classList.remove('scompare')
 }
 
 
 /*gestisce la carta scelta dalla cpu*/
-async function sceltacpu(conteinercard){
-  if(conteinercard==null) return
-  const backcardcpu=conteinercard.querySelector('.card').querySelector('.back');
+async function giocaCartaCPU(contC){
+  if(contC==null) return
+  const backcardcpu=contC.querySelector('.card').querySelector('.back');
   const frontcardgiocatacpu= document.getElementById('frontcardcpugiocata');
   
   const stile = backcardcpu.style.backgroundImage;
   frontcardgiocatacpu.style.backgroundImage=stile;
   console.log(stile);
 
-  fronte(conteinercard);
+  fronte(contC);
   await sleep(1500);
   appare(contgiocatac);
-  scompare(conteinercard);
-  retro(conteinercard);
+  scompare(contC);
+  retro(contC);
 }
 
+let cartaGiocataUtente
 
 /*rendo le carte utente cliccabili e le metto sul tavolo*/
 
@@ -306,6 +488,8 @@ conteinercardu.forEach(card=>{
     retro(card);
     scompare(card);
     ngiocateU=ngiocateU-1;
+    cartaGiocataUtente=parseInt(card.id.charAt(card.id.length-1))-1;
+    attesa = false
   })
 })
 
