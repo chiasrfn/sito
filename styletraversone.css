@@ -76,7 +76,7 @@
   
   .bheader:hover{
     background-color: var(--dark-green);
-    color: var(--white);
+    color: white;
   }
   
   
@@ -479,7 +479,7 @@
   .punti{
     margin: 10px;
     display: grid;
-    grid-template-columns: repeat(9, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     background-color: rgba(139, 139, 139, 0.65);
   }
 

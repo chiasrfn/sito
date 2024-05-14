@@ -554,6 +554,7 @@ td[colspan="10"] {
     flex-direction: column;
     justify-content: space-between;
     overflow-x: scroll;
+    overflow-y: scroll;
   }
   .cur{
     margin-top: 15%;

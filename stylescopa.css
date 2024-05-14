@@ -75,7 +75,7 @@
   
   .bheader:hover{
     background-color: var(--dark-green);
-    color: var(--white);
+    color: white;
   }
   
   
