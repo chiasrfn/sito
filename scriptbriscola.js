@@ -303,22 +303,436 @@ async function turnoCPUGioca(m,cB,cG) {
         numeroCartaGiocataCPU=0
         cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
         return
-      } 
-      if (isScartino(cG) && !isBriscola(cG,cB)) {
-        if (isAsso(m[1]) && isStessoSeme(m[1],cG)) {
-          giocaCartaCPU(contcpu2)
-          numeroCartaGiocataCPU=1
-          cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
-          return
-        } 
       }
-      if (isScartino(cG) && !isBriscola(cG,cB)) {
-        if (isAsso(m[2]) && isStessoSeme(m[2],cG)) {
-          giocaCartaCPU(contcpu3)
-          numeroCartaGiocataCPU=2
-          cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
-          return
-        } 
+      if (isAsso(m[1]) && isStessoSeme(m[1],cG)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isAsso(m[2]) && isStessoSeme(m[2],cG)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isTre(m[0]) && isStessoSeme(m[0],cG)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isTre(m[1]) && isStessoSeme(m[1],cG)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isTre(m[2]) && isStessoSeme(m[2],cG)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isPunti(m[0]) && isStessoSeme(m[0],cG)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isPunti(m[1]) && isStessoSeme(m[1],cG)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isPunti(m[2]) && isStessoSeme(m[2],cG)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isScartino(m[0]) && !isBriscola(m[0],cB)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isScartino(m[1]) && !isBriscola(m[1],cB)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isScartino(m[2]) && !isBriscola(m[2],cB)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isPunti(m[0]) && !isBriscola(m[0],cB)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isPunti(m[1]) && !isBriscola(m[1],cB)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isPunti(m[2]) && !isBriscola(m[2],cB)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isScartino(m[0]) && isBriscola(m[0],cB)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isScartino(m[1]) && isBriscola(m[1],cB)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isScartino(m[2]) && isBriscola(m[2],cB)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isPunti(m[0]) && isBriscola(m[0],cB)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isPunti(m[1]) && isBriscola(m[1],cB)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isPunti(m[2]) && isBriscola(m[2],cB)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isTre(m[0]) && !isBriscola(m[0],cB)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isTre(m[1]) && !isBriscola(m[1],cB)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isTre(m[2]) && !isBriscola(m[2],cB)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isAsso(m[0]) && !isBriscola(m[0],cB)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isAsso(m[1]) && !isBriscola(m[1],cB)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isAsso(m[2]) && !isBriscola(m[2],cB)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isTre(m[0]) && isBriscola(m[0],cB)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isTre(m[1]) && isBriscola(m[1],cB)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isTre(m[2]) && isBriscola(m[2],cB)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isAsso(m[0]) && isBriscola(m[0],cB)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isAsso(m[1]) && isBriscola(m[1],cB)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isAsso(m[2]) && isBriscola(m[2],cB)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+    }
+    if (isPunti(cG) && !isBriscola(cG,cB)) {
+      if (isAsso(m[0]) && isStessoSeme(m[0],cG)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isAsso(m[1]) && isStessoSeme(m[1],cG)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isAsso(m[2]) && isStessoSeme(m[2],cG)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isTre(m[0]) && isStessoSeme(m[0],cG)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isTre(m[1]) && isStessoSeme(m[1],cG)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isTre(m[2]) && isStessoSeme(m[2],cG)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isScartino(m[0]) && !isBriscola(m[0],cB)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isScartino(m[1]) && !isBriscola(m[1],cB)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isScartino(m[2]) && !isBriscola(m[2],cB)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isPunti(m[0]) && !isBriscola(m[0],cB)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isPunti(m[1]) && !isBriscola(m[1],cB)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isPunti(m[2]) && !isBriscola(m[2],cB)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isScartino(m[0]) && isBriscola(m[0],cB)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isScartino(m[1]) && isBriscola(m[1],cB)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isScartino(m[2]) && isBriscola(m[2],cB)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isPunti(m[0]) && isBriscola(m[0],cB)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isPunti(m[1]) && isBriscola(m[1],cB)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isPunti(m[2]) && isBriscola(m[2],cB)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isTre(m[0]) && !isBriscola(m[0],cB)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isTre(m[1]) && !isBriscola(m[1],cB)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isTre(m[2]) && !isBriscola(m[2],cB)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isAsso(m[0]) && !isBriscola(m[0],cB)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isAsso(m[1]) && !isBriscola(m[1],cB)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isAsso(m[2]) && !isBriscola(m[2],cB)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isTre(m[0]) && isBriscola(m[0],cB)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isTre(m[1]) && isBriscola(m[1],cB)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isTre(m[2]) && isBriscola(m[2],cB)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isAsso(m[0]) && isBriscola(m[0],cB)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isAsso(m[1]) && isBriscola(m[1],cB)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isAsso(m[2]) && isBriscola(m[2],cB)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+    }
+    if (isTre(cG) && !isBriscola(cG,cB)) {
+      if (isAsso(m[0]) && isStessoSeme(m[0],cG)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isAsso(m[1]) && isStessoSeme(m[1],cG)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isAsso(m[2]) && isStessoSeme(m[2],cG)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isScartino(m[0]) && isBriscola(m[0],cB)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isScartino(m[1]) && isBriscola(m[1],cB)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isScartino(m[2]) && isBriscola(m[2],cB)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isPunti(m[0]) && isBriscola(m[0],cB)) {
+        giocaCartaCPU(contcpu1)
+        numeroCartaGiocataCPU=0
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isPunti(m[1]) && isBriscola(m[1],cB)) {
+        giocaCartaCPU(contcpu2)
+        numeroCartaGiocataCPU=1
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
+      }
+      if (isPunti(m[2]) && isBriscola(m[2],cB)) {
+        giocaCartaCPU(contcpu3)
+        numeroCartaGiocataCPU=2
+        cartaGiocataCPU=manoCPU[numeroCartaGiocataCPU]
+        return
       }
     }
   }
