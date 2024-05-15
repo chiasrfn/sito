@@ -1126,6 +1126,7 @@ async function turno(pG) {
 async function presa() {
   await sleep(5000);
   animazionepresa(0);
+  aggiornaPunteggio();
 }
 
 function turni(tU) {
@@ -1250,4 +1251,13 @@ async function animazionepresa(i){
     scompare(contgiocatac);
     backgiocatac.classList.remove('active');
   }
+}
+
+var punteggioCpu=5;
+var punteggioUtente=10;
+
+function aggiornaPunteggio() {
+
+  $('#valorepunteggiocpu').text(punteggioCpu);
+  $('#valorepunteggioutente').text(punteggioUtente);
 }

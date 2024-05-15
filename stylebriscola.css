@@ -360,10 +360,6 @@ header{
 
 }
 
-.space.latol{
-  grid-column: span 3;
-}
-
 .space.giocata{
   grid-column: span 2;
 }
@@ -494,7 +490,9 @@ ul{
   background-color: rgba(139, 139, 139, 0.65);
 }
 
-
+.valorepunteggio{
+  text-decoration: bold;
+}
 
 .item-punti{
   font-size: 18px;
@@ -505,6 +503,18 @@ ul{
 .item-punti.corte{
   padding-top: 9px;
   padding-bottom: 9px;
+}
+
+/*Punteggio*/
+.punteggio{
+  align-self: center;
+  align-items: center;
+  text-align: center;
+  height: auto;
+  width: auto;
+  background-color: rgb(255,255,255, 0.65);
+  padding: 0 0.5em 0.2em 0.5em;
+  border-radius: 1rem;
 }
 
 /*differenze tra i device*/
