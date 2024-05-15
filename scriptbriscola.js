@@ -1123,8 +1123,9 @@ async function turno(pG) {
   presa()
 }
 
-function presa() {
-
+async function presa() {
+  await sleep(5000);
+  animazionepresa(0);
 }
 
 function turni(tU) {
@@ -1150,6 +1151,10 @@ const contutente2= document.getElementById('conteinercardutente2')
 const contutente3= document.getElementById('conteinercardutente3')
 const conteinercard= document.querySelectorAll('.conteinercard')
 const conteinercardu=document.querySelectorAll('.conteinercard.utente')
+const frontcardgiocatau= document.getElementById('frontcardutentegiocata')
+const frontcardgiocatacpu= document.getElementById('frontcardcpugiocata')
+const backgiocatau=document.getElementById("backcardutentegiocata")
+const backgiocatac=document.getElementById("backcardcpugiocata")
 
 /*gira la carta sul retro*/
 function retro(contC){
@@ -1177,17 +1182,16 @@ function appare(contC){
 async function giocaCartaCPU(contC){
   if(contC==null) return
   const backcardcpu=contC.querySelector('.card').querySelector('.back');
-  const frontcardgiocatacpu= document.getElementById('frontcardcpugiocata');
   
   const stile = backcardcpu.style.backgroundImage;
   frontcardgiocatacpu.style.backgroundImage=stile;
-  console.log(stile);
 
   fronte(contC);
   await sleep(1500);
   appare(contgiocatac);
   scompare(contC);
   retro(contC);
+
 }
 
 let numeroCartaGiocataUtente
@@ -1200,11 +1204,9 @@ conteinercardu.forEach(card=>{
     if(card==null) return
     if(ngiocateU!=1) return
     const backcardutente=card.querySelector('.back');
-    const frontcardgiocatau= document.getElementById('frontcardutentegiocata');
     
     const stile = backcardutente.style.backgroundImage;
     frontcardgiocatau.style.backgroundImage=stile;
-    console.log(stile);
     appare(contgiocatau);
     retro(card);
     scompare(card);
@@ -1212,9 +1214,40 @@ conteinercardu.forEach(card=>{
     numeroCartaGiocataUtente=parseInt(card.id.charAt(card.id.length-1))-1;
     cartaGiocataUtente=manoGiocatore[numeroCartaGiocataUtente]
     attesa = false
+
+    //imposto il back cosa che ci servirà se la presa sarà effettuata dalla cpu
+    backgiocatau.style.backgroundImage=stile;
   })
 })
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+/*funzione da chiamare quando si sa chi ha vinto*/
+async function animazionepresa(i){
+  if(i==0){ //cpu vinto
+    //facciamo vedere la carta sotto
+    backgiocatau.classList.add('active');
+
+    const stile = frontcardgiocatacpu.style.backgroundImage;
+    scompare(contgiocatac);
+    frontcardgiocatau.style.backgroundImage=stile;
+    await sleep(5000);
+
+    scompare(contgiocatau);
+    backgiocatau.classList.remove('active');
+
+  }else{//utente vinto   
+
+    const stile = frontcardgiocatau.style.backgroundImage;
+    scompare(contgiocatau);
+    backgiocatac.style.backgroundImage=stile;
+    //facciamo vedere la carta sotto
+    backgiocatac.classList.add('active');
+    await sleep(5000);
+
+    scompare(contgiocatac);
+    backgiocatac.classList.remove('active');
+  }
 }

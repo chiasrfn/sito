@@ -349,29 +349,33 @@ header{
 }
 
 
-  /*grid*/
-  .left-side {
-    flex: 4;
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    height: 100Vh;
-    position: relative;
-    margin-left: 5px;
+/*grid*/
+.left-side {
+  flex: 4;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  height: 100Vh;
+  position: relative;
+  margin-left: 5px;
 
-  }
+}
 
-  .space.latol{
-    grid-column: span 3;
-  }
+.space.latol{
+  grid-column: span 3;
+}
 
-  .space.giocata{
-    grid-column: span 2;
-  }
+.space.giocata{
+  grid-column: span 2;
+}
 
-  .space.top{
-    grid-column: span 9;
-    margin-top: 0px;
-  }
+.space.top{
+  grid-column: span 8;
+  margin-top: 0px;
+}
+
+.conteinercard.giocata{
+  transition: all 0.5s ease;
+}
 
 
 /*Carte*/
@@ -444,8 +448,12 @@ background-size: cover;
 
 /*carte giocate*/
 .back.giocata{
-  display:table;
-  backface-visibility:visible;
+  display: none;
+}
+
+.back.giocata.active{
+  display: block;
+  transform: translateX(50px);
 }
 
 /*testo*/
