@@ -149,7 +149,6 @@ let numeroCartaGiocataCPU
 
 // Funzione per il turno della CPU
 async function turnoCPUGioca(m,cB,cG) {
-  await sleep(1000);
   if (!primoGioca) {
     if (isScartino(m[0]) && !isBriscola(m[0],cB)) {
       giocaCartaCPU(contcpu1)
@@ -1661,9 +1660,11 @@ async function turno(pG) {
     while (attesa) {
       await sleep(500)
     }
+    await sleep(1000);
     turnoCPUGioca(manoCPU,cartaBriscola,cartaGiocataUtente)
   }
   else {
+    await sleep(1000);
     turnoCPUGioca(manoCPU,cartaBriscola,cartaGiocataUtente)
     await sleep(3000)
     turnoUtenteGioca()
