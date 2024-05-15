@@ -517,6 +517,32 @@ ul{
   border-radius: 1rem;
 }
 
+/*Vittoria*/
+
+.messaggiovittoria{
+  font-size: 50px;
+  color: var(--dark-green);
+}
+
+#overlayv {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  background-color: rgba(0, 0, 0, 0.70);
+  pointer-events: none;
+  display: visible; 
+  z-index: 20000;
+}
+
+#overlayv.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
 /*differenze tra i device*/
 
 @media (max-width:1044px){
