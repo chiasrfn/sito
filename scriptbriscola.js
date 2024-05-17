@@ -1593,11 +1593,12 @@ let primoGioca
 
 
 
-let puntiCPU
-let puntiUtente
+let puntiCPU = 0
+let puntiUtente = 0
 let attesa
 
 async function turno(pG) {
+  attesa2 = true
   attesa = true
   if (primoGioca) {
     turnoUtenteGioca()
@@ -1617,6 +1618,7 @@ async function turno(pG) {
     await sleep(500)
   }
   presa(cartaGiocataUtente,cartaGiocataCPU,cartaBriscola,primoGioca)
+
 }
 
 function confrontaCarte(c1, c2) {
@@ -1704,6 +1706,22 @@ function chiPrende(cGU,cGC,cB,pG){
   }
 }
 
+function conversionePunti(cV) {
+  const val = {
+    'Asso': 11,
+    'Due': 0,
+    'Tre': 10,
+    'Quattro': 0,
+    'Cinque': 0,
+    'Sei': 0,
+    'Sette': 0,
+    'Fante': 2,
+    'Cavallo': 3,
+    'Re': 4
+  };
+  return val[cV];
+}
+
 async function presa(cGU,cGC,cB,pG) {
   while (attesa) {
     await sleep(500)
@@ -1715,17 +1733,97 @@ async function presa(cGU,cGC,cB,pG) {
     await sleep(1000)
   }
   animazionepresa(chiPrende(cGU,cGC,cB,pG))
+  if (chiPrende(cGU,cGC,cB,pG) == 1) {
+    puntiUtente = puntiUtente + conversionePunti(cartaGiocataUtente.valore) + conversionePunti(cartaGiocataCPU.valore);
+    manoGiocatore[numeroCartaGiocataUtente]=pescaCarta();
+    manoCPU[numeroCartaGiocataCPU]=pescaCarta();
+    primoGioca = true
+    await sleep(2000)
+    caricaCarte()
+    comparizioneCarte()
+    aggiornaPunteggio()
+    attesa2 = false
+  }
+  else {
+    puntiCPU = puntiCPU + conversionePunti(cartaGiocataCPU.valore) + conversionePunti(cartaGiocataUtente.valore);
+    manoCPU[numeroCartaGiocataCPU]=pescaCarta();
+    manoGiocatore[numeroCartaGiocataUtente]=pescaCarta();
+    primoGioca = false
+    await sleep(2000)
+    caricaCarte()
+    comparizioneCarte()
+    aggiornaPunteggio()
+    attesa2 = false
+  }
 }
 
-function turni(tU) {
+async function turni(tU) {
   if (tU) {
     primoGioca=true
   } else {
     primoGioca=false
   }
   turno(primoGioca)
-  turno()
-  turno()
+  while (attesa2) {
+    await sleep(500)
+  }
+  turno(primoGioca)
+  while (attesa2) {
+    await sleep(500)
+  }
+  turno(primoGioca)
+  while (attesa2) {
+    await sleep(500)
+  }
+  turno(primoGioca)
+  while (attesa2) {
+    await sleep(500)
+  }
+  turno(primoGioca)
+  while (attesa2) {
+    await sleep(500)
+  }
+  turno(primoGioca)
+  while (attesa2) {
+    await sleep(500)
+  }
+  turno(primoGioca)
+  while (attesa2) {
+    await sleep(500)
+  }
+  turno(primoGioca)
+  while (attesa2) {
+    await sleep(500)
+  }
+  turno(primoGioca)
+  while (attesa2) {
+    await sleep(500)
+  }
+  turno(primoGioca)
+  while (attesa2) {
+    await sleep(500)
+  }
+  turno(primoGioca)
+  while (attesa2) {
+    await sleep(500)
+  }
+  turno(primoGioca)
+  while (attesa2) {
+    await sleep(500)
+  }
+  turno(primoGioca)
+  while (attesa2) {
+    await sleep(500)
+  }
+  turno(primoGioca)
+  while (attesa2) {
+    await sleep(500)
+  }
+  turno(primoGioca)
+  while (attesa2) {
+    await sleep(500)
+  }
+  turno(primoGioca)
 }
 
 /*======= Graficheeeeeee =========*/
@@ -1911,23 +2009,20 @@ async function animazionepresa(i){
   }
 }
 
-let punteggioCpu=61;
-let punteggioUtente=10;
-
 function aggiornaPunteggio() {
 
-  $('#valorepunteggiocpu').text(punteggioCpu);
-  $('#valorepunteggioutente').text(punteggioUtente);
+  $('#valorepunteggiocpu').text(puntiCPU);
+  $('#valorepunteggioutente').text(puntiUtente);
 }
 
 /*vittoria*/
 
 function vittoria(){
-  if(punteggioCpu>60){
+  if(puntiCPU>60){
     vittoriaAux('Sconfitta');
-  }else if(punteggioCpu==60 && punteggioUtente==punteggioCpu){
+  }else if(puntiCPU==60 && puntiUtente==puntiCPU){
     vittoriaAux('Pareggio');
-  }else if(punteggioUtente>60){
+  }else if(puntiUtente>60){
     vittoriaAux('Vittoria');
   }else{
     return;
