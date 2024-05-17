@@ -1,44 +1,3 @@
-const openModalButtons = document.querySelectorAll('[data-modal-target]')
-const closeModalButtons = document.querySelectorAll('[data-close-button]')
-const overlay = document.getElementById('overlay')
-
-openModalButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const modal = document.querySelector(button.dataset.modalTarget)
-    openModal(modal)
-  })
-})
-
-overlay.addEventListener('click', () => {
-  const modals = document.querySelectorAll('.modal.active')
-  modals.forEach(modal => {
-    closeModal(modal)
-  })
-})
-
-closeModalButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const modal = button.closest('.modal')
-    closeModal(modal)
-  })
-})
-
-function openModal(modal) {
-  if (modal == null) return
-  modal.classList.add('active')
-  overlay.classList.add('active')
-}
-
-function closeModal(modal) {
-  if (modal == null) return
-  modal.classList.remove('active')
-  overlay.classList.remove('active')
-}
-
-
-
-
-
 // inizio briscola
 
 const SEMI = {
@@ -1632,23 +1591,7 @@ function caricaCarte() {
 let primoGioca
 
 
-// Inizializzazione delle carte e del turno al caricamento della pagina
-window.onload = function() {
-  scompare(contgiocatac);
-  scompare(contgiocatau);
-  turnoUtente = Math.random() < 0.5;
-  mazzoDiCarte = creaMazzo();
-  mazzoDiCarte = mescolaMazzo(mazzoDiCarte);
-  distribuisciCarte(); // Distribuisce le carte ai giocatori
-  pescaBriscola(); // Pesca la carta di Briscola
-  console.log("Mano del giocatore:", manoGiocatore);
-  console.log("Mano del CPU:", manoCPU);
-  console.log("Carta di Briscola:", cartaBriscola);
-  console.log(mazzoDiCarte);
-  caricaBriscola();
-  caricaCarte();
-  turni(turnoUtente)
-}
+
 
 let puntiCPU
 let puntiUtente
@@ -1785,6 +1728,49 @@ function turni(tU) {
   turno()
 }
 
+/*======= Graficheeeeeee =========*/
+
+/*Header*/
+
+const openModalButtons = document.querySelectorAll('[data-modal-target]')
+const closeModalButtons = document.querySelectorAll('[data-close-button]')
+const overlay = document.getElementById('overlay')
+
+openModalButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const modal = document.querySelector(button.dataset.modalTarget)
+    openModal(modal)
+  })
+})
+
+overlay.addEventListener('click', () => {
+  const modals = document.querySelectorAll('.modal.active')
+  modals.forEach(modal => {
+    closeModal(modal)
+  })
+})
+
+closeModalButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const modal = button.closest('.modal')
+    closeModal(modal)
+  })
+})
+
+function openModal(modal) {
+  if (modal == null) return
+  modal.classList.add('active')
+  overlay.classList.add('active')
+}
+
+function closeModal(modal) {
+  if (modal == null) return
+  modal.classList.remove('active')
+  overlay.classList.remove('active')
+}
+
+
+
 const contcpu1= document.getElementById('conteinercardcpu1')
 const contcpu2= document.getElementById('conteinercardcpu2')
 const contcpu3= document.getElementById('conteinercardcpu3')
@@ -1801,6 +1787,33 @@ const frontcardgiocatau= document.getElementById('frontcardutentegiocata')
 const frontcardgiocatacpu= document.getElementById('frontcardcpugiocata')
 const backgiocatau=document.getElementById("backcardutentegiocata")
 const backgiocatac=document.getElementById("backcardcpugiocata")
+const contvittoria=document.getElementById("contvittoria")
+const overlayv=document.getElementById('overlayv')
+const buttongioca=document.getElementById('gioca')
+
+// Preparazione delle carte al caricamento della pagina
+window.onload = function() {
+  scompare(contgiocatac);
+  scompare(contgiocatau);
+}
+
+//inizializzazione del turno dopo aver premuto Gioca
+buttongioca.addEventListener('click', ()=>{
+  turnoUtente = Math.random() < 0.5;
+  scompare(contgiocatac);
+  scompare(contgiocatau);
+  mazzoDiCarte = creaMazzo();
+  mazzoDiCarte = mescolaMazzo(mazzoDiCarte);
+  distribuisciCarte(); // Distribuisce le carte ai giocatori
+  pescaBriscola(); // Pesca la carta di Briscola
+  console.log("Mano del giocatore:", manoGiocatore);
+  console.log("Mano del CPU:", manoCPU);
+  console.log("Carta di Briscola:", cartaBriscola);
+  console.log(mazzoDiCarte);
+  caricaBriscola();
+  caricaCarte();
+  turni(turnoUtente)
+})
 
 /*gira la carta sul retro*/
 function retro(contC){
@@ -1897,3 +1910,43 @@ async function animazionepresa(i){
     backgiocatac.classList.remove('active');
   }
 }
+
+let punteggioCpu=61;
+let punteggioUtente=10;
+
+function aggiornaPunteggio() {
+
+  $('#valorepunteggiocpu').text(punteggioCpu);
+  $('#valorepunteggioutente').text(punteggioUtente);
+}
+
+/*vittoria*/
+
+function vittoria(){
+  if(punteggioCpu>60){
+    vittoriaAux('Sconfitta');
+  }else if(punteggioCpu==60 && punteggioUtente==punteggioCpu){
+    vittoriaAux('Pareggio');
+  }else if(punteggioUtente>60){
+    vittoriaAux('Vittoria');
+  }else{
+    return;
+  }
+}
+
+function vittoriaAux(frase){
+  overlayv.classList.add('active');
+  $('#textmessvittoria').text(frase);
+  contvittoria.classList.add('active');
+}
+
+
+contvittoria.addEventListener('click', () => {
+  overlayv.classList.remove('active')
+  contvittoria.classList.remove('active')
+})
+
+overlayv.addEventListener('click', () => {
+  overlayv.classList.remove('active')
+  contvittoria.classList.remove('active')
+})

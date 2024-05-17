@@ -77,8 +77,12 @@ $(document).ready(function() {
     function cur() {
         var frasi = [ 
             "L’ipotesi più accreditata vede nascere le carte da gioco in Cina, circa tra il 600 al 900",
-            "Furono portate in Europa dalle truppe moresche o dai mercanti veneziani, per il commercio di spezie e seta"
-
+            "Furono portate in Europa dalle truppe moresche o dai mercanti veneziani, per il commercio di spezie e seta",
+            "Si pensa che i semi abbiano le seguenti associazioni: Coppe-clero, Denari-mercanti, Spade-nobili e Bastoni-contadini",
+            "Le carte napoletane, usate in questo sito, sono carte con seme latino e sono tra le carte regionali più diffuse in Italia", 
+            "Nelle carte napoletane, il mascherone grottesco centrale del tre di bastoni è detto Gatto Mammone per via dei suoi prominenti baffi",
+            "Nelle carte napoletane, il cavallo di spade rappresenta un personaggio simile a un moro col turbante in testa e la scimitarra in mano",
+            "Una teoria storica è che le carte da gioco odierne derivino da quelle utilizzate dai Mamelucchi, che avevano i semi che conosciamo ancora oggi"
         ],
         i = 0;
         setInterval(function(){

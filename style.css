@@ -45,7 +45,7 @@ button {
   left: 50%;
   transform: translate(-50%, -50%);
   animation: change 60s infinite ease-in-out;
-  overflow-y: scroll;
+  overflow-y: none;
   overflow-x: none;
   z-index: 1000;
 }
@@ -553,10 +553,21 @@ td[colspan="10"] {
     background-size: cover;
     flex-direction: column;
     justify-content: space-between;
-    overflow-x: scroll;
+    overflow-x: none;
     overflow-y: scroll;
   }
   .cur{
     margin-top: 15%;
+  }
+}
+
+@media all and (max-width: 385px){
+  .conteinercard{
+    height: 180.18px;
+    width: 130px;
+  }
+
+  .cur{
+    margin-top: 20%;
   }
 }
