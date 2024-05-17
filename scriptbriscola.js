@@ -1636,6 +1636,7 @@ let primoGioca
 window.onload = function() {
   scompare(contgiocatac);
   scompare(contgiocatau);
+  turnoUtente = Math.random() < 0.5;
   mazzoDiCarte = creaMazzo();
   mazzoDiCarte = mescolaMazzo(mazzoDiCarte);
   distribuisciCarte(); // Distribuisce le carte ai giocatori
