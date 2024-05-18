@@ -44,17 +44,45 @@
       <label>
         <input type="checkbox" id="remember">Salva
       </label>
-      <a href="forgot.html">Hai dimenticato la password?</a>
+      <button data-modal-target=#forgotmodal class="buttonforgot">Hai dimenticato la password?</button>
     </div>
 
     <button type="submit" class="modal-btn">Login</button>
 
     <div class="modal-register">
       <p>Non hai un account?
-        <a href="registrati.html">Registrati</a>
+        <button data-modal-target=#registratimodal class="buttonregistrati">Registrati</button>
       </p>
     </div>
   </div>
+
+  <!--login forgot-->
+  <div id="forgotmodal" class="modal login forgot">
+    <div class="modal-header">
+      <h1 id="titlePassword">Password</br>dimenticata?</h1>
+      <button data-close-button class="close-button" id="close-button-login">&times;</button>
+    </div>
+    <p style="text-align: center;">Inserisci la tua email, dopo</br> averla inviata controlla <br> la tua casella postale</p>
+    <div class="modal-input">
+      <input type="text" placeholder="Email" required>
+      <i class="bi bi-envelope-at-fill"></i>
+    </div>
+    <button data-modal-target=#emailinviatamodal class="modal-btn">Invia</button>
+  </div>
+
+
+  <!--login registrati-->
+  <div id="registratimodal" class="modal login registrati">
+    <div class="modal-header">
+      <h1 id="titleLogin">Registrati</h1>
+      <button data-close-button class="close-button" id="close-button-login">&times;</button>
+    </div>
+    <div class="modal-input">
+      <input type="text" placeholder="Nome Utente" required>
+      <i class="bi bi-person-fill"></i>
+    </div>
+  </div>
+  
   
 
   <!--gear-->

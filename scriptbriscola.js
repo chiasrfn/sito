@@ -20,8 +20,9 @@ const VALORI = {
   RE: 'Re'
 };
 
+let mazzo = [];
+
 function creaMazzo() {
-  let mazzo = [];
   for (let seme in SEMI) {
     for (let valore in VALORI) {
       mazzo.push({ seme: SEMI[seme], valore: VALORI[valore] });
@@ -1799,6 +1800,7 @@ async function presa(cGU,cGC,cB,pG) {
     caricaCarte()
     comparizioneCarte()
     aggiornaPunteggio()
+    aggiornaCarte()
     attesa2 = false
   }
   else {
@@ -1810,6 +1812,7 @@ async function presa(cGU,cGC,cB,pG) {
     caricaCarte()
     comparizioneCarte()
     aggiornaPunteggio()
+    aggiornaCarte()
     attesa2 = false
   }
 }
@@ -1878,6 +1881,7 @@ async function presaUltimaPescata(cGU,cGC,cB,pG) {
     caricaCarte()
     comparizioneCarteUltimaPescata()
     aggiornaPunteggio()
+    aggiornaCarte()
     attesa2 = false
   }
   else {
@@ -1889,6 +1893,7 @@ async function presaUltimaPescata(cGU,cGC,cB,pG) {
     caricaCarte()
     comparizioneCarteUltimaPescata()
     aggiornaPunteggio()
+    aggiornaCarte()
     attesa2 = false
   }
 }
@@ -1911,6 +1916,7 @@ async function preseFinali(cGU,cGC,cB,pG) {
     await sleep(1200)
     comparizioneCarteUltime()
     aggiornaPunteggio()
+    aggiornaCarte()
     attesa2 = false
   }
   else {
@@ -1920,6 +1926,7 @@ async function preseFinali(cGU,cGC,cB,pG) {
     await sleep(1200)
     comparizioneCarteUltime()
     aggiornaPunteggio()
+    aggiornaCarte()
     attesa2 = false
   }
 }
@@ -2014,7 +2021,7 @@ async function turni(tU) {
     await sleep(500)
   }
   vittoria()
-
+  appare(buttongioca)
 }
 
 /*======= Graficheeeeeee =========*/
@@ -2088,6 +2095,7 @@ window.onload = function() {
 
 //inizializzazione del turno dopo aver premuto Gioca
 buttongioca.addEventListener('click', ()=>{
+  scompare(buttongioca);
   puntiCPU=0
   puntiUtente=0
   aggiornaPunteggio()
@@ -2108,13 +2116,14 @@ buttongioca.addEventListener('click', ()=>{
   mazzoDiCarte = mescolaMazzo(mazzoDiCarte);
   distribuisciCarte(); // Distribuisce le carte ai giocatori
   pescaBriscola(); // Pesca la carta di Briscola
+  aggiornaCarte();
   console.log("Mano del giocatore:", manoGiocatore);
   console.log("Mano del CPU:", manoCPU);
   console.log("Carta di Briscola:", cartaBriscola);
   console.log(mazzoDiCarte);
   caricaBriscola();
   caricaCarte();
-  turni(turnoUtente)
+  turni(turnoUtente);
 })
 
 /*gira la carta sul retro*/
@@ -2217,6 +2226,10 @@ function aggiornaPunteggio() {
 
   $('#valorepunteggiocpu').text(puntiCPU);
   $('#valorepunteggioutente').text(puntiUtente);
+}
+
+function aggiornaCarte(){
+  $('#ncarteval').text(mazzo.length);
 }
 
 /*vittoria*/

@@ -326,7 +326,6 @@ header{
   position: relative;
   box-sizing: border-box;
   justify-content: space-evenly;
-  gap: 1em;
   background-image: url(../sito-main/Immagini/sfondo1.jpg);
   background-position: center;
   background-size: cover;
@@ -336,7 +335,7 @@ header{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  overflow-y: scroll;
+  overflow-y: none;
   overflow-x: none;
 }
 
@@ -355,7 +354,7 @@ header{
   flex: 4;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  height: 100Vh;
+  height: 100%;
   position: relative;
   align-items: center;
   align-self: center;
@@ -525,11 +524,46 @@ ul{
   border-radius: 1rem;
 }
 
+/*Numero delle carte*/
+.ncarte{
+  align-self: center;
+  align-items: center;
+  text-align: center;
+  height: auto;
+  width: auto;
+  background-color: rgba(0, 0, 0, 0.65);
+  padding: 0 0.5em 0.2em 0.5em;
+  border-radius: 1rem;
+}
+
+/*pulsante gioca*/
+.button.gioca{
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 45px;
+  background: var(--dark-dark-green);
+  border:none;
+  outline: none;
+  border-radius: 40px;
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button.gioca.scompare{
+  display: none;
+}
+
 /*Vittoria*/
 
 .messaggiovittoria{
-  font-size: 50px;
+  font-size: 100px;
   color: var(--dark-green);
+  align-self: center;
+  align-items: center;
 }
 
 #overlayv {
@@ -552,6 +586,24 @@ ul{
 }
 
 /*differenze tra i device*/
+@media all and (max-height: 789px){
+  .conteinercard{
+    height: 200px;
+    width: 111px;
+  }
+  .left-side{
+    margin-top: 85px;
+    margin-bottom: 17px;
+    row-gap: 0px;
+  }
+}
+
+@media all and (max-height: 716px){
+  .left-side{
+    overflow-y: scroll;
+  }
+}
+
 @media all and (max-width:1236px){
   .conteinercard{
     height: 180px;
@@ -604,6 +656,9 @@ ul{
     display:none; 
   }
 
+  .ncarte{
+    display: none;
+  }
 
   #conteinercardbriscola{
     transform: translateX(-90px);

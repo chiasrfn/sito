@@ -451,6 +451,17 @@ td[colspan="10"] {
   transform: translateX(-50%);
 }
 
+/*Password dimenticata*/
+p{
+  font-size: 20px;
+}
+
+#titlePassword{
+  align-self: center;
+  text-align: center;
+  color: var(--dark-green);
+}
+
 /*Impostazioni*/
 
 #modal-header-gear{
