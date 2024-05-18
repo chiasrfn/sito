@@ -76,7 +76,7 @@ login-lock-btn.addEventListener('click', function(){
 $(document).ready(function() {
     function cur() {
         var frasi = [ 
-            "L’ipotesi più accreditata vede nascere le carte da gioco in Cina, circa tra il 600 al 900",
+            "L’ipotesi più accreditata vede nascere le carte da gioco in Cina, circa tra il 600 e il 900",
             "Furono portate in Europa dalle truppe moresche o dai mercanti veneziani, per il commercio di spezie e seta",
             "Si pensa che i semi abbiano le seguenti associazioni: Coppe-clero, Denari-mercanti, Spade-nobili e Bastoni-contadini",
             "Le carte napoletane, usate in questo sito, sono carte con seme latino e sono tra le carte regionali più diffuse in Italia", 

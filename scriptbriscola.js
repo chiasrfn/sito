@@ -38,6 +38,10 @@ function mescolaMazzo(m) {
   return m;
 }
 
+function pescaVuoto() {
+  return {seme: "vuoto", valore: "vuoto"}
+}
+
 let mazzoDiCarte = [];
 let ngiocateU
 
@@ -1611,13 +1615,66 @@ async function turno(pG) {
   else {
     await sleep(1000);
     turnoCPUGioca(manoCPU,cartaBriscola,cartaGiocataUtente)
-    await sleep(3000)
+    await sleep(1800)
     turnoUtenteGioca()
   }
   while (attesa) {
     await sleep(500)
   }
   presa(cartaGiocataUtente,cartaGiocataCPU,cartaBriscola,primoGioca)
+}
+
+async function turnoUltimaPescata(pG) {
+  attesa2 = true
+  attesa = true
+  if (primoGioca) {
+    turnoUtenteGioca()
+    while (attesa) {
+      await sleep(500)
+    }
+    await sleep(1000);
+    turnoCPUGioca(manoCPU,cartaBriscola,cartaGiocataUtente)
+  }
+  else {
+    await sleep(1000);
+    turnoCPUGioca(manoCPU,cartaBriscola,cartaGiocataUtente)
+    await sleep(1800)
+    turnoUtenteGioca()
+  }
+  while (attesa) {
+    await sleep(500)
+  }
+  presaUltimaPescata(cartaGiocataUtente,cartaGiocataCPU,cartaBriscola,primoGioca)
+}
+
+async function turniFinali(primoGioca) {
+  attesa2 = true
+  attesa = true
+  if (primoGioca) {
+    turnoUtenteGioca()
+    while (attesa) {
+      await sleep(500)
+    }
+    await sleep(1000);
+    turnoCPUGioca(manoCPU,cartaBriscola,cartaGiocataUtente)
+  }
+  else {
+    await sleep(1000);
+    turnoCPUGioca(manoCPU,cartaBriscola,cartaGiocataUtente)
+    await sleep(1800)
+    turnoUtenteGioca()
+  }
+  while (attesa) {
+    await sleep(500)
+  }
+  preseFinali(cartaGiocataUtente,cartaGiocataCPU,cartaBriscola,primoGioca)
+}
+
+async function turnoPenultimo(primoGioca) {
+
+}
+
+async function turnoUltimo(primoGioca) {
 
 }
 
@@ -1724,13 +1781,13 @@ function conversionePunti(cV) {
 
 async function presa(cGU,cGC,cB,pG) {
   while (attesa) {
-    await sleep(500)
+    await sleep(400)
   }
   if (primoGioca) {
-    await sleep(4000)
+    await sleep(2300)
   }
   else {
-    await sleep(1000)
+    await sleep(700)
   }
   animazionepresa(chiPrende(cGU,cGC,cB,pG))
   if (chiPrende(cGU,cGC,cB,pG) == 1) {
@@ -1738,7 +1795,7 @@ async function presa(cGU,cGC,cB,pG) {
     manoGiocatore[numeroCartaGiocataUtente]=pescaCarta();
     manoCPU[numeroCartaGiocataCPU]=pescaCarta();
     primoGioca = true
-    await sleep(2000)
+    await sleep(1200)
     caricaCarte()
     comparizioneCarte()
     aggiornaPunteggio()
@@ -1749,13 +1806,126 @@ async function presa(cGU,cGC,cB,pG) {
     manoCPU[numeroCartaGiocataCPU]=pescaCarta();
     manoGiocatore[numeroCartaGiocataUtente]=pescaCarta();
     primoGioca = false
-    await sleep(2000)
+    await sleep(1200)
     caricaCarte()
     comparizioneCarte()
     aggiornaPunteggio()
     attesa2 = false
   }
 }
+
+function comparizioneCarteUltimaPescata() {
+  // Aggiorna interfaccia utente
+  //caricamento tutte carte dell'utente e cpu e scompare mazzo
+  conteinercard.forEach(card=>{
+    if(card==contgiocatac || card==contgiocatau || card==contmazzo || card == contbriscola){
+      scompare(card);
+    }else {
+      appare(card);
+    }
+  })
+  fronte(contutente1)
+  fronte(contutente2)
+  fronte(contutente3)
+
+  //intero per capire quanto giocato utente
+  ngiocateU=0;
+}
+
+function comparizioneCarteUltime() {
+  // Aggiorna interfaccia utente
+  //caricamento tutte carte dell'utente e cpu e scompare mazzo
+  conteinercard.forEach(card=>{
+    if(card==contgiocatac || card==contgiocatau){
+      scompare(card);
+    }
+  })
+
+  if(numeroCartaGiocataUtente==0) {
+    contutente1.style.pointerEvents = "none";
+    contutente1.style.cursor = "default";
+  }
+  if(numeroCartaGiocataUtente==1) {
+    contutente2.style.pointerEvents = "none";
+    contutente2.style.cursor = "default";
+  }
+  if(numeroCartaGiocataUtente==2) {
+    contutente3.style.pointerEvents = "none";
+    contutente3.style.cursor = "default";
+  }
+
+  //intero per capire quanto giocato utente
+  ngiocateU=0;
+}
+
+async function presaUltimaPescata(cGU,cGC,cB,pG) {
+  while (attesa) {
+    await sleep(400)
+  }
+  if (primoGioca) {
+    await sleep(2300)
+  }
+  else {
+    await sleep(700)
+  }
+  animazionepresa(chiPrende(cGU,cGC,cB,pG))
+  if (chiPrende(cGU,cGC,cB,pG) == 1) {
+    puntiUtente = puntiUtente + conversionePunti(cartaGiocataUtente.valore) + conversionePunti(cartaGiocataCPU.valore);
+    manoGiocatore[numeroCartaGiocataUtente]=pescaCarta();
+    manoCPU[numeroCartaGiocataCPU]=cartaBriscola;
+    primoGioca = true
+    await sleep(1200)
+    caricaCarte()
+    comparizioneCarteUltimaPescata()
+    aggiornaPunteggio()
+    attesa2 = false
+  }
+  else {
+    puntiCPU = puntiCPU + conversionePunti(cartaGiocataCPU.valore) + conversionePunti(cartaGiocataUtente.valore);
+    manoCPU[numeroCartaGiocataCPU]=pescaCarta();
+    manoGiocatore[numeroCartaGiocataUtente]=cartaBriscola;
+    primoGioca = false
+    await sleep(1200)
+    caricaCarte()
+    comparizioneCarteUltimaPescata()
+    aggiornaPunteggio()
+    attesa2 = false
+  }
+}
+
+async function preseFinali(cGU,cGC,cB,pG) {
+  while (attesa) {
+    await sleep(400)
+  }
+  if (primoGioca) {
+    await sleep(2300)
+  }
+  else {
+    await sleep(700)
+  }
+  animazionepresa(chiPrende(cGU,cGC,cB,pG))
+  if (chiPrende(cGU,cGC,cB,pG) == 1) {
+    puntiUtente = puntiUtente + conversionePunti(cartaGiocataUtente.valore) + conversionePunti(cartaGiocataCPU.valore);
+    manoCPU[numeroCartaGiocataCPU]=pescaVuoto();
+    primoGioca = true
+    await sleep(1200)
+    comparizioneCarteUltime()
+    aggiornaPunteggio()
+    attesa2 = false
+  }
+  else {
+    puntiCPU = puntiCPU + conversionePunti(cartaGiocataCPU.valore) + conversionePunti(cartaGiocataUtente.valore);
+    manoCPU[numeroCartaGiocataCPU]=pescaVuoto();
+    primoGioca = false
+    await sleep(1200)
+    comparizioneCarteUltime()
+    aggiornaPunteggio()
+    attesa2 = false
+  }
+}
+
+let attesa2
+
 
 async function turni(tU) {
   if (tU) {
@@ -1824,6 +1994,27 @@ async function turni(tU) {
     await sleep(500)
   }
   turno(primoGioca)
+  while (attesa2) {
+    await sleep(500)
+  }
+  turnoUltimaPescata(primoGioca)
+  while (attesa2) {
+    await sleep(500)
+  }
+  turniFinali(primoGioca)
+  while (attesa2) {
+    await sleep(500)
+  }
+  turniFinali(primoGioca)
+  while (attesa2) {
+    await sleep(500)
+  }
+  turniFinali(primoGioca)
+  while (attesa2) {
+    await sleep(500)
+  }
+  vittoria()
+
 }
 
 /*======= Graficheeeeeee =========*/
@@ -1897,6 +2088,19 @@ window.onload = function() {
 
 //inizializzazione del turno dopo aver premuto Gioca
 buttongioca.addEventListener('click', ()=>{
+  puntiCPU=0
+  puntiUtente=0
+  aggiornaPunteggio()
+  contutente1.style.pointerEvents = "auto";
+  contutente1.style.cursor = "pointer";
+  contutente2.style.pointerEvents = "auto";
+  contutente2.style.cursor = "pointer";
+  contutente3.style.pointerEvents = "auto";
+  contutente3.style.cursor = "pointer";
+  retro(contutente1)
+  retro(contutente2)
+  retro(contutente3)
+  retro(contbriscola)
   turnoUtente = Math.random() < 0.5;
   scompare(contgiocatac);
   scompare(contgiocatau);
@@ -1944,7 +2148,7 @@ async function giocaCartaCPU(contC){
   frontcardgiocatacpu.style.backgroundImage=stile;
 
   fronte(contC);
-  await sleep(1500);
+  await sleep(1300);
   appare(contgiocatac);
   scompare(contC);
   retro(contC);
@@ -1990,7 +2194,7 @@ async function animazionepresa(i){
     const stile = frontcardgiocatacpu.style.backgroundImage;
     scompare(contgiocatac);
     frontcardgiocatau.style.backgroundImage=stile;
-    await sleep(5000);
+    await sleep(4000);
 
     scompare(contgiocatau);
     backgiocatau.classList.remove('active');
@@ -2002,7 +2206,7 @@ async function animazionepresa(i){
     backgiocatac.style.backgroundImage=stile;
     //facciamo vedere la carta sotto
     backgiocatac.classList.add('active');
-    await sleep(5000);
+    await sleep(4000);
 
     scompare(contgiocatac);
     backgiocatac.classList.remove('active');
