@@ -42,16 +42,16 @@
     </div>
     <div class="modal-remember">
       <label>
-        <input type="checkbox" id="remember">Salva
+        <input type="checkbox" id="remember">Ricordami</input>
       </label>
-      <button data-modal-target=#forgotmodal class="buttonforgot">Hai dimenticato la password?</button>
+      <button data-modal-target=#forgotmodal class="button login">Hai dimenticato la password?</button>
     </div>
 
     <button type="submit" class="modal-btn">Login</button>
 
     <div class="modal-register">
       <p>Non hai un account?
-        <button data-modal-target=#registratimodal class="buttonregistrati">Registrati</button>
+        <button data-modal-target=#registratimodal class="button login" id="buttonregistrati">Registrati</button>
       </p>
     </div>
   </div>
@@ -67,10 +67,17 @@
       <input type="text" placeholder="Email" required>
       <i class="bi bi-envelope-at-fill"></i>
     </div>
-    <button data-modal-target=#emailinviatamodal class="modal-btn">Invia</button>
+    <button class="modal-btn inviaemail" id="inviaemail">Invia</button>
   </div>
 
-
+ <!--banner email inviata
+  <div id="emailinviatamodal" class="modal banneremail">
+    <div class="modal-header">
+      <button data-close-button class="close-button" id="close-button-login">&times;</button>
+    </div>
+    <h1 id="emailinviata">Email</br>inviata</h1>
+  </div>
+-->
   <!--login registrati-->
   <div id="registratimodal" class="modal login registrati">
     <div class="modal-header">
@@ -123,7 +130,7 @@
                   </div>
                   <div class="back">
                     <h2>Briscola</h2>
-                    <p>DESCRIZIONE</p>
+                    <p style="padding: 5px;">Il gioco perfetto per chi vuole sentirsi un fallito</p>
                     <a href="briscola.html" class="linkgioca">Gioca</a>
                   </div>
                 </div>

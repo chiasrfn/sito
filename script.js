@@ -27,13 +27,19 @@ closeModalButtons.forEach(button => {
 
 function openModal(modal) {
   if (modal == null) return
+  if(modal.classList.contains('forgot') || modal.classList.contains('registrati')){
+    $('#loginmodal').removeClass('active')
+  }
   modal.classList.add('active')
   overlay.classList.add('active')
-
 }
 
 function closeModal(modal) {
   if (modal == null) return
+  if(modal.classList.contains('forgot')){
+    $('#inviaemail').removeClass('active')
+    $('#inviaemail').text('Invia')
+  }
   modal.classList.remove('active')
   overlay.classList.remove('active')
 }
@@ -66,6 +72,11 @@ cerchi.forEach(cerchio=>{
   })
 })
 
+/*banner email*/
+$('#inviaemail').click(()=>{
+  $('#inviaemail').text('Email Inviata !!!')
+  $('#inviaemail').addClass('active')
+})
 
 /*
 var loginlock=document.getElementById(login-lock-btn);

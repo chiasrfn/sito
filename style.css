@@ -193,11 +193,9 @@ td[colspan="10"] {
   align-items: center;
   justify-content: center;
   perspective: 600px;
-  cursor: pointer;
 }
 
 .conteinercard:hover > .card{
-  cursor: pointer;
   transform:  rotateY(180deg);
 }
 
@@ -222,7 +220,6 @@ td[colspan="10"] {
 
 .front{
   background-image: url(immagini/retro5.jpg);
-  cursor: pointer;
   background-position: center;
   background-size: cover;
   align-items: center;
@@ -230,6 +227,7 @@ td[colspan="10"] {
   display: flex;
   flex-direction: column;
   color: var(--dark-green);
+  cursor:pointer;
 }
 
 
@@ -240,11 +238,28 @@ td[colspan="10"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
+  gap: 1em;
 }
 
 
 /*link delle carte*/
+.linkgioca{
+  
+  text-decoration: none;
+  text-align: center;
+  width: 70%;
+  padding: 5px;
+  background: var(--dark-dark-green);
+  border:none;
+  outline: none;
+  border-radius: 40px;
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+/*
 .linkgioca{
   position: relative;
   color: black;
@@ -260,7 +275,7 @@ td[colspan="10"] {
   background: var(--dark-green);
   color: white;
   letter-spacing: 0.1em;
-}
+}*/
 
 /*Curiosità che cambiano*/
 .cur{
@@ -431,17 +446,22 @@ td[colspan="10"] {
 }
 
 .modal-register{
-  font-size: 16px;
+  font-size: 17px;
   margin-top: 20px;
 }
 
-.modal-register a{
+.button.login{
+  font-size: 14px;
   color: black;
   text-decoration: none;
   font-weight: bold;
 }
 
-.modal-register a:hover{
+#buttonregistrati{
+  font-size: inherit;
+}
+
+.button.login:hover{
   color: var(--dark-dark-green);
   text-decoration: underline;
 }
@@ -460,6 +480,20 @@ p{
   align-self: center;
   text-align: center;
   color: var(--dark-green);
+}
+
+#emailinviata{
+  color: var(--dark-green);
+  text-align: center;
+}
+
+.modal-btn.inviaemail.active{
+  background: none;
+  color: var(--dark-green);
+  cursor: auto;
+  width: 100%;  
+  box-shadow: none;
+  font-size: 22px;
 }
 
 /*Impostazioni*/
@@ -525,28 +559,35 @@ p{
   width: 100px;
   border-radius: 100px;
   background-color: rgb;
-  transition: 200ms ease-in-out;
+  transition: 200ms ;
   opacity: 0;
   background-color: rgb(44,109,72, 0.75);
 }
 
 .cerchio.active{
   opacity: 1;
+  cursor:pointer;
 }
 
 #overlayg {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 0%;
+  height: 0%;
   opacity: 0;
-  transition: 200ms ease-in-out;
   background-color: transparent;
   pointer-events: none;
   display: visible; 
   z-index: 40000;
+  animation: grow 10s forwards;
+}
 
+@keyframes grow {
+  to {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 #overlayg.active {
