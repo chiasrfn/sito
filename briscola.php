@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>"></script>
+    <link rel="icon" href="./immagini/favicon.ico" type="image/x-icon">
   </head>
 <body>
   <header>
@@ -15,6 +16,7 @@
           <img src="./immagini/logo2.jpg" class="logo" margine-top="0px">
       </a>
       <div class="button-container">
+          <button class="bheader gioca" id="gioca2">Gioca</button>
           <button class="bheader storico" id="storico">Storico</button>
           <button data-modal-target=#loginmodal class="bheader login">Login</button>
           <button data-modal-target=#gearmodal class="btn-gear" >
@@ -81,8 +83,10 @@
 
   <div id="overlayv"></div>
 
+
   <div class="container"> 
-  
+
+
     <div class="left-side" >
       <div class="space lato"></div>
       <div class="punteggio" id="punteggiocpu">
@@ -146,7 +150,9 @@
         </div>
       </div>
     
-      <div class="space giocata"></div>
+      <div class="space giocata" id="spacegiocata1"></div>
+
+
 
       <div class="conteinercard giocata" id="conteinercardcpugiocata">
         <div class="card giocata" id="cardcpugiocata">
@@ -156,20 +162,23 @@
         </div>
       </div>
     
-      <div class="space inmezzo" id="spacegiocata">
+      <div class="space inmezzo" id="spacegiocata2">
         <button class="button gioca" id="gioca">Gioca</button>
       </div>
 
+
       <div class="conteinercard giocata" id="conteinercardutentegiocata"> 
+      
         <div class="card giocata" id="cardutenetegiocata">
           <div class="back giocata"  id="backcardutentegiocata"></div>
           <div class="front giocata" id="frontcardutentegiocata"></div>
-          
         </div>
-      </div>  
-      <div class="space lato"></div>  
+      </div>
+    
 
-      <div class="space lato"></div>
+      <div class="space lato" id="sapcel1"></div>  
+
+      <div class="space lato" id="sapcel2"></div>
       <div class="punteggio" id="punteggiou">
         <h2>Punteggio</h2>
         <p class="valorepunteggio" id="valorepunteggioutente">0</p>
@@ -229,7 +238,7 @@
           <div class="item-punti corte" >Asso</div>
           <div class="item-punti corte" >3</div>
           <div class="item-punti " >Re <br>(10)</div>
-          <div class="item-punti" >Cavallo (9)</div>
+          <div class="item-punti" >Cavallo <br>(9)</div>
           <div class="item-punti" >Fante <br>(8)</div>
           <div class="item-punti" >Scartini (7,6,5,4,2)</div>
           <div class="item-punti corte" >Punti</div>

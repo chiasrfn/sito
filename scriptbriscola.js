@@ -2021,7 +2021,6 @@ async function turni(tU) {
     await sleep(500)
   }
   vittoria()
-  appare(buttongioca)
 }
 
 /*======= Graficheeeeeee =========*/
@@ -2086,15 +2085,23 @@ const backgiocatac=document.getElementById("backcardcpugiocata")
 const contvittoria=document.getElementById("contvittoria")
 const overlayv=document.getElementById('overlayv')
 const buttongioca=document.getElementById('gioca')
+const buttongioca2=document.getElementById('gioca2');
+const spacegiocata=document.getElementById('spacegiocata2')
 
 // Preparazione delle carte al caricamento della pagina
 window.onload = function() {
   scompare(contgiocatac);
   scompare(contgiocatau);
+  preparazioneNuovoGioco();
 }
 
-//inizializzazione del turno dopo aver premuto Gioca
-buttongioca.addEventListener('click', ()=>{
+function preparazioneNuovoGioco(){
+  appare(buttongioca);
+  appare(buttongioca2);
+}
+
+buttongioca2.addEventListener('click', ()=>{
+  scompare(buttongioca2);
   scompare(buttongioca);
   puntiCPU=0
   puntiUtente=0
@@ -2109,6 +2116,10 @@ buttongioca.addEventListener('click', ()=>{
   retro(contutente2)
   retro(contutente3)
   retro(contbriscola)
+  fronte(contutente1)
+  fronte(contutente2)
+  fronte(contutente3)
+  fronte(contbriscola)
   turnoUtente = Math.random() < 0.5;
   scompare(contgiocatac);
   scompare(contgiocatau);
@@ -2125,6 +2136,46 @@ buttongioca.addEventListener('click', ()=>{
   caricaCarte();
   turni(turnoUtente);
 })
+
+
+//inizializzazione del turno dopo aver premuto Gioca
+buttongioca.addEventListener('click', ()=>{
+  scompare(buttongioca);
+  scompare(buttongioca2);
+  puntiCPU=0
+  puntiUtente=0
+  aggiornaPunteggio()
+  contutente1.style.pointerEvents = "auto";
+  contutente1.style.cursor = "pointer";
+  contutente2.style.pointerEvents = "auto";
+  contutente2.style.cursor = "pointer";
+  contutente3.style.pointerEvents = "auto";
+  contutente3.style.cursor = "pointer";
+  retro(contutente1)
+  retro(contutente2)
+  retro(contutente3)
+  retro(contbriscola)
+  fronte(contutente1)
+  fronte(contutente2)
+  fronte(contutente3)
+  fronte(contbriscola)
+  turnoUtente = Math.random() < 0.5;
+  scompare(contgiocatac);
+  scompare(contgiocatau);
+  mazzoDiCarte = creaMazzo();
+  mazzoDiCarte = mescolaMazzo(mazzoDiCarte);
+  distribuisciCarte(); // Distribuisce le carte ai giocatori
+  pescaBriscola(); // Pesca la carta di Briscola
+  aggiornaCarte();
+  console.log("Mano del giocatore:", manoGiocatore);
+  console.log("Mano del CPU:", manoCPU);
+  console.log("Carta di Briscola:", cartaBriscola);
+  console.log(mazzoDiCarte);
+  caricaBriscola();
+  caricaCarte();
+  turni(turnoUtente);
+})
+
 
 /*gira la carta sul retro*/
 function retro(contC){
@@ -2235,6 +2286,7 @@ function aggiornaCarte(){
 /*vittoria*/
 
 function vittoria(){
+  preparazioneNuovoGioco();
   if(puntiCPU>60){
     vittoriaAux('Sconfitta');
   }else if(puntiCPU==60 && puntiUtente==puntiCPU){

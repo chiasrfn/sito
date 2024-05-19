@@ -65,19 +65,12 @@
     <p style="text-align: center;">Inserisci la tua email, dopo</br> averla inviata controlla <br> la tua casella postale</p>
     <div class="modal-input">
       <input type="text" placeholder="Email" required>
-      <i class="bi bi-envelope-at-fill"></i>
+      <i class="bi bi-envelope-fill"></i>
     </div>
     <button class="modal-btn inviaemail" id="inviaemail">Invia</button>
   </div>
 
- <!--banner email inviata
-  <div id="emailinviatamodal" class="modal banneremail">
-    <div class="modal-header">
-      <button data-close-button class="close-button" id="close-button-login">&times;</button>
-    </div>
-    <h1 id="emailinviata">Email</br>inviata</h1>
-  </div>
--->
+
   <!--login registrati-->
   <div id="registratimodal" class="modal login registrati">
     <div class="modal-header">
@@ -88,6 +81,16 @@
       <input type="text" placeholder="Nome Utente" required>
       <i class="bi bi-person-fill"></i>
     </div>
+    <div class="modal-input">
+      <input type="text" placeholder="Email" required>
+      <i class="bi bi-envelope-fill"></i>
+    </div>
+    <div class="modal-input">
+      <input type="password" placeholder="Password" required>
+      <i class="bi bi-lock-fill"></i>
+    </div>
+    <button class="modal-btn registrati" id="buttonregistrati invia">Registrati</button>
+
   </div>
   
   
