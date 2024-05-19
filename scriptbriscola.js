@@ -1555,7 +1555,7 @@ function calcolaPercorsoImmagine(s, v) {
   const numeroCarta = numeriCarte[s][v];
 
   // Ritorna il percorso completo
-  return `url(../sito-main/immagini/carte_napoletane/${numeroCarta}.jpg)`;
+  return `url(./immagini/carte_napoletane/${numeroCarta}.jpg)`;
 }
 
 
@@ -1564,7 +1564,7 @@ function caricaBriscola() {
   const cardFrontBriscola = document.getElementById('frontcardbriscola');
   const cardBackBriscola = document.getElementById('backcardbriscola');
 
-  cardFrontBriscola.style.backgroundImage = `url(../sito-main/immagini/retro_carta2.jpg)`;
+  cardFrontBriscola.style.backgroundImage = `url(./immagini/retro_carta2.jpg)`;
   cardBackBriscola.style.backgroundImage = calcolaPercorsoImmagine(briscola.seme, briscola.valore);
 
   fronte(contbriscola)
@@ -1579,7 +1579,7 @@ function caricaCarte() {
     const cardFront = document.getElementById(`frontcardutente${index + 1}`);
     const cardBack = document.getElementById(`backcardutente${index + 1}`);
 
-    cardFront.style.backgroundImage = `url(../sito-main/immagini/retro_carta2.jpg)`;
+    cardFront.style.backgroundImage = `url(./immagini/retro_carta2.jpg)`;
     cardBack.style.backgroundImage = calcolaPercorsoImmagine(carta.seme, carta.valore);
   });
 
@@ -1587,7 +1587,7 @@ function caricaCarte() {
     const cardFront = document.getElementById(`frontcardcpu${index + 1}`);
     const cardBack = document.getElementById(`backcardcpu${index + 1}`);
 
-    cardFront.style.backgroundImage = `url(../sito-main/immagini/retro_carta2.jpg)`;
+    cardFront.style.backgroundImage = `url(./immagini/retro_carta2.jpg)`;
     cardBack.style.backgroundImage = calcolaPercorsoImmagine(carta.seme, carta.valore);
   });
 

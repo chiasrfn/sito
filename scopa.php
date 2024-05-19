@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scopa</title>
+    <link rel="stylesheet" href="stylescopa.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+<body>
+  <header>
+      <a href="home.php">
+          <img src="immagini/logo2.jpg" class="logo" margine-top="0px">
+      </a>
+      <div class="button-container">
+          <button class="bheader gioca" id="gioca">Gioca</button>
+          <button class="bheader storico" id="storico">Storico</button>
+          <button data-modal-target=#loginmodal class="bheader login">Login</button>
+          <button data-modal-target=#gearmodal class="btn-gear" >
+              <i class="bi bi-gear-fill"></i>
+          </button>
+      </div>
+  </header>
+  
+  <!--parte di codice dedicata al modal-->
+  <!--login-->
+  <div id="loginmodal" class="modal login">
+    <div class="modal-header">
+      <h1 id="titleLogin">Login</h1>
+      <button data-close-button class="close-button" id="close-button-login">&times;</button>
+    </div>
+    <div class="modal-input">
+      <input type="text" placeholder="Nome Utente" required>
+      <i class="bi bi-person-fill"></i>
+    </div>
+    <div class="modal-input">
+      <input type="password" placeholder="Password" required>
+      <i class="bi bi-lock-fill"></i>
+    </div>
+    <div class="modal-remember">
+      <label>
+        <input type="checkbox" id="remember">Salva
+      </label>
+      <a href="forgot.html">Hai dimenticato la password?</a>
+    </div>
+
+    <button type="submit" class="modal-btn">Login</button>
+
+    <div class="modal-register">
+      <p>Non hai un account?
+        <a href="registrati.html">Registrati</a>
+      </p>
+    </div>
+  
+
+  </div>
+
+  <div id="overlay"></div>
+
+  <!--gear-->
+  <div id="gearmodal" class="modal gear">
+    <div class="modal-header" id="modal-header-gear">
+      <div class="title">Impostazioni</div>
+      <button data-close-button class="close-button" id="close-button-gear">&times;</button>
+    </div>
+    <div class="modal-imp1">
+      Impostazione 1
+      <input type="checkbox" class="checkboximpost" id="impost1">
+      <label class="buttonimpost" for="impost1">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+  <div id="overlay"></div>
+
+  <div class="container">
+
+    <div class="left-side" >
+      <div class="space top"></div>
+      <div class="space"></div>
+      <div class="conteinercard cpu" id="conteinercardcpu1">
+        <div class="card" id="cardcpu1">
+          <div class="front" id="frontcardcpu1">
+          </div>
+          <div class="back" id="backcardcpu1">
+            </div>
+        </div>
+      </div>
+
+      <div class="conteinercard cpu" id="conteinercardcpu2"> 
+        <div class="card" id="cardcpu2">
+          <div class="front" id="frontcardcpu2">
+          </div>
+          <div class="back" id="backcardcpu2">
+            </div>
+        </div>
+      </div>
+
+      <div class="conteinercard cpu" id="conteinercardcpu3"> 
+        <div class="card" id="cardcpu3">
+          <div class="front" id="frontcardcpu3">
+          </div>
+          <div class="back" id="backcardcpu3">
+          </div>
+        </div>
+      </div>
+
+      <div class="space"></div>
+
+      <div class="conteinercard giocata" id="conteinergiocata1">
+        <div class="card giocata" id="cardgiocata1">
+          <div class="front giocata" id="frontcardgiocata1"></div>
+        </div>
+      </div>
+
+      <div class="conteinercard giocata" id="conteinergiocata2">
+        <div class="card giocata" id="cardgiocata2">
+          <div class="front giocata" id="frontcardgiocata2"></div>
+        </div>
+      </div>
+
+      <div class="conteinercard giocata" id="conteinergiocata3">
+        <div class="card giocata" id="cardgiocata3">
+          <div class="front giocata" id="frontcardgiocata3"></div>
+        </div>
+      </div>
+
+      <div class="conteinercard giocata" id="conteinergiocata4">
+        <div class="card giocata" id="cardgiocata4">
+          <div class="front giocata" id="frontcardgiocata4"></div>
+        </div>
+      </div>
+
+      <div class="conteinercard giocata" id="conteinergiocata5">
+        <div class="card giocata" id="cardgiocata5">
+          <div class="front giocata" id="frontcardgiocata5"></div>
+        </div>
+      </div>
+
+      <div class="conteinercard giocata superflua" id="conteinergiocata6">
+        <div class="card giocata" id="cardgiocata6">
+          <div class="front giocata" id="frontcardgiocata6"></div>
+        </div>
+      </div>
+
+      <div class="conteinercard giocata superflua" id="conteinergiocata7">
+        <div class="card giocata" id="cardgiocata7">
+          <div class="front giocata" id="frontcardgiocata7"></div>
+        </div>
+      </div>
+
+      <div class="conteinercard giocata superflua" id="conteinergiocata8">
+        <div class="card giocata" id="cardgiocata8">
+          <div class="front giocata" id="frontcardgiocata8"></div>
+        </div>
+      </div>
+
+      <div class="conteinercard giocata superflua" id="conteinergiocata9">
+        <div class="card giocata" id="cardgiocata9">
+          <div class="front giocata" id="frontcardgiocata9"></div>
+        </div>
+      </div>
+
+      <div class="space superflua"></div>
+      <div class="space"></div>
+
+      <div class="conteinercard utente" id="conteinercardutente1">
+        <div class="card utente" id="cardutenete1">
+          <div class="front" id="frontcardutente1">
+          </div>
+          <div class="back utente" id="backcardutente1">
+            </div>
+        </div>
+      </div>
+
+      <div class="conteinercard utente" id="conteinercardutente2"> 
+        <div class="card utente" id="cardutente2">
+          <div class="front" id="frontcardutente2">
+          </div>
+          <div class="back utente" id="backcardutente2">
+            </div>
+        </div>
+      </div>
+
+      <div class="conteinercard utente" id="conteinercardutente3"> 
+        <div class="card utente" id="cardutente3">
+          <div class="front" id="frontcardutente3">
+          </div>
+          <div class="back utente" id="backcardutente3">
+            </div>
+        </div>
+      </div>
+
+      <div class="space"></div>
+
+
+    </div>
+
+    <div class="right-side">
+      <div class="regole">
+        <h1>Regole Scopa</h1>
+        <p>Il mazziere distribuisce tre carte coperte a ciascun giocatore e quattro scoperte sul tavolo. Dopo che ogni giocatore ha 
+          giocato le sue carte, ne riceve altre tre coperte e così via fino a esaurimento del mazzo. Se la carta giocata corrisponde 
+          al valore di una carta o alla somma delle carte sul tavolo, il giocatore le prende, altrimenti la lascia. Se ci sono più 
+          combinazioni possibili, il giocatore può scegliere. Le carte rimaste sul tavolo alla fine vengono prese dal giocatore che 
+          ha preso per ultimo. Prendere tutte le carte sul tavolo con una giocata singola si chiama "scopa" e vale un punto, tranne 
+          se effettuata con l'ultima carta della mano, in tal caso non vale nulla.
+        </p>
+        <h2>Punti</h2>
+        <ul>
+          <li>Scopa: un punto per ogni scopa, tranne se fatta con l'ultima carta giocata.</li>
+          <li>Carte (o "Lunga"): un punto per chi ha raccolto più carte nel mazzo (almeno 21).</li>
+          <li>Denari (o "Ori"): un punto per chi ha preso più carte di denari (almeno 6).</li>
+          <li>Settebello (o "Piricchio"): un punto per chi ha preso il sette di denari.</li>
+          <li>Primiera o Settanta: un punto per chi ha il punteggio più alto con quattro carte, una per seme, seguendo valori seguenti:</li>
+        </ul>
+        <div class="punti">
+          <div class="item-punti" >Valore carta</div>
+          <div class="item-punti corte" >7</div>
+          <div class="item-punti corte" >6</div>
+          <div class="item-punti corte" >Asso</div>
+          <div class="item-punti corte" >5</div>
+          <div class="item-punti corte" >4</div>
+          <div class="item-punti corte" >3</div>
+          <div class="item-punti corte" >2</div>
+          <div class="item-punti" >Figure (8,9,10)</div>
+          <div class="item-punti" >Valore Primiera</div>
+          <div class="item-punti corte" >21</div>
+          <div class="item-punti corte" >18</div>
+          <div class="item-punti corte" >16</div>
+          <div class="item-punti corte" >15</div>
+          <div class="item-punti corte" >14</div>
+          <div class="item-punti corte" >13</div>
+          <div class="item-punti corte" >12</div>
+          <div class="item-punti corte" >10</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scriptscopa.js"></script>
+</body>
+</html>

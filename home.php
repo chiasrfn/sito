@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giochi di carte</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>"></script>
+  </head>
+<body>
+  <header>
+    <a href="home.php">
+      <img src="immagini/logo2.jpg" class="logo" margine-top="0px">
+    </a>
+    <div class="button-container">
+      <button class="bheader gioca" id="gioca">Gioca</button>
+      <button class="bheader storico" id="storico">Storico</button>
+      <button data-modal-target=#loginmodal class="bheader login">Login</button>
+      <button data-modal-target=#gearmodal class="btn-gear" >
+        <i class="bi bi-gear-fill"></i>
+      </button>
+    </div>
+  </header>
+
+  <!--parte di codice dedicata al modal-->
+  <div id="overlay"></div>
+  <!--login-->
+  <div id="loginmodal" class="modal login">
+    <div class="modal-header">
+      <h1 id="titleLogin">Login</h1>
+      <button data-close-button class="close-button" id="close-button-login">&times;</button>
+    </div>
+    <div class="modal-input">
+      <input type="text" placeholder="Nome Utente" required>
+      <i class="bi bi-person-fill"></i>
+    </div>
+    <div class="modal-input">
+      <input type="password" placeholder="Password" required>
+      <i class="bi bi-lock-fill"></i>
+    </div>
+    <div class="modal-remember">
+      <label>
+        <input type="checkbox" id="remember">Ricordami</input>
+      </label>
+      <button data-modal-target=#forgotmodal class="button login">Hai dimenticato la password?</button>
+    </div>
+
+    <button type="submit" class="modal-btn">Login</button>
+
+    <div class="modal-register">
+      <p>Non hai un account?
+        <button data-modal-target=#registratimodal class="button login" id="buttonregistrati">Registrati</button>
+      </p>
+    </div>
+  </div>
+
+  <!--login forgot-->
+  <div id="forgotmodal" class="modal login forgot">
+    <div class="modal-header">
+      <h1 id="titlePassword">Password</br>dimenticata?</h1>
+      <button data-close-button class="close-button" id="close-button-login">&times;</button>
+    </div>
+    <p style="text-align: center;">Inserisci la tua email, dopo</br> averla inviata controlla <br> la tua casella postale</p>
+    <div class="modal-input">
+      <input type="text" placeholder="Email" required>
+      <i class="bi bi-envelope-at-fill"></i>
+    </div>
+    <button class="modal-btn inviaemail" id="inviaemail">Invia</button>
+  </div>
+
+ <!--banner email inviata
+  <div id="emailinviatamodal" class="modal banneremail">
+    <div class="modal-header">
+      <button data-close-button class="close-button" id="close-button-login">&times;</button>
+    </div>
+    <h1 id="emailinviata">Email</br>inviata</h1>
+  </div>
+-->
+  <!--login registrati-->
+  <div id="registratimodal" class="modal login registrati">
+    <div class="modal-header">
+      <h1 id="titleLogin">Registrati</h1>
+      <button data-close-button class="close-button" id="close-button-login">&times;</button>
+    </div>
+    <div class="modal-input">
+      <input type="text" placeholder="Nome Utente" required>
+      <i class="bi bi-person-fill"></i>
+    </div>
+  </div>
+  
+  
+
+  <!--gear-->
+  <div id="gearmodal" class="modal gear">
+    <div class="modal-header" id="modal-header-gear">
+      <div class="title">Impostazioni</div>
+      <button data-close-button class="close-button" id="close-button-gear">&times;</button>
+    </div>
+    <div class="modal-imp1">
+      Impostazione 1
+      <input type="checkbox" class="checkboximpost" id="impost1">
+      <label class="buttonimpost" for="impost1">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div id="overlayg"></div>
+  <div class="container">
+    <!--Gioca-->
+    <div class="left-side">
+      <div class="cur">
+        <h1 id="titolocur">Curiosità</h1>
+        <h2><span id="frasi">Una teoria storica è che le carte da gioco odierne derivino da quelle utilizzate dai Mamelucchi, che avevano i semi che conosciamo ancora oggi</span></h2>
+      </div>
+    </div>
+
+    <div class="right-side">
+      <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td colspan=3 rowspan=3>
+              <div class="conteinercard" id="card1">
+                <div class="card" >
+                  <div class="front">
+                    <div class="cerchio" id="cerchio1"></div>
+                  </div>
+                  <div class="back">
+                    <h2>Briscola</h2>
+                    <p style="padding: 5px;">Il gioco perfetto per chi vuole sentirsi un fallito</p>
+                    <a href="briscola.php" class="linkgioca">Gioca</a>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td></td>
+            <td colspan=3 rowspan=3>
+              <div class="conteinercard" id="card2">
+                <div class="card">
+                  <div class="front">
+                    <div class="cerchio" id="cerchio2"></div>
+                  </div>
+                  <div class="back">
+                    <h2>Tresette</h2>
+                    <p>DESCRIZIONE</p>
+                    <a href="tresette.php" class="linkgioca">Gioca</a>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        
+        <tr>
+          <td></td>
+          <td></td>
+          <td colspan=3 rowspan=3>
+            <div class="conteinercard" id="card3">
+              <div class="card">
+                <div class="front">
+                  <div class="cerchio" id="cerchio3"></div>
+                </div>
+                <div class="back">
+                  <h2>Traversone</h2>
+                  <p>DESCRIZIONE</p>
+                  <a href="traversone.php" class="linkgioca">Gioca</a>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td></td>
+          <td colspan=3 rowspan=3>
+            <div class="conteinercard" id="card4">
+              <div class="card">
+                <div class="front">
+                  <div class="cerchio" id="cerchio4"></div>
+                </div>
+                <div class="back">
+                  <h2>Scopa</h2>
+                  <p>DESCRIZIONE</p>
+                  <a href="scopa.php" class="linkgioca">Gioca</a>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td></td>
+      </tr>
+
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+    </table>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

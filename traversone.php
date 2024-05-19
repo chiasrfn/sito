@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treversone</title>
+    <link rel="stylesheet" href="styletraversone.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+<body>
+  <header>
+    <a href="home.php">
+      <img src="immagini/logo2.jpg" class="logo" margine-top="0px">
+    </a>
+    <div class="button-container">
+      <button class="bheader gioca" id="gioca">Gioca</button>
+      <button class="bheader storico" id="storico">Storico</button>
+      <button data-modal-target=#loginmodal class="bheader login">Login</button>
+      <button data-modal-target=#gearmodal class="btn-gear" >
+        <i class="bi bi-gear-fill"></i>
+      </button>
+    </div>
+  </header>
+
+  <!--parte di codice dedicata al modal-->
+  <div id="overlay"></div>
+  <!--login-->
+  <div id="loginmodal" class="modal login">
+    <div class="modal-header">
+      <h1 id="titleLogin">Login</h1>
+      <button data-close-button class="close-button" id="close-button-login">&times;</button>
+    </div>
+    <div class="modal-input">
+      <input type="text" placeholder="Nome Utente" required>
+      <i class="bi bi-person-fill"></i>
+    </div>
+    <div class="modal-input">
+      <input type="password" placeholder="Password" required>
+      <i class="bi bi-lock-fill"></i>
+    </div>
+    <div class="modal-remember">
+      <label>
+        <input type="checkbox" id="remember">Salva
+      </label>
+      <a href="forgot.html">Hai dimenticato la password?</a>
+    </div>
+
+    <button type="submit" class="modal-btn">Login</button>
+
+    <div class="modal-register">
+      <p>Non hai un account?
+        <a href="registrati.html">Registrati</a>
+      </p>
+    </div>
+  </div>
+
+  <!--gear-->
+  <div id="gearmodal" class="modal gear">
+    <div class="modal-header" id="modal-header-gear">
+      <div class="title">Impostazioni</div>
+      <button data-close-button class="close-button" id="close-button-gear">&times;</button>
+    </div>
+    <div class="modal-imp1">
+      Impostazione 1
+      <input type="checkbox" class="checkboximpost" id="impost1">
+      <label class="buttonimpost" for="impost1">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="left-side" >
+      <div class="space top"></div>
+      <div class="conteinercard cpu" id="conteinercardcpu1">
+        <div class="card" id="cardcpu1">
+          <div class="front" id="frontcardcpu1">
+          </div>
+          <div class="back" id="backcardcpu1">
+            </div>
+        </div>
+      </div>
+
+      <div class="conteinercard cpu" id="conteinercardcpu2"> 
+        <div class="card" id="cardcpu2">
+          <div class="front" id="frontcardcpu2">
+          </div>
+          <div class="back" id="backcardcpu2">
+            </div>
+        </div>
+      </div>
+
+      <div class="conteinercard cpu" id="conteinercardcpu3"> 
+        <div class="card" id="cardcpu3">
+          <div class="front" id="frontcardcpu3">
+          </div>
+          <div class="back" id="backcardcpu3">
+          </div>
+        </div>
+      </div>
+
+      <div class="conteinercard cpu" id="conteinercardcpu4"> 
+        <div class="card" id="cardcpu4">
+          <div class="front" id="frontcardcpu4">
+          </div>
+          <div class="back" id="backcardcpu4">
+          </div>
+        </div>
+      </div>
+
+      <div class="conteinercard cpu" id="conteinercardcpu5"> 
+        <div class="card" id="cardcpu5">
+          <div class="front" id="frontcardcpu5">
+          </div>
+          <div class="back" id="backcardcpu5">
+          </div>
+        </div>
+      </div>
+
+      <div class="conteinercard cpu" id="conteinercardcpu6"> 
+        <div class="card" id="cardcpu6">
+          <div class="front" id="frontcardcpu6">
+          </div>
+          <div class="back" id="backcardcpu6">
+          </div>
+        </div>
+      </div>
+
+      <div class="conteinercard cpu" id="conteinercardcpu7"> 
+        <div class="card" id="cardcpu7">
+          <div class="front" id="frontcardcpu7">
+          </div>
+          <div class="back" id="backcardcpu7">
+          </div>
+        </div>
+      </div>
+
+      <div class="conteinercard cpu" id="conteinercardcpu8"> 
+        <div class="card" id="cardcpu8">
+          <div class="front" id="frontcardcpu8">
+          </div>
+          <div class="back" id="backcardcpu8">
+          </div>
+        </div>
+      </div>
+
+      <div class="conteinercard cpu" id="conteinercardcpu9"> 
+        <div class="card" id="cardcpu9">
+          <div class="front" id="frontcardcpu9">
+          </div>
+          <div class="back" id="backcardcpu9">
+          </div>
+        </div>
+      </div>
+
+      <div class="conteinercard cpu" id="conteinercardcpu10"> 
+        <div class="card" id="cardcpu10">
+          <div class="front" id="frontcardcpu10">
+          </div>
+          <div class="back" id="backcardcpu10">
+          </div>
+        </div>
+      </div>
+      
+      <div class="space"></div>
+
+      <div class="conteinercard giocata" id="conteinercardcpugiocata">
+        <div class="card giocata" id="cardcpugiocata">
+          <div class="front giocata" id="frontcardcpugiocata"></div>
+        </div>
+      </div>
+
+      <div class="conteinercard giocata" id="conteinercardutentegiocata"> 
+        <div class="card giocata" id="cardutenetegiocata">
+          <div class="front giocata" id="frontcardutentegiocata"></div>
+        </div>
+      </div>
+
+      <div class="space"></div>
+
+      <div class="conteinercard utente" id="conteinercardutente1">
+        <div class="card utente" id="cardutenete1">
+          <div class="front" id="frontcardutente1">
+          </div>
+          <div class="back utente" id="backcardutente1">
+            </div>
+        </div>
+      </div>
+
+      <div class="conteinercard utente" id="conteinercardutente2"> 
+        <div class="card utente" id="cardutente2">
+          <div class="front" id="frontcardutente2">
+          </div>
+          <div class="back utente" id="backcardutente2">
+            </div>
+        </div>
+      </div>
+
+      <div class="conteinercard utente" id="conteinercardutente3"> 
+        <div class="card utente" id="cardutente3">
+          <div class="front" id="frontcardutente3">
+          </div>
+          <div class="back utente" id="backcardutente3">
+            </div>
+        </div>
+      </div>
+
+      <div class="conteinercard utente" id="conteinercardutente4"> 
+        <div class="card utente" id="cardutente4">
+          <div class="front" id="frontcardutente4">
+          </div>
+          <div class="back utente" id="backcardutente4">
+            </div>
+        </div>
+      </div>
+
+
+      <div class="conteinercard utente" id="conteinercardutente5"> 
+        <div class="card utente" id="cardutente5">
+          <div class="front" id="frontcardutente5">
+          </div>
+          <div class="back utente" id="backcardutente5">
+            </div>
+        </div>
+      </div>
+
+      <div class="conteinercard utente" id="conteinercardutente6"> 
+        <div class="card utente" id="cardutente6">
+          <div class="front" id="frontcardutente6">
+          </div>
+          <div class="back utente" id="backcardutente6">
+            </div>
+        </div>
+      </div>
+
+
+      <div class="conteinercard utente" id="conteinercardutente7"> 
+        <div class="card utente" id="cardutente7">
+          <div class="front" id="frontcardutente7">
+          </div>
+          <div class="back utente" id="backcardutente7">
+            </div>
+        </div>
+      </div>
+
+
+      <div class="conteinercard utente" id="conteinercardutente8"> 
+        <div class="card utente" id="cardutente8">
+          <div class="front" id="frontcardutente8">
+          </div>
+          <div class="back utente" id="backcardutente8">
+            </div>
+        </div>
+      </div>
+
+      <div class="conteinercard utente" id="conteinercardutente9"> 
+        <div class="card utente" id="cardutente9">
+          <div class="front" id="frontcardutente9">
+          </div>
+          <div class="back utente" id="backcardutente9">
+            </div>
+        </div>
+      </div>
+
+      <div class="conteinercard utente" id="conteinercardutente10"> 
+        <div class="card utente" id="cardutente10">
+          <div class="front" id="frontcardutente10">
+          </div>
+          <div class="back utente" id="backcardutente10">
+            </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="right-side">
+      <div class="regole">
+        <h1>Regole Traversone</h1>
+        <p>
+            Il traversone si gioca con un mazzo da 40 carte italiane e da 2 a 8 giocatori. 
+            Ogni giocatore ha un punteggio individuale e si risponde sempre al seme della 
+            prima carta giocata. Le carte hanno un ordine gerarchico e valori simili al tressette. 
+            L'asso di bastoni o di fiori è l'eccezione, valendo 11 punti. Si stabilisce un limite 
+            di punteggio o di smazzate, e l'obiettivo è ottenere il punteggio minore. Dopo ogni 
+            smazzata, i giocatori contano i punti. Se il giocatore che ha preso l'ultima mano 
+            totalizza 21 punti, può "sola" e rimuoverli dal suo punteggio o distribuirli agli altri. 
+            È vietato contare le prese, tranne nella prima mano.
+        </p>
+        <h2>Punti</h2>
+        <div class="punti">
+          <div class="item-punti" >Valore carta</div>
+          <div class="item-punti corte" >Asso</div>
+          <div class="item-punti corte" >3,2</div>
+          <div class="item-punti corte" >Figurre (8,9,10)</div>
+          <div class="item-punti corte" >7,6,5,4</div>
+          <div class="item-punti corte" >Asso di bastoni</div>
+          <div class="item-punti" >Punti</div>
+          <div class="item-punti corte" >1</div>
+          <div class="item-punti corte" >1/3</div>
+          <div class="item-punti corte" >1/3</div>
+          <div class="item-punti corte" >0</div>
+          <div class="item-punti corte" >11</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripttraversone.js"></script>
+</body>
+</html>
+
