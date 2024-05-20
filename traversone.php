@@ -71,6 +71,14 @@
     </div>
   </div>
 
+  <!--messaggio di vittoria-->
+
+  <div class="modal messaggio" id="contvittoria">
+    <p class="messaggiovittoria" id="textmessvittoria">A</p>
+  </div>
+
+  <div id="overlayv"></div>
+
   <div class="container">
 
     <div class="left-side" >
@@ -164,17 +172,34 @@
           </div>
         </div>
       </div>
-      
-      <div class="space"></div>
+
+      <div class="punteggi">
+
+        <div class="punteggio" id="punteggiocpu">
+          <h2>Punteggio</h2>
+          <p class="valorepunteggio" id="valorepunteggiocpu">0</p>
+        </div>
+
+        <div class="punteggio" id="punteggiou">
+          <h2>Punteggio</h2>
+          <p class="valorepunteggio" id="valorepunteggioutente">0</p>
+        </div>
+      </div>
+
+      <div class="spacepunteggio"></div>
 
       <div class="conteinercard giocata" id="conteinercardcpugiocata">
         <div class="card giocata" id="cardcpugiocata">
           <div class="front giocata" id="frontcardcpugiocata"></div>
+          <div class="back giocata"  id="backcardcpugiocata"></div>
+          
         </div>
       </div>
 
+
       <div class="conteinercard giocata" id="conteinercardutentegiocata"> 
         <div class="card giocata" id="cardutenetegiocata">
+          <div class="back giocata"  id="backcardutentegiocata"></div>
           <div class="front giocata" id="frontcardutentegiocata"></div>
         </div>
       </div>
@@ -306,6 +331,7 @@
         </div>
       </div>
     </div>
+    
   </div>
 
   <script src="scripttraversone.js"></script>

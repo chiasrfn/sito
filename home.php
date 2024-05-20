@@ -63,9 +63,10 @@
       <button data-close-button class="close-button" id="close-button-login">&times;</button>
     </div>
     <p style="text-align: center;">Inserisci la tua email, dopo</br> averla inviata controlla <br> la tua casella postale</p>
-    <div class="modal-input">
-      <input type="text" placeholder="Email" required>
+    <div class="modal-input" id="myForm">
+      <input type="text" id="email" placeholder="Email" required>
       <i class="bi bi-envelope-fill"></i>
+      <span id="emailError" style="color: red; display: none;">Perfavore metti una email valida</span>
     </div>
     <button class="modal-btn inviaemail" id="inviaemail">Invia</button>
   </div>

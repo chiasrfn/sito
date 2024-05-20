@@ -2314,3 +2314,26 @@ overlayv.addEventListener('click', () => {
   overlayv.classList.remove('active')
   contvittoria.classList.remove('active')
 })
+
+/*Controllo sui login
+$('#email').input(()=> {
+  var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  if (emailPattern.test($('#email').value)) {
+    $('#emailError').style.display = 'inline';
+  } else {
+    $('#emailError').style.display = 'none';
+  }
+});
+
+document.getElementById('myForm').addEventListener('submit', function (event) {
+  var emailInput = document.getElementById('email');
+  var emailError = document.getElementById('emailError');
+  var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  if (!emailPattern.test(emailInput.value)) {
+    emailError.style.display = 'inline';
+    event.preventDefault(); // Prevent form submission
+  }
+});
+*/

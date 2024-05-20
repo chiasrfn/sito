@@ -343,7 +343,7 @@
   
   .right-side {
     flex: 2;
-    display: flex;
+    display: flex-start;
     height: 100vh;
     margin-top: 90px;
   }
@@ -363,19 +363,23 @@
     grid-column: span 4;
   }
 
+  .spacepunteggio{
+    grid-column: span 3;
+  }
+
+
 
   .space.top{
     grid-column: span 10;
     margin-top: 30px;
   }
 
-  /*carte*/
-  
+/*Carte*/
+
 .conteinercard{
-  border: 1 px solid black;
   display: flex;
-  height: 153px;
-  width: 85px;
+  height: 215px;
+  width: 120px;
   perspective: 600px;
   position: relative;
   margin-top: 10px;
@@ -392,7 +396,7 @@
   .card{
   width: 100%;
   height: 100%;
-  transition: transform 1.5s;
+  transition: transform 1s;
   transform-style: preserve-3d;
   position: absolute;
   }
@@ -440,12 +444,14 @@
   
   /*carte giocate*/
   .back.giocata{
-    display:table;
-    backface-visibility:visible;
+    display: none;
   }
-
-
-
+  
+  .back.giocata.active{
+    display: block;
+    transform: translateX(50px);
+  }
+  
   /*testo*/
   .regole{
     align-items: left;
@@ -457,43 +463,128 @@
     padding: 0 1em 1em 1em;
     border-radius: 1rem;
   }
-
+  
   h1{
     font-size: 40px;
     color: var(--dark-green);
   }
-
+  
   h2{
     font-size: 25px;
     color: var(--dark-green);
   }
-
+  
   p, li{
     font-size: 20px;
   }
-
+  
   ul{
     padding-left: 20px;
   }
-
+  
   .punti{
     margin: 10px;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     background-color: rgba(139, 139, 139, 0.65);
   }
-
-
-
+  
+  .valorepunteggio{
+    text-decoration: bold;
+  }
+  
   .item-punti{
     font-size: 18px;
     text-align: center;
     border: 1px solid black;
   }
-
+  
   .item-punti.corte{
     padding-top: 9px;
     padding-bottom: 9px;
+  }
+  
+  /*Punteggio*/
+  .punteggio{
+    align-self: center;
+    align-items: center;
+    text-align: center;
+    height: auto;
+    width: auto;
+    background-color: rgb(255,255,255, 0.65);
+    padding: 0 0.5em 0.2em 0.5em;
+    border-radius: 1rem;
+    margin: 3px;
+  }
+  
+  /*Numero delle carte*/
+  .ncarte{
+    align-self: center;
+    align-items: center;
+    text-align: center;
+    height: auto;
+    width: auto;
+    background-color: rgba(0, 0, 0, 0.65);
+    padding: 0 0.5em 0.2em 0.5em;
+    border-radius: 1rem;
+  }
+  
+  /*pulsante gioca*/
+  .button.gioca{
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 50px;
+    background: var(--dark-dark-green);
+    border:none;
+    outline: none;
+    border-radius: 40px;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 23px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .bheader.gioca.scompare{
+    display: none;
+  }
+  
+  .button.gioca.scompare{
+    display: none;
+  }
+  
+  .space.inmezzo.scompare{
+    display: none;
+  }
+  
+  /*Vittoria*/
+  
+  .messaggiovittoria{
+    font-size: 100px;
+    color: var(--dark-green);
+    align-self: center;
+    align-items: center;
+  }
+  
+  #overlayv {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    background-color: rgba(0, 0, 0, 0.70);
+    pointer-events: none;
+    display: visible; 
+    z-index: 20000;
+  }
+  
+  #overlayv.active {
+    opacity: 1;
+    pointer-events: all;
   }
 
   /*differenze tra i device*/
