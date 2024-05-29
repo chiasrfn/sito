@@ -88,12 +88,8 @@ function pescaCarta() {
 
 let manoGiocatore = [];
 let manoCPU = [];
-let cartaBriscola
 
-// Carta di Briscola
-function pescaBriscola() {
-  cartaBriscola = pescaCarta();
-}
+
 
 let turnoUtente = Math.random() < 0.5; // true se l'utente inizia, false altrimenti
 
@@ -111,18 +107,196 @@ function turnoUtenteGioca() {
 let cartaGiocataCPU
 let numeroCartaGiocataCPU
 
-// Funzione per il turno della CPU
-async function turnoCPUGioca(m,cB,cG) {
+
+function assegnaContCpu(n){
+  const c=n+1
+  console.log('conteinercardcpu'+c);
+  contc=document.getElementById('conteinercardcpu'+c);
+  giocaCartaCPU(contc)
+  numeroCartaGiocataCPU=n;
+  cartaGiocataCPU=manoCPU[n];
 }
+
+function sceltaPuntiCPU(array,m){
+  const n= m.length
+  for(let elem of array){
+    if(isPunti(m[elem])){
+      assegnaContCpu(elem)
+      return;
+    }
+  }
+  for(let elem of array){
+    if(isScartino(m[elem])){
+      assegnaContCpu(elem)
+      return;
+    }
+  }
+  for(let elem of array){
+    if(isAsso(m[elem])){
+      assegnaContCpu(elem)
+      return;
+    }
+  }
+  for(let elem of array){
+    if(isDueTre(m[elem])){
+      assegnaContCpu(elem)
+      return;
+    }
+  }
+}
+
+// Funzione per il turno della CPU
+async function turnoCPUGioca(m,cG) {
+  if(!primoGioca){ //primo a giocare
+    //scegliamo il seme con meno carte
+    const b=[] //bastoni
+    const d=[] //denari
+    const c=[] //coppe
+    const s=[] //spade
+    const n=m.length
+    for(let i=0; i<n; i++){
+      if(m[i].seme=='Bastoni'){
+        b.push(i)
+      }else if(m[i].seme=='Denari'){
+        d.push(i)
+      }else if(m[i].seme=='Coppe'){
+        c.push(i)
+      }else{
+        s.push(i)
+      }
+    }
+    if(s.length>0 && Math.min(s.length, d.length, c.length)== s.length){
+      //scegliamo spade
+      sceltaPuntiCPU(s,m)
+    }else if(d.length>0 && Math.min(s.length, d.length, c.length)== d.length){
+      //scegliamo denari
+      sceltaPuntiCPU(d,m)
+    }else if(c.length>0 && Math.min(s.length, d.length, c.length)== c.length){
+      //scegliamo coppe
+      sceltaPuntiCPU(c,m)
+    }else{
+      //come ultima scelta scegliamo i bastoni
+      sceltaPuntiCPU(b,m)
+    }
+
+  }else{ //gioca in risposta all'utente
+    if(esistecartastessoseme){
+      //gioca carta con punti se
+      if(isScartino(cG) || isPunti(cG)){
+        for(let elem of mazzocarteseme){
+          if(isDueTre(m[elem])){
+            assegnaContCpu(elem)
+            return;
+          }
+        }
+        for(let elem of mazzocarteseme){
+          if(isPunti(m[elem])){
+            assegnaContCpu(elem)
+            return;
+          }
+        }
+        for(let elem of mazzocarteseme){
+          if(isScartino(m[elem])){
+            assegnaContCpu(elem)
+            return;
+          }
+        }
+        for(let elem of mazzocarteseme){
+          if(isAsso(m[elem])){
+            assegnaContCpu(elem)
+            return;
+          }
+        }
+      }if(isAsso(cG)){
+        for(let elem of mazzocarteseme){
+          if(isPunti(m[elem])){
+            assegnaContCpu(elem)
+            return;
+          }
+        }
+        for(let elem of mazzocarteseme){
+          if(isScartino(m[elem])){
+            assegnaContCpu(elem)
+            return;
+          }
+        }
+        for(let elem of mazzocarteseme){
+          if(isDueTre(m[elem])){
+            assegnaContCpu(elem)
+            return;
+          }
+        }
+      }if(isDueTre(cG)){
+        for(let elem of mazzocarteseme){
+          if(isAsso(m[elem])){
+            assegnaContCpu(elem)
+            return;
+          }
+        }
+        for(let elem of mazzocarteseme){
+          if(isDueTre(m[elem])){
+            assegnaContCpu(elem)
+            return;
+          }
+        }
+        for(let elem of mazzocarteseme){
+          if(isPunti(m[elem])){
+            assegnaContCpu(elem)
+            return;
+          }
+        }
+        for(let elem of mazzocarteseme){
+          if(isScartino(m[elem])){
+            assegnaContCpu(elem)
+            return;
+          }
+        }
+      }
+    }else{
+      const n= m.length
+      for(let i=0; i<n; i++){
+        if(isAssoBastone(m[i])){
+          assegnaContCpu(i)
+          return;
+        }
+      }
+      for(let i=0; i<n; i++){
+        if(isAsso(m[i])){
+          assegnaContCpu(i)
+          return;
+        }
+      }
+      for(let i=0; i<n; i++){
+        if(isDueTre(m[i])){
+          assegnaContCpu(i)
+          return;
+        }
+      }
+      for(let i=0; i<n; i++){
+        if(isPunti(m[i])){
+          assegnaContCpu(i)
+          return;
+        }
+      }
+      for(let i=0; i<n; i++){
+        if(isScartino(m[i])){
+          assegnaContCpu(i)
+          return;
+        }
+      }
+    }
+  }
+}
+
+/*Funzioni ausiliare per controlli seme e tipo*/
 
 function isStessoSeme(c,cG){
   return c.seme === cG.seme
 }
 
 
-
 function isScartino(c){
-  const valoriScartini = ['Due', 'Quattro', 'Cinque', 'Sei', 'Sette'];
+  const valoriScartini = ['Quattro', 'Cinque', 'Sei', 'Sette'];
   return valoriScartini.includes(c.valore);
 }
 
@@ -131,15 +305,20 @@ function isPunti(c){
   return valoriPunti.includes(c.valore);
 }
 
-function isTre(c){
-  const valoreTre = ['Tre'];
-  return valoreTre.includes(c.valore);
+function isDueTre(c){
+  const valoriPunti = ['Due', 'Tre'];
+  return valoriPunti.includes(c.valore);
 }
 
 function isAsso(c){
   const valoreAsso = ['Asso'];
   return valoreAsso.includes(c.valore);
 }
+
+function isAssoBastone(c){
+  return c.valore=='Asso' && c.seme=='Bastoni';
+}
+
 
 function calcolaPercorsoImmagine(s, v) {
   const numeriCarte = {
@@ -191,7 +370,7 @@ function caricaCarte() {
 
 }
 
-let primoGioca
+let primoGioca //true utente
 
 
 
@@ -209,18 +388,20 @@ async function turno(pG) {
       await sleep(500)
     }
     await sleep(1000);
-    turnoCPUGioca(manoCPU,cartaBriscola,cartaGiocataUtente)
+    controlloSeme(manoCPU,cartaGiocataUtente)
+    turnoCPUGioca(manoCPU,cartaGiocataUtente)
   }
   else {
     await sleep(1000);
-    turnoCPUGioca(manoCPU,cartaBriscola,cartaGiocataUtente)
+    turnoCPUGioca(manoCPU,cartaGiocataUtente)
     await sleep(1800)
+    controlloSeme(manoGiocatore,cartaGiocataCPU)
     turnoUtenteGioca()
   }
   while (attesa) {
     await sleep(500)
   }
-  presa(cartaGiocataUtente,cartaGiocataCPU,cartaBriscola,primoGioca)
+  presa(cartaGiocataUtente,cartaGiocataCPU,primoGioca)
 }
 
 async function turnoUltimaPescata(pG) {
@@ -232,18 +413,18 @@ async function turnoUltimaPescata(pG) {
       await sleep(500)
     }
     await sleep(1000);
-    turnoCPUGioca(manoCPU,cartaBriscola,cartaGiocataUtente)
+    turnoCPUGioca(manoCPU,cartaGiocataUtente)
   }
   else {
     await sleep(1000);
-    turnoCPUGioca(manoCPU,cartaBriscola,cartaGiocataUtente)
+    turnoCPUGioca(manoCPU,cartaGiocataUtente)
     await sleep(1800)
     turnoUtenteGioca()
   }
   while (attesa) {
     await sleep(500)
   }
-  presaUltimaPescata(cartaGiocataUtente,cartaGiocataCPU,cartaBriscola,primoGioca)
+  presaUltimaPescata(cartaGiocataUtente,cartaGiocataCPU,primoGioca)
 }
 
 async function turniFinali(primoGioca) {
@@ -255,18 +436,18 @@ async function turniFinali(primoGioca) {
       await sleep(500)
     }
     await sleep(1000);
-    turnoCPUGioca(manoCPU,cartaBriscola,cartaGiocataUtente)
+    turnoCPUGioca(manoCPU,cartaGiocataUtente)
   }
   else {
     await sleep(1000);
-    turnoCPUGioca(manoCPU,cartaBriscola,cartaGiocataUtente)
+    turnoCPUGioca(manoCPUcartaGiocataUtente)
     await sleep(1800)
     turnoUtenteGioca()
   }
   while (attesa) {
     await sleep(500)
   }
-  preseFinali(cartaGiocataUtente,cartaGiocataCPU,cartaBriscola,primoGioca)
+  preseFinali(cartaGiocataUtente,cartaGiocataCPU,primoGioca)
 }
 
 async function turnoPenultimo(primoGioca) {
@@ -279,16 +460,16 @@ async function turnoUltimo(primoGioca) {
 
 function confrontaCarte(c1, c2) {
   const valori = {
-      "Asso": 10,
-      "Due": 1,
-      "Tre": 9,
-      "Quattro": 2,
-      "Cinque": 3,
-      "Sei": 4,
-      "Sette": 5,
-      "Fante": 6,
-      "Cavallo": 7,
-      "Re": 8
+      "Asso": 8,
+      "Due": 9,
+      "Tre": 10,
+      "Quattro": 1,
+      "Cinque": 2,
+      "Sei": 3,
+      "Sette": 4,
+      "Fante": 5,
+      "Cavallo": 6,
+      "Re": 7
   };
 
   const valoreCarta1 = valori[c1];
@@ -297,70 +478,30 @@ function confrontaCarte(c1, c2) {
   return differenza > 0;
 }
 
-function chiPrende(cGU,cGC,cB,pG){
-  /*
-  if (pG) {
-    if (isBriscola(cGU,cB)) {
-      if (!isBriscola(cGC,cB)){
-        return 1
+function chiPrende(cGU,cGC,pG){
+  if (pG) { //gioca per primo l'utente
+    if(isStessoSeme(cGU,cGC)){
+      if (confrontaCarte(cGU.valore,cGC.valore)) {
+        return 1 //prende utente
       }
       else {
-        if (confrontaCarte(cGU.valore,cGC.valore)) {
-          return 1
-        }
-        else {
-          return 0
-        }
+        return 0 //prende cpu
       }
+    }else{
+      return 1
     }
-    else {
-      if (isBriscola(cGC,cB)) {
+  }else {
+    if(isStessoSeme(cGU,cGC)){
+      if (confrontaCarte(cGC.valore,cGU.valore)) {
         return 0
       }
-      if (!isBriscola(cGC,cB) && !isStessoSeme(cGC,cGU)) {
-        return 1
-      }
       else {
-        if (confrontaCarte(cGU.valore,cGC.valore)) {
-          return 1
-        }
-        else {
-          return 0
-        }
+        return 1 
       }
+    }else{
+      return 0
     }
   }
-  else {
-    if (isBriscola(cGC,cB)) {
-      if (!isBriscola(cGU,cB)){
-        return 0
-      }
-      else {
-        if (confrontaCarte(cGU.valore,cGC.valore)) {
-          return 1
-        }
-        else {
-          return 0
-        }
-      }
-    }
-    else {
-      if (isBriscola(cGU,cB)) {
-        return 1
-      }
-      if (!isBriscola(cGU,cB) && !isStessoSeme(cGU,cGC)) {
-        return 0
-      }
-      else {
-        if (confrontaCarte(cGU.valore,cGC.valore)) {
-          return 1
-        }
-        else {
-          return 0
-        }
-      }
-    }
-  }*/
 }
 
 function conversionePunti(cV) {
@@ -379,7 +520,7 @@ function conversionePunti(cV) {
   return val[cV];
 }
 
-async function presa(cGU,cGC,cB,pG) {
+async function presa(cGU,cGC,pG) {
   while (attesa) {
     await sleep(400)
   }
@@ -389,8 +530,8 @@ async function presa(cGU,cGC,cB,pG) {
   else {
     await sleep(700)
   }
-  animazionepresa(chiPrende(cGU,cGC,cB,pG))
-  if (chiPrende(cGU,cGC,cB,pG) == 1) {
+  animazionepresa(chiPrende(cGU,cGC,pG))
+  if (chiPrende(cGU,cGC,pG) == 1) {
     puntiUtente = puntiUtente + conversionePunti(cartaGiocataUtente.valore) + conversionePunti(cartaGiocataCPU.valore);
     manoGiocatore[numeroCartaGiocataUtente]=pescaCarta();
     manoCPU[numeroCartaGiocataCPU]=pescaCarta();
@@ -407,6 +548,7 @@ async function presa(cGU,cGC,cB,pG) {
     manoCPU[numeroCartaGiocataCPU]=pescaCarta();
     manoGiocatore[numeroCartaGiocataUtente]=pescaCarta();
     primoGioca = false
+    console.log(manoCPU[numeroCartaGiocataCPU])
     await sleep(1200)
     caricaCarte()
     comparizioneCarte()
@@ -456,7 +598,7 @@ async function presaUltimaPescata(cGU,cGC,cB,pG) {
   if (chiPrende(cGU,cGC,cB,pG) == 1) {
     puntiUtente = puntiUtente + conversionePunti(cartaGiocataUtente.valore) + conversionePunti(cartaGiocataCPU.valore);
     manoGiocatore[numeroCartaGiocataUtente]=pescaCarta();
-    manoCPU[numeroCartaGiocataCPU]=cartaBriscola;
+    manoCPU[numeroCartaGiocataCPU]=pescaCarta();
     primoGioca = true
     await sleep(1200)
     caricaCarte()
@@ -468,7 +610,7 @@ async function presaUltimaPescata(cGU,cGC,cB,pG) {
   else {
     puntiCPU = puntiCPU + conversionePunti(cartaGiocataCPU.valore) + conversionePunti(cartaGiocataUtente.valore);
     manoCPU[numeroCartaGiocataCPU]=pescaCarta();
-    manoGiocatore[numeroCartaGiocataUtente]=cartaBriscola;
+    manoGiocatore[numeroCartaGiocataUtente]=pescaCarta();
     primoGioca = false
     await sleep(1200)
     caricaCarte()
@@ -650,6 +792,9 @@ function closeModal(modal) {
 }
 
 /*Costanti*/
+const contcpu1= document.getElementById('conteinercardcpu1')
+const contcpu2= document.getElementById('conteinercardcpu2')
+const contcpu3= document.getElementById('conteinercardcpu3')
 const conteinercard= document.querySelectorAll('.conteinercard')
 const contgiocatac= document.getElementById('conteinercardcpugiocata')
 const contgiocatau= document.getElementById('conteinercardutentegiocata')
@@ -691,12 +836,9 @@ buttongioca.addEventListener('click', ()=>{
   mazzoDiCarte = creaMazzo();
   mazzoDiCarte = mescolaMazzo(mazzoDiCarte);
   distribuisciCarte(); // Distribuisce le carte ai giocatori
-  pescaBriscola(); // Pesca la carta di Briscola
   aggiornaCarte();
   console.log("Mano del giocatore:", manoGiocatore);
   console.log("Mano del CPU:", manoCPU);
-  console.log("Carta di Briscola:", cartaBriscola);
-  console.log(mazzoDiCarte);
   caricaCarte();
   turni(turnoUtente);
 })
@@ -722,7 +864,7 @@ function appare(contC){
   contC.classList.remove('scompare')
 }
 
-async function giocaCartaCpu(contC){
+async function giocaCartaCPU(contC){
   if(contC==null) return
   const backcardcpu=contC.querySelector('.card').querySelector('.back');
   
@@ -738,13 +880,44 @@ async function giocaCartaCpu(contC){
 
 let numeroCartaGiocataUtente
 let cartaGiocataUtente
+let esistecartastessoseme
+let mazzocarteseme=[];
+
+/*controlliamo che esista il semegiocato in un mazzo*/
+function controlloSeme(mazzo, cartagiocata){
+  esistecartastessoseme=false;
+  for(let i=0; i<10; i++){
+    if(isStessoSeme(mazzo[i], cartagiocata)){
+      esistecartastessoseme=true;
+      if(primoGioca){
+        mazzocarteseme.push(i); //mi segno le carte che hanno lo stesso seme per il CPU
+      }
+      
+    }
+  }
+}
 
 /*rendo le carte utente cliccabili e le metto sul tavolo*/
+
+function cliccabili(mg, cgc, n){
+  if(!isStessoSeme(mg[n], cgc) && esistecartastessoseme){
+    return false;
+  }else{
+    return true;
+  }
+}
 
 conteinercardu.forEach(card=>{
     card.addEventListener('click',()=>{
     if(card==null) return
     if(ngiocateU!=1) return
+    if(!primoGioca){
+      const n= card.id.slice(-1)-1
+      if(!cliccabili(manoGiocatore, cartaGiocataCPU, n)){
+        
+        return;
+      }
+    }
     const backcardutente=card.querySelector('.back');
     
     const stile = backcardutente.style.backgroundImage;
