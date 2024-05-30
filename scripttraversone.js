@@ -61,7 +61,7 @@ function distribuisciCarte() {
 }
 
 
-function comparizioneCarte(){
+async function comparizioneCarte(){
     // Aggiorna interfaccia utente
   //caricamento tutte carte dell'utente e cpu e scompare mazzo
   conteinercard.forEach(card=>{
@@ -75,9 +75,13 @@ function comparizioneCarte(){
     }
   })
 
+  if(numeroCartaGiocataCPU>-1){
+    await sleep(500)
+    n=numeroCartaGiocataCPU+1;
+    contC=document.getElementById('conteinercardcpu'+n)
+    retro(contC)
+  }
 
-  //intero per capire quanto giocato utente
-  ngiocateU=0;
 }
 
 
@@ -105,12 +109,11 @@ function turnoUtenteGioca() {
 }
 
 let cartaGiocataCPU
-let numeroCartaGiocataCPU
+let numeroCartaGiocataCPU=-1
 
 
 function assegnaContCpu(n){
   const c=n+1
-  console.log('conteinercardcpu'+c);
   contc=document.getElementById('conteinercardcpu'+c);
   giocaCartaCPU(contc)
   numeroCartaGiocataCPU=n;
@@ -404,28 +407,7 @@ async function turno(pG) {
   presa(cartaGiocataUtente,cartaGiocataCPU,primoGioca)
 }
 
-async function turnoUltimaPescata(pG) {
-  attesa2 = true
-  attesa = true
-  if (primoGioca) {
-    turnoUtenteGioca()
-    while (attesa) {
-      await sleep(500)
-    }
-    await sleep(1000);
-    turnoCPUGioca(manoCPU,cartaGiocataUtente)
-  }
-  else {
-    await sleep(1000);
-    turnoCPUGioca(manoCPU,cartaGiocataUtente)
-    await sleep(1800)
-    turnoUtenteGioca()
-  }
-  while (attesa) {
-    await sleep(500)
-  }
-  presaUltimaPescata(cartaGiocataUtente,cartaGiocataCPU,primoGioca)
-}
+
 
 async function turniFinali(primoGioca) {
   attesa2 = true
@@ -436,12 +418,14 @@ async function turniFinali(primoGioca) {
       await sleep(500)
     }
     await sleep(1000);
+    controlloSeme(manoCPU,cartaGiocataUtente)
     turnoCPUGioca(manoCPU,cartaGiocataUtente)
   }
   else {
     await sleep(1000);
-    turnoCPUGioca(manoCPUcartaGiocataUtente)
+    turnoCPUGioca(manoCPU,cartaGiocataUtente)
     await sleep(1800)
+    controlloSeme(manoGiocatore,cartaGiocataCPU)
     turnoUtenteGioca()
   }
   while (attesa) {
@@ -450,13 +434,6 @@ async function turniFinali(primoGioca) {
   preseFinali(cartaGiocataUtente,cartaGiocataCPU,primoGioca)
 }
 
-async function turnoPenultimo(primoGioca) {
-
-}
-
-async function turnoUltimo(primoGioca) {
-
-}
 
 function confrontaCarte(c1, c2) {
   const valori = {
@@ -504,7 +481,7 @@ function chiPrende(cGU,cGC,pG){
   }
 }
 
-function conversionePunti(cV) {
+function conversionePunti_aux(cV) {
   const val = {
     'Asso': 1,
     'Due': 1/3,
@@ -520,6 +497,13 @@ function conversionePunti(cV) {
   return val[cV];
 }
 
+function conversionePunti(c){
+  if(isAssoBastone(c)){
+    return 11;
+  }
+  return conversionePunti_aux(c.valore)
+}
+
 async function presa(cGU,cGC,pG) {
   while (attesa) {
     await sleep(400)
@@ -532,7 +516,7 @@ async function presa(cGU,cGC,pG) {
   }
   animazionepresa(chiPrende(cGU,cGC,pG))
   if (chiPrende(cGU,cGC,pG) == 1) {
-    puntiUtente = puntiUtente + conversionePunti(cartaGiocataUtente.valore) + conversionePunti(cartaGiocataCPU.valore);
+    puntiUtente = puntiUtente + conversionePunti(cartaGiocataUtente) + conversionePunti(cartaGiocataCPU);
     manoGiocatore[numeroCartaGiocataUtente]=pescaCarta();
     manoCPU[numeroCartaGiocataCPU]=pescaCarta();
     primoGioca = true
@@ -544,7 +528,7 @@ async function presa(cGU,cGC,pG) {
     attesa2 = false
   }
   else {
-    puntiCPU = puntiCPU + conversionePunti(cartaGiocataCPU.valore) + conversionePunti(cartaGiocataUtente.valore);
+    puntiCPU = puntiCPU + conversionePunti(cartaGiocataCPU) + conversionePunti(cartaGiocataUtente);
     manoCPU[numeroCartaGiocataCPU]=pescaCarta();
     manoGiocatore[numeroCartaGiocataUtente]=pescaCarta();
     primoGioca = false
@@ -567,59 +551,11 @@ function comparizioneCarteUltime() {
     }
   })
 
-  if(numeroCartaGiocataUtente==0) {
-    contutente1.style.pointerEvents = "none";
-    contutente1.style.cursor = "default";
-  }
-  if(numeroCartaGiocataUtente==1) {
-    contutente2.style.pointerEvents = "none";
-    contutente2.style.cursor = "default";
-  }
-  if(numeroCartaGiocataUtente==2) {
-    contutente3.style.pointerEvents = "none";
-    contutente3.style.cursor = "default";
-  }
-
-  //intero per capire quanto giocato utente
-  ngiocateU=0;
+  contc=document.getElementById('conteinercardcpu'+numeroCartaGiocataUtente);
+  contc.style.pointerEvents = "none";
+  contc.style.cursor = "default";
 }
 
-async function presaUltimaPescata(cGU,cGC,cB,pG) {
-  while (attesa) {
-    await sleep(400)
-  }
-  if (primoGioca) {
-    await sleep(2300)
-  }
-  else {
-    await sleep(700)
-  }
-  animazionepresa(chiPrende(cGU,cGC,cB,pG))
-  if (chiPrende(cGU,cGC,cB,pG) == 1) {
-    puntiUtente = puntiUtente + conversionePunti(cartaGiocataUtente.valore) + conversionePunti(cartaGiocataCPU.valore);
-    manoGiocatore[numeroCartaGiocataUtente]=pescaCarta();
-    manoCPU[numeroCartaGiocataCPU]=pescaCarta();
-    primoGioca = true
-    await sleep(1200)
-    caricaCarte()
-    comparizioneCarteUltimaPescata()
-    aggiornaPunteggio()
-    aggiornaCarte()
-    attesa2 = false
-  }
-  else {
-    puntiCPU = puntiCPU + conversionePunti(cartaGiocataCPU.valore) + conversionePunti(cartaGiocataUtente.valore);
-    manoCPU[numeroCartaGiocataCPU]=pescaCarta();
-    manoGiocatore[numeroCartaGiocataUtente]=pescaCarta();
-    primoGioca = false
-    await sleep(1200)
-    caricaCarte()
-    comparizioneCarteUltimaPescata()
-    aggiornaPunteggio()
-    aggiornaCarte()
-    attesa2 = false
-  }
-}
 
 async function preseFinali(cGU,cGC,cB,pG) {
   while (attesa) {
@@ -633,7 +569,7 @@ async function preseFinali(cGU,cGC,cB,pG) {
   }
   animazionepresa(chiPrende(cGU,cGC,cB,pG))
   if (chiPrende(cGU,cGC,cB,pG) == 1) {
-    puntiUtente = puntiUtente + conversionePunti(cartaGiocataUtente.valore) + conversionePunti(cartaGiocataCPU.valore);
+    puntiUtente = puntiUtente + conversionePunti(cartaGiocataUtente) + conversionePunti(cartaGiocataCPU);
     manoCPU[numeroCartaGiocataCPU]=pescaVuoto();
     primoGioca = true
     await sleep(1200)
@@ -643,7 +579,7 @@ async function preseFinali(cGU,cGC,cB,pG) {
     attesa2 = false
   }
   else {
-    puntiCPU = puntiCPU + conversionePunti(cartaGiocataCPU.valore) + conversionePunti(cartaGiocataUtente.valore);
+    puntiCPU = puntiCPU + conversionePunti(cartaGiocataCPU) + conversionePunti(cartaGiocataUtente);
     manoCPU[numeroCartaGiocataCPU]=pescaVuoto();
     primoGioca = false
     await sleep(1200)
@@ -703,43 +639,43 @@ async function turni(tU) {
   while (attesa2) {
     await sleep(500)
   }
-  turnoUltimo(primoGioca)
+  turniFinali(primoGioca)
   while (attesa2) {
     await sleep(500)
   }
-  turnoUltimo(primoGioca)
+  turniFinali(primoGioca)
   while (attesa2) {
     await sleep(500)
   }
-  turnoUltimo(primoGioca)
+  turniFinali(primoGioca)
   while (attesa2) {
     await sleep(500)
   }
-  turnoUltimo(primoGioca)
+  turniFinali(primoGioca)
   while (attesa2) {
     await sleep(500)
   }
-  turnoUltimo(primoGioca)
+  turniFinali(primoGioca)
   while (attesa2) {
     await sleep(500)
   }
-  turnoUltimo(primoGioca)
+  turniFinali(primoGioca)
   while (attesa2) {
     await sleep(500)
   }
-  turnoUltimo(primoGioca)
+  turniFinali(primoGioca)
   while (attesa2) {
     await sleep(500)
   }
-  turnoUltimo(primoGioca)
+  turniFinali(primoGioca)
   while (attesa2) {
     await sleep(500)
   }
-  turnoUltimo(primoGioca)
+  turniFinali(primoGioca)
   while (attesa2) {
     await sleep(500)
   }
-  turnoUltimo(primoGioca)
+  turniFinali(primoGioca)
   while (attesa2) {
     await sleep(500)
   }
@@ -792,9 +728,6 @@ function closeModal(modal) {
 }
 
 /*Costanti*/
-const contcpu1= document.getElementById('conteinercardcpu1')
-const contcpu2= document.getElementById('conteinercardcpu2')
-const contcpu3= document.getElementById('conteinercardcpu3')
 const conteinercard= document.querySelectorAll('.conteinercard')
 const contgiocatac= document.getElementById('conteinercardcpugiocata')
 const contgiocatau= document.getElementById('conteinercardutentegiocata')
@@ -875,7 +808,7 @@ async function giocaCartaCPU(contC){
   await sleep(1300);
   appare(contgiocatac);
   scompare(contC);
-  retro(contC);
+  fronte(contC);
 }
 
 let numeroCartaGiocataUtente
@@ -886,6 +819,7 @@ let mazzocarteseme=[];
 /*controlliamo che esista il semegiocato in un mazzo*/
 function controlloSeme(mazzo, cartagiocata){
   esistecartastessoseme=false;
+  while(cartagiocata==undefined){}
   for(let i=0; i<10; i++){
     if(isStessoSeme(mazzo[i], cartagiocata)){
       esistecartastessoseme=true;
