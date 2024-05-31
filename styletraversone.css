@@ -355,8 +355,10 @@
     grid-template-columns: repeat(10, 1fr);
     height: 100Vh;
     position: relative;
+    align-items: center;
+    align-self: stretch;
     margin-left: 5px;
-
+    justify-content: space-between;
   }
 
   .spacefine{
@@ -387,6 +389,8 @@
   position: relative;
   margin-top: 10px;
   grid-column: span 1;
+  align-self: center;
+  align-items: center;
   }
   
   .conteinercard.active > .card{
@@ -623,8 +627,8 @@
 
 @media all and (max-width:1546px){
   .conteinercard{
-    height: 180px;
-    width: 100px;
+    height: 215px;
+    width: 120px;
   }
 
   .container{
@@ -655,14 +659,12 @@
 
 }
 
-@media all and (max-width: 1000px) {
+@media all and (max-width: 1208px) {
   .left-side {
-    display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5,1fr);
-    align-items: center;
-    justify-items: center;
     max-height: 150%;
+    margin-left: 5%;
   }
 
   .space.top{
@@ -676,17 +678,11 @@
   .spacefine {
     grid-column: span 1;
   }
-
-  .conteinercard{
-    height: 215px;
-    width: 120px;
-  }
 }
 
-@media alla and (max-width:617px){
-  .conteinercard{
-    height: 180px;
-    width: 100px;
+@media all and (max-width:641px){
+  .left-side{
+    margin-left: 0;
   }
 }
 
@@ -704,41 +700,42 @@
 
   .left-side{
     margin-top: 20px;
-    max-width: 1300px;
+    max-height: 1300px;
   }
 }
 
 @media all and (max-width:491px){
-  #conteinercardcpu2, #conteinercardutente2, #conteinercardcpu7, #conteinercardutente7{
-    transform: translateX(-20%);
+  #conteinercardcpu1, #conteinercardutente1, #conteinercardcpu6, #conteinercardutente6{
+    transform: translateX(60%);
   }
-
-  #conteinercardcpu3, #conteinercardutente3, #conteinercardcpu8, #conteinercardutente8{
-    transform: translateX(-40%);
+  #conteinercardcpu2, #conteinercardutente2, #conteinercardcpu7, #conteinercardutente7{
+    transform: translateX(30%);
   }
 
   #conteinercardcpu4, #conteinercardutente4, #conteinercardcpu9, #conteinercardutente9{
-    transform: translateX(-60%);
+    transform: translateX(-30%);
   }
 
   #conteinercardcpu5, #conteinercardutente5, #conteinercardcpu10, #conteinercardutente10{
-    transform: translateX(-80%);
+    transform: translateX(-60%);
   }
 
   .left-side{
-    align-items: left;
-    align-self: left;
+    place-items: center;
+    margin-left: 0px;
   }
   
+  .punteggio{
+    transform: translateX(60%);
+  }
+
+  #conteinercardcpugiocata{
+    transform: translateX(60%);
+  }
 
 }
 
-@media all and (max-width:366px){
-  .conteinercard{
-    height: 126px;
-    width: 70px;
-  }
-
+@media all and (max-width:397px){
   #spacel2{
     display: auto;
   }
@@ -761,5 +758,19 @@
     font-size:15px;
   }
 
+}
 
+@media all and (max-width:351px){
+  .conteinercard{
+    height: 140px;
+    width: 77.7px;
+  }
+
+  .spcae.inmezzo{
+    display: none;
+  }
+
+  .spacefine{
+    display: grid;
+  }
 }
