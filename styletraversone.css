@@ -359,20 +359,23 @@
 
   }
 
-  .space{
-    grid-column: span 4;
+  .spacefine{
+    grid-column: span 3;
   }
 
   .spacepunteggio{
     grid-column: span 3;
   }
 
-
-
   .space.top{
     grid-column: span 10;
     margin-top: 30px;
   }
+
+  .space.inmezzo{
+    align-self: center;
+  }
+
 
 /*Carte*/
 
@@ -383,6 +386,7 @@
   perspective: 600px;
   position: relative;
   margin-top: 10px;
+  grid-column: span 1;
   }
   
   .conteinercard.active > .card{
@@ -451,7 +455,13 @@
     display: block;
     transform: translateX(50px);
   }
+
+  .back.giocata.oppostoactive{
+    display: block;
+    transform: translateX(-50px);
+  }
   
+
   /*testo*/
   .regole{
     align-items: left;
@@ -505,7 +515,12 @@
   }
   
   /*Punteggio*/
+
+  .punteggi{
+    align-self: center;
+  }
   .punteggio{
+    display: grid;
     align-self: center;
     align-items: center;
     text-align: center;
@@ -515,6 +530,7 @@
     padding: 0 0.5em 0.2em 0.5em;
     border-radius: 1rem;
     margin: 3px;
+    font-size: 13px;
   }
   
   /*Numero delle carte*/
@@ -587,33 +603,163 @@
     pointer-events: all;
   }
 
-  /*differenze tra i device*/
+/*differenze tra i device*/
+@media all and (max-height: 789px){
+  .conteinercard{
+    height: 200px;
+    width: 111px;
+  }
+  .left-side{
+    margin-top: 85px;
+    row-gap: 0px;
+  }
+}
 
-@media (max-width:1044px){
+@media all and (max-height: 716px){
+  .container{
+    overflow-y: auto;
+  }
+}
+
+@media all and (max-width:1546px){
+  .conteinercard{
+    height: 180px;
+    width: 100px;
+  }
+
   .container{
       width: 100%;
       height: 100vh;
       background-position: center;
       background-size: cover;
       flex-direction: column;
+      justify-content: space-between;
+      overflow-y: auto;
       
   }
   .left-side, .right-side{
       flex: 1;
   }
 
-  .space.top{
-    margin-top: 100px;
+  .right-side{
+    margin-top: 50px;
+    display:flex-end;
   }
 
-  .right-side{
-    align-self: flex-start;
+  .left-side{
+    max-height: 600px;
+    margin-top: 50px;
   }
+
+  
 
 }
 
-@media all and (max-height: 800px){
-  .container{
-    overflow-y:scroll;
+@media all and (max-width: 1000px) {
+  .left-side {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5,1fr);
+    align-items: center;
+    justify-items: center;
+    max-height: 150%;
   }
+
+  .space.top{
+    grid-column: span 5;
+  }
+
+  .spacepunteggio {
+    display: none;
+  }
+
+  .spacefine {
+    grid-column: span 1;
+  }
+
+  .conteinercard{
+    height: 215px;
+    width: 120px;
+  }
+}
+
+@media alla and (max-width:617px){
+  .conteinercard{
+    height: 180px;
+    width: 100px;
+  }
+}
+
+@media all and (max-width:597px){
+  .conteinercard{
+    height: 160px;
+    width: 88.9px;
+  }
+
+  .button.gioca{
+    width: 70px;
+    height: 30px;
+    font-size:18px;
+  }
+
+  .left-side{
+    margin-top: 20px;
+    max-width: 1300px;
+  }
+}
+
+@media all and (max-width:491px){
+  #conteinercardcpu2, #conteinercardutente2, #conteinercardcpu7, #conteinercardutente7{
+    transform: translateX(-20%);
+  }
+
+  #conteinercardcpu3, #conteinercardutente3, #conteinercardcpu8, #conteinercardutente8{
+    transform: translateX(-40%);
+  }
+
+  #conteinercardcpu4, #conteinercardutente4, #conteinercardcpu9, #conteinercardutente9{
+    transform: translateX(-60%);
+  }
+
+  #conteinercardcpu5, #conteinercardutente5, #conteinercardcpu10, #conteinercardutente10{
+    transform: translateX(-80%);
+  }
+
+  .left-side{
+    align-items: left;
+    align-self: left;
+  }
+  
+
+}
+
+@media all and (max-width:366px){
+  .conteinercard{
+    height: 126px;
+    width: 70px;
+  }
+
+  #spacel2{
+    display: auto;
+  }
+  .regole{
+    margin: 1em;
+    padding-left:10px;
+  }
+
+  .left-side{
+    margin-top: 60px;
+  }
+
+  .item-punti{
+    font-size: 14px;
+  }
+
+  .button.gioca{
+    width: 50px;
+    height: 20px;
+    font-size:15px;
+  }
+
+
 }

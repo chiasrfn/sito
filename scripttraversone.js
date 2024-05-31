@@ -391,20 +391,21 @@ async function turno(pG) {
       await sleep(500)
     }
     await sleep(1000);
-    controlloSeme(manoCPU,cartaGiocataUtente)
+    controlloSeme(manoCPU,0)
     turnoCPUGioca(manoCPU,cartaGiocataUtente)
   }
   else {
     await sleep(1000);
     turnoCPUGioca(manoCPU,cartaGiocataUtente)
     await sleep(1800)
-    controlloSeme(manoGiocatore,cartaGiocataCPU)
+    controlloSeme(manoGiocatore,1)
     turnoUtenteGioca()
   }
   while (attesa) {
     await sleep(500)
   }
   presa(cartaGiocataUtente,cartaGiocataCPU,primoGioca)
+  console.log(numeroCartaGiocataUtente)
 }
 
 
@@ -418,14 +419,14 @@ async function turniFinali(primoGioca) {
       await sleep(500)
     }
     await sleep(1000);
-    controlloSeme(manoCPU,cartaGiocataUtente)
+    controlloSeme(manoCPU,0)
     turnoCPUGioca(manoCPU,cartaGiocataUtente)
   }
   else {
     await sleep(1000);
     turnoCPUGioca(manoCPU,cartaGiocataUtente)
     await sleep(1800)
-    controlloSeme(manoGiocatore,cartaGiocataCPU)
+    controlloSeme(manoGiocatore,1)
     turnoUtenteGioca()
   }
   while (attesa) {
@@ -484,22 +485,22 @@ function chiPrende(cGU,cGC,pG){
 function conversionePunti_aux(cV) {
   const val = {
     'Asso': 1,
-    'Due': 1/3,
-    'Tre': 1/3,
+    'Due': 0.3,
+    'Tre': 0.3,
     'Quattro': 0,
     'Cinque': 0,
     'Sei': 0,
     'Sette': 0,
-    'Fante': 1/3,
-    'Cavallo': 1/3,
-    'Re': 1/3
+    'Fante': 0.3,
+    'Cavallo': 0.3,
+    'Re': 0.3
   };
   return val[cV];
 }
 
 function conversionePunti(c){
   if(isAssoBastone(c)){
-    return 11;
+    return 11.0;
   }
   return conversionePunti_aux(c.valore)
 }
@@ -532,7 +533,6 @@ async function presa(cGU,cGC,pG) {
     manoCPU[numeroCartaGiocataCPU]=pescaCarta();
     manoGiocatore[numeroCartaGiocataUtente]=pescaCarta();
     primoGioca = false
-    console.log(manoCPU[numeroCartaGiocataCPU])
     await sleep(1200)
     caricaCarte()
     comparizioneCarte()
@@ -551,9 +551,12 @@ function comparizioneCarteUltime() {
     }
   })
 
-  contc=document.getElementById('conteinercardcpu'+numeroCartaGiocataUtente);
-  contc.style.pointerEvents = "none";
-  contc.style.cursor = "default";
+
+  contc=document.getElementById('conteinercardutente'+numeroCartaGiocataUtente);
+  if(contc!=undefined){
+    contc.style.pointerEvents = "none";
+    contc.style.cursor = "default";
+  }
 }
 
 
@@ -732,6 +735,7 @@ const conteinercard= document.querySelectorAll('.conteinercard')
 const contgiocatac= document.getElementById('conteinercardcpugiocata')
 const contgiocatau= document.getElementById('conteinercardutentegiocata')
 const buttongioca=document.getElementById('gioca')
+const buttongioca2=document.getElementById('gioca2');
 const conteinercardu=document.querySelectorAll('.conteinercard.utente')
 const contvittoria=document.getElementById("contvittoria")
 const frontcardgiocatau= document.getElementById('frontcardutentegiocata')
@@ -748,10 +752,12 @@ window.onload = function() {
 
 function preparazioneNuovoGioco(){
   appare(buttongioca);
+  appare(buttongioca2);
 }
 
 buttongioca.addEventListener('click', ()=>{
   scompare(buttongioca);
+  scompare(buttongioca2);
   puntiCPU=0
   puntiUtente=0
   aggiornaPunteggio()
@@ -817,16 +823,27 @@ let esistecartastessoseme
 let mazzocarteseme=[];
 
 /*controlliamo che esista il semegiocato in un mazzo*/
-function controlloSeme(mazzo, cartagiocata){
+function controlloSeme(mazzo, n){
   esistecartastessoseme=false;
-  while(cartagiocata==undefined){}
-  for(let i=0; i<10; i++){
-    if(isStessoSeme(mazzo[i], cartagiocata)){
-      esistecartastessoseme=true;
-      if(primoGioca){
-        mazzocarteseme.push(i); //mi segno le carte che hanno lo stesso seme per il CPU
+  if(n==0){
+    for(let i=0; i<10; i++){
+      if(isStessoSeme(mazzo[i], cartaGiocataUtente)){
+        esistecartastessoseme=true;
+        if(primoGioca){
+          mazzocarteseme.push(i); //mi segno le carte che hanno lo stesso seme per il CPU
+        }
+        
       }
-      
+    }
+  }else if(n==1){
+    for(let i=0; i<10; i++){
+      if(isStessoSeme(mazzo[i], cartaGiocataCPU)){
+        esistecartastessoseme=true;
+        if(primoGioca){
+          mazzocarteseme.push(i); //mi segno le carte che hanno lo stesso seme per il CPU
+        }
+        
+      }
     }
   }
 }
@@ -877,15 +894,17 @@ function sleep(ms) {
 async function animazionepresa(i){
   if(i==0){ //cpu vinto
     //facciamo vedere la carta sotto
-    backgiocatau.classList.add('active');
+    backgiocatau.classList.add('oppostoactive');
 
-    const stile = frontcardgiocatacpu.style.backgroundImage;
+    const stilecpu = frontcardgiocatacpu.style.backgroundImage;
+    const stileu= frontcardgiocatau.style.backgroundImage;
     scompare(contgiocatac);
-    frontcardgiocatau.style.backgroundImage=stile;
+    frontcardgiocatau.style.backgroundImage=stileu;
+    backgiocatau.style.backgroundImage=stilecpu;
     await sleep(4000);
 
     scompare(contgiocatau);
-    backgiocatau.classList.remove('active');
+    backgiocatau.classList.remove('oppostoactive');
 
   }else{//utente vinto   
 

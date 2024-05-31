@@ -15,7 +15,7 @@
       <img src="immagini/logo2.jpg" class="logo" margine-top="0px">
     </a>
     <div class="button-container">
-      <button class="bheader gioca" id="gioca">Gioca</button>
+      <button class="bheader gioca" id="gioca2">Gioca</button>
       <button class="bheader storico" id="storico">Storico</button>
       <button data-modal-target=#loginmodal class="bheader login">Login</button>
       <button data-modal-target=#gearmodal class="btn-gear" >
@@ -176,12 +176,12 @@
       <div class="punteggi">
 
         <div class="punteggio" id="punteggiocpu">
-          <h2>Punteggio</h2>
+          <h2 class="punteggiotitle">Punti</br>CPU</h2>
           <p class="valorepunteggio" id="valorepunteggiocpu">0</p>
         </div>
 
         <div class="punteggio" id="punteggiou">
-          <h2>Punteggio</h2>
+          <h2 class="punteggiotitle">Punti</br>Utente</h2>
           <p class="valorepunteggio" id="valorepunteggioutente">0</p>
         </div>
       </div>
@@ -197,14 +197,18 @@
       </div>
 
 
+      <div class="space inmezzo" id="spacegiocata2">
+        <button class="button gioca" id="gioca">Gioca</button>
+      </div>
+
       <div class="conteinercard giocata" id="conteinercardutentegiocata"> 
         <div class="card giocata" id="cardutenetegiocata">
+        <div class="front giocata" id="frontcardutentegiocata"></div>
           <div class="back giocata"  id="backcardutentegiocata"></div>
-          <div class="front giocata" id="frontcardutentegiocata"></div>
         </div>
       </div>
 
-      <div class="space"></div>
+      <div class="spacefine"></div>
 
       <div class="conteinercard utente" id="conteinercardutente1">
         <div class="card utente" id="cardutenete1">
