@@ -170,8 +170,8 @@
       <div class="conteinercard giocata" id="conteinercardutentegiocata"> 
       
         <div class="card giocata" id="cardutenetegiocata">
-          <div class="back giocata"  id="backcardutentegiocata"></div>
           <div class="front giocata" id="frontcardutentegiocata"></div>
+          <div class="back giocata"  id="backcardutentegiocata"></div>
         </div>
       </div>
     

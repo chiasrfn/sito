@@ -303,6 +303,7 @@
         </div>
       </div>
 
+      <div class="space top"></div>
     </div>
 
     <div class="right-side">

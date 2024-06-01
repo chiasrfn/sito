@@ -344,9 +344,6 @@ header{
 .right-side {
   display: inline-block;
   flex: 3;
-  margin-top: 100px;
-  align-items: top;
-  align-self: top;
 }
 
 
@@ -355,7 +352,6 @@ header{
   flex: 4;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  height: 100%;
   position: relative;
   align-items: center;
   align-self: center;
@@ -467,6 +463,11 @@ background-size: cover;
 .back.giocata.active{
   display: block;
   transform: translateX(50px);
+}
+
+.back.giocata.oppostoactive{
+  display: block;
+  transform: translateX(-50px);
 }
 
 /*testo*/
@@ -603,7 +604,7 @@ ul{
   pointer-events: all;
 }
 
-/*differenze tra i device*/
+/*differenze tra i device
 @media all and (max-height: 789px){
   .conteinercard{
     height: 200px;
@@ -620,7 +621,7 @@ ul{
     overflow-y: auto;
   }
 }
-
+*/
 @media all and (max-width:1236px){
   .conteinercard{
     height: 180px;
@@ -638,17 +639,10 @@ ul{
       
   }
   .left-side, .right-side{
-      flex: 1;
       flex: 1 0 auto;
   }
 
-  .right-side{
-    margin-top: 50px;
-    display:flex-end;
-  }
-
   .left-side{
-    max-height: 600px;
     margin-top: 50px;
   }
 
@@ -738,5 +732,11 @@ ul{
     font-size:15px;
   }
 
+}
 
+@media all and (max-width:325px){
+  .conteinercard{
+    height: 107.5px;
+    width: 60px;
+  }
 }

@@ -324,9 +324,7 @@
     align-items: center;
     display: flex;
     overflow:  hidden;
-    position: relative;
     box-sizing: border-box;
-    justify-content: space-evenly;
     gap: 1em;
     background-image: url(./Immagini/sfondo5.jpg);
     background-position: center;
@@ -338,14 +336,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
     overflow-y: scroll;
-    overflow-x: none;
   }
   
   .right-side {
     flex: 2;
-    display: flex-start;
-    height: 100vh;
-    margin-top: 90px;
+    display: inline-block;
   }
 
   /*grid*/
@@ -353,7 +348,6 @@
     flex: 3;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
-    height: 100Vh;
     position: relative;
     align-items: center;
     align-self: stretch;
@@ -608,27 +602,10 @@
   }
 
 /*differenze tra i device*/
-@media all and (max-height: 789px){
-  .conteinercard{
-    height: 200px;
-    width: 111px;
-  }
-  .left-side{
-    margin-top: 85px;
-    row-gap: 0px;
-  }
-}
-
-@media all and (max-height: 716px){
-  .container{
-    overflow-y: auto;
-  }
-}
-
 @media all and (max-width:1546px){
   .conteinercard{
-    height: 215px;
-    width: 120px;
+    height: 170px; 
+    width: 94px;
   }
 
   .container{
@@ -646,12 +623,11 @@
   }
 
   .right-side{
-    margin-top: 50px;
-    display:flex-end;
+    display: inline-grid;
+    align-items: center;
   }
 
   .left-side{
-    max-height: 600px;
     margin-top: 50px;
   }
 
@@ -659,12 +635,12 @@
 
 }
 
-@media all and (max-width: 1208px) {
+@media all and (max-width: 945px) {
   .left-side {
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5,1fr);
-    max-height: 150%;
-    margin-left: 5%;
+    max-height: 170%;
+    justify-items: center;
+
   }
 
   .space.top{
@@ -705,11 +681,17 @@
 }
 
 @media all and (max-width:491px){
+
   #conteinercardcpu1, #conteinercardutente1, #conteinercardcpu6, #conteinercardutente6{
     transform: translateX(60%);
   }
+
   #conteinercardcpu2, #conteinercardutente2, #conteinercardcpu7, #conteinercardutente7{
     transform: translateX(30%);
+  }
+
+  #conteinercardcpu3, #conteinercardutente3, #conteinercardcpu8, #conteinercardutente8{
+    transform: translateX(0%);
   }
 
   #conteinercardcpu4, #conteinercardutente4, #conteinercardcpu9, #conteinercardutente9{
@@ -722,17 +704,43 @@
 
   .left-side{
     place-items: center;
-    margin-left: 0px;
   }
   
   .punteggio{
     transform: translateX(60%);
   }
 
-  #conteinercardcpugiocata{
-    transform: translateX(60%);
+}
+
+@media all and (max-width:434px){
+
+  #conteinercardcpu1, #conteinercardutente1, #conteinercardcpu6, #conteinercardutente6{
+    transform: translateX(0%);
   }
 
+  #conteinercardcpu2, #conteinercardutente2, #conteinercardcpu7, #conteinercardutente7{
+    transform: translateX(-30%);
+  }
+
+  #conteinercardcpu3, #conteinercardutente3, #conteinercardcpu8, #conteinercardutente8{
+    transform: translateX(-60%);
+  }
+
+  #conteinercardcpu4, #conteinercardutente4, #conteinercardcpu9, #conteinercardutente9{
+    transform: translateX(-90%);
+  }
+
+  #conteinercardcpu5, #conteinercardutente5, #conteinercardcpu10, #conteinercardutente10{
+    transform: translateX(-120%);
+  }
+
+  .punteggio{
+    transform: translateX(0%);
+  }
+
+  .left-side{
+    margin-left: 7%;
+  }
 }
 
 @media all and (max-width:397px){
@@ -745,7 +753,8 @@
   }
 
   .left-side{
-    margin-top: 60px;
+    margin-top: 30px;
+    margin-left: 4%;
   }
 
   .item-punti{
@@ -758,6 +767,12 @@
     font-size:15px;
   }
 
+}
+
+@media all and (max-width:364px){
+  .left-side{
+    margin-left: 2%;
+  }
 }
 
 @media all and (max-width:351px){

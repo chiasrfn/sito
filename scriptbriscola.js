@@ -2249,15 +2249,17 @@ function sleep(ms) {
 async function animazionepresa(i){
   if(i==0){ //cpu vinto
     //facciamo vedere la carta sotto
-    backgiocatau.classList.add('active');
+    backgiocatau.classList.add('oppostoactive');
 
-    const stile = frontcardgiocatacpu.style.backgroundImage;
+    const stilecpu = frontcardgiocatacpu.style.backgroundImage;
+    const stileu= frontcardgiocatau.style.backgroundImage;
     scompare(contgiocatac);
-    frontcardgiocatau.style.backgroundImage=stile;
+    frontcardgiocatau.style.backgroundImage=stileu;
+    backgiocatau.style.backgroundImage=stilecpu;
     await sleep(4000);
 
     scompare(contgiocatau);
-    backgiocatau.classList.remove('active');
+    backgiocatau.classList.remove('oppostoactive');
 
   }else{//utente vinto   
 
