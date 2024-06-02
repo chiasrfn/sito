@@ -129,131 +129,40 @@
     </div>
 
     <div class="right-side">
-      <table>
-        <tr>
-            <td></td>
-            <td></td>
-            <td colspan=3 rowspan=3>
-              <div class="conteinercard" id="card1">
-                <div class="card" >
-                  <div class="front">
-                    <div class="cerchio" id="cerchio1"></div>
-                  </div>
-                  <div class="back">
-                    <h2>Briscola</h2>
-                    <p style="padding: 5px;">Il gioco perfetto per chi vuole sentirsi un fallito</p>
-                    <a href="briscola.php" class="linkgioca">Gioca</a>
-                  </div>
-                </div>
-              </div>
-            </td>
-            <td></td>
-            <td colspan=3 rowspan=3>
-              <div class="conteinercard" id="card2">
-                <div class="card">
-                  <div class="front">
-                    <div class="cerchio" id="cerchio2"></div>
-                  </div>
-                  <div class="back">
-                    <h2>Tresette</h2>
-                    <p>DESCRIZIONE</p>
-                    <a href="tresette.php" class="linkgioca">Gioca</a>
-                  </div>
-                </div>
-              </div>
-            </td>
-            <td></td>
-        </tr>
+      <div class="space top"></div>
+      <div class="space"></div>
+      <div class="conteinercard" id="card1">
+        <div class="card" >
+          <div class="front">
+            <div class="cerchio" id="cerchio1"></div>
+          </div>
+          <div class="back">
+            <h2>Briscola</h2>
+            <p style="padding: 5px;">Il gioco perfetto per chi vuole sentirsi un fallito</p>
+            <a href="briscola.php" class="linkgioca">Gioca</a>
+          </div>
+        </div>
+      </div>
 
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+      <div class="space"></div>
 
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+      <div class="conteinercard" id="card2">
+        <div class="card">
+          <div class="front">
+            <div class="cerchio" id="cerchio2"></div>
+          </div>
+          <div class="back">
+            <h2>Traversone</h2>
+            <p>DESCRIZIONE</p>
+            <a href="traversone.php" class="linkgioca">Gioca</a>
+          </div>
+        </div>
+      </div>
 
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        
-        <tr>
-          <td></td>
-          <td></td>
-          <td colspan=3 rowspan=3>
-            <div class="conteinercard" id="card3">
-              <div class="card">
-                <div class="front">
-                  <div class="cerchio" id="cerchio3"></div>
-                </div>
-                <div class="back">
-                  <h2>Traversone</h2>
-                  <p>DESCRIZIONE</p>
-                  <a href="traversone.php" class="linkgioca">Gioca</a>
-                </div>
-              </div>
-            </div>
-          </td>
-          <td></td>
-          <td colspan=3 rowspan=3>
-            <div class="conteinercard" id="card4">
-              <div class="card">
-                <div class="front">
-                  <div class="cerchio" id="cerchio4"></div>
-                </div>
-                <div class="back">
-                  <h2>Scopa</h2>
-                  <p>DESCRIZIONE</p>
-                  <a href="scopa.php" class="linkgioca">Gioca</a>
-                </div>
-              </div>
-            </div>
-          </td>
-          <td></td>
-      </tr>
+      <div class="space"></div>
 
-      <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-      </tr>
-
-      <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-      </tr>
-
-      <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-      </tr>
-    </table>
+      <div class="space top"></div>
+    </div>
   </div>
   <script src="script.js"></script>
 </body>
