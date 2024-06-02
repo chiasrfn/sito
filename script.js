@@ -72,6 +72,23 @@ cerchi.forEach(cerchio=>{
   })
 })
 
+/*Pulsante storico*/
+const dropdownMenu=document.getElementById('dropdownMenu')
+const overlays=document.getElementById('overlays')
+
+$('#storico').click(() => {
+  dropdownMenu.classList.add('active');
+  overlays.classList.add('active');
+
+});
+
+
+overlays.addEventListener('click', ()=>{
+  dropdownMenu.classList.remove('active');
+  overlays.classList.remove('active');
+})
+
+
 /*banner email*/
 $('#inviaemail').click(()=>{
   $('#inviaemail').text('Email Inviata !!!')

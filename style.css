@@ -130,7 +130,7 @@ header{
 .bheader{
   vertical-align: right; 
   text-decoration: none;
-  padding: 0px 6px;
+  padding: 6px;
   font-size: 20px;
   background-color: transparent;
   color: var(--dark-green);
@@ -158,9 +158,63 @@ header{
   transform: rotate(360deg);
 }
 
-/*parte restante del sito*/
+/*Menu a tendina*/
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%; /* Posiziona il menu subito sotto il pulsante */
+  right: 0;
+  background-color:  rgba(255, 255, 255, 0.85);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 4000;
+}
+
+.dropdown-content.active{
+  display: block;
+}
+
+.dropdown-content a {
+  font-size: 20px;
+  color:  var(--dark-green);;
+  padding: 12px 16px;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+}
+
+
+.overlayaltri {
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  pointer-events: none;
+  display: none; 
+  z-index: 40000;
+  animation: grow 10s forwards;
+}
+
+@keyframes grow {
+  to {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.overlayaltri.active {
+  pointer-events: all;
+  display: block;
+}
+
+
 
 /*parte restante del sito*/
+
 
 table, th, td {
   border-collapse: collapse;
@@ -569,31 +623,6 @@ p{
   cursor:pointer;
 }
 
-#overlayg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 0%;
-  opacity: 0;
-  background-color: transparent;
-  pointer-events: none;
-  display: visible; 
-  z-index: 40000;
-  animation: grow 10s forwards;
-}
-
-@keyframes grow {
-  to {
-    width: 100%;
-    height: 100%;
-  }
-}
-
-#overlayg.active {
-  opacity: 1;
-  pointer-events: all;
-}
 
 
 /*differenze tra i device*/
