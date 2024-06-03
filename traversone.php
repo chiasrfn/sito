@@ -303,7 +303,11 @@
         </div>
       </div>
 
-      <div class="space top"></div>
+      <div class="space messaggio" id="spacemess"></div>
+      <div class="messaggiomess" id="messaggiomess">
+        <h1 id="textmessaggiomess">Seleziona carte con lo stesso seme di quella giocata</h1>
+      </div>
+  
     </div>
 
     <div class="right-side">
