@@ -162,102 +162,133 @@
     pointer-events: all;
   }
   
-  /*LOGIN*/
-  #titleLogin{
-    color: var(--dark-green);
-  }
-  
-  .modal-input, .modal-remember, .modal-btn, .modal-register{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .modal-input{
-    width: 100%;
-    height: 50px;
-    margin: 30px 0px;
-  }
-  
-  .modal-input input{
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    border: 2px solid var(--dark-green);
-    border-radius: 40px;
-    padding-left: 20px;
-    font-size: 20px;
-  }
-  
-  .modal-input input::placeholder{
-    color: rgba(0, 0, 0, 0.70);
-  }
-  
-  .modal-input i{
-    position:absolute;
-    right: 20px;
-    transform: translateX(-50%);
-    font-size: 20px;
-    color: var(--dark-green);
-  }
-  
-  .modal-remember{
-    justify-content: space-between;
-    font-size: 16px;
-    margin: -15px 0px 15px;
-  }
-  
-  .modal-remember label input{
-    accent-color: var(--dark-green);
-    margin-right: 3px;
-  }
-  
-  .modal-remember a{
-    color: black;
-    text-decoration: none;
-  }
-  
-  .modal-remember a:hover{
-    color: var(--dark-dark-green);
-    text-decoration: underline;
-  }
-  
-  .modal-btn{
-     width: 100%;
-     height: 45px;
-     background: var(--dark-dark-green);
-     border:none;
-     outline: none;
-     border-radius: 40px;
-     color: white;
-     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-     font-size: 20px;
-     font-weight: bold;
-     cursor: pointer;
-  }
-  
-  .modal-register{
-    font-size: 16px;
-    margin-top: 20px;
-  }
-  
-  .modal-register a{
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .modal-register a:hover{
-    color: var(--dark-dark-green);
-    text-decoration: underline;
-  }
-  
-  #close-button-login{
-    right: 20px;
-    transform: translateX(-50%);
-  }
+ /*LOGIN*/
+#titleLogin{
+  color: var(--dark-green);
+}
+
+.modal-input, .modal-remember, .modal-btn, .modal-register{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-input{
+  width: 100%;
+  height: 50px;
+  margin: 30px 0px;
+}
+
+.modal-input input{
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid var(--dark-green);
+  border-radius: 40px;
+  padding-left: 20px;
+  font-size: 20px;
+}
+
+.modal-input input::placeholder{
+  color: rgba(0, 0, 0, 0.70);
+}
+
+.modal-input i{
+  position:absolute;
+  right: 20px;
+  transform: translateX(-50%);
+  font-size: 20px;
+  color: var(--dark-green);
+}
+
+.modal-remember{
+  justify-content: space-between;
+  font-size: 16px;
+  margin: -15px 0px 15px;
+}
+
+.modal-remember label input{
+  accent-color: var(--dark-green);
+  margin-right: 3px;
+}
+
+.modal-remember a{
+  color: black;
+  text-decoration: none;
+}
+
+.modal-remember a:hover{
+  color: var(--dark-dark-green);
+  text-decoration: underline;
+}
+
+.modal-btn{
+   width: 100%;
+   height: 45px;
+   background: var(--dark-dark-green);
+   border:none;
+   outline: none;
+   border-radius: 40px;
+   color: white;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   font-size: 20px;
+   font-weight: bold;
+   cursor: pointer;
+}
+
+.modal-register{
+  font-size: 17px;
+  margin-top: 20px;
+}
+
+.button.login{
+  font-size: 14px;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#buttonregistrati{
+  font-size: inherit;
+}
+
+.button.login:hover{
+  color: var(--dark-dark-green);
+  text-decoration: underline;
+}
+
+#close-button-login{
+  right: 20px;
+  transform: translateX(-50%);
+}
+
+/*Password dimenticata*/
+p{
+  font-size: 20px;
+}
+
+#titlePassword{
+  align-self: center;
+  text-align: center;
+  color: var(--dark-green);
+}
+
+#emailinviata{
+  color: var(--dark-green);
+  text-align: center;
+}
+
+.modal-btn.inviaemail.active{
+  background: none;
+  color: var(--dark-green);
+  cursor: auto;
+  width: 100%;  
+  box-shadow: none;
+  font-size: 22px;
+}
+
   
   /*Impostazioni*/
   
@@ -314,6 +345,61 @@
     transform: translateX(-50%);
   }
   
+
+  /*Menu a tendina*/
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%; /* Posiziona il menu subito sotto il pulsante */
+  right: 0;
+  background-color:  rgba(255, 255, 255, 0.85);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 4000;
+}
+
+.dropdown-content.active{
+  display: block;
+}
+
+.dropdown-content a {
+  font-size: 20px;
+  color:  var(--dark-green);;
+  padding: 12px 16px;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+}
+
+
+.overlayaltri {
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  pointer-events: none;
+  display: none; 
+  z-index: 40000;
+  animation: grow 10s forwards;
+}
+
+@keyframes grow {
+  to {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.overlayaltri.active {
+  pointer-events: all;
+  display: block;
+}
+
+
   /*========= Fine header =========*/
   
   
@@ -341,9 +427,13 @@
   
   .right-side {
     flex: 2;
-    display: inline-block;
+    display:grid;
+    align-self: stretch;
   }
 
+  .spacetop{
+    margin-top: 40px;
+  }
   /*grid*/
   .left-side {
     flex: 3;
@@ -492,13 +582,13 @@
     row-gap: 10px;
     align-items: left;
     text-align: left;
-    height: auto;
     width: auto;
+    height: fit-content;
     margin: 1em 1em;
     background-color: rgb(255,255,255, 0.65);
     padding: 0 1em 1em 1em;
     border-radius: 1rem;
-    margin-top: 150px;
+    overflow-y: scroll;
   }
   
   h1{
@@ -637,7 +727,7 @@
   }
 
 /*differenze tra i device*/
-@media all and (max-width:1546px){
+@media all and (max-width:1579px){
   .conteinercard{
     height: 170px; 
     width: 94px;
@@ -674,6 +764,9 @@
     margin-top: -6em;
   }
   
+  .spacetop{
+    display: none;
+  }
 
 }
 

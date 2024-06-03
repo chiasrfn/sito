@@ -723,7 +723,6 @@ async function turni(tU) {
 
 /*===== Grafica =====*/
 
-
 const openModalButtons = document.querySelectorAll('[data-modal-target]')
 const closeModalButtons = document.querySelectorAll('[data-close-button]')
 const overlay = document.getElementById('overlay')
@@ -753,16 +752,45 @@ closeModalButtons.forEach(button => {
 
 function openModal(modal) {
   if (modal == null) return
+  if(modal.classList.contains('forgot') || modal.classList.contains('registrati')){
+    $('#loginmodal').removeClass('active')
+  }
   modal.classList.add('active')
   overlay.classList.add('active')
-
 }
 
 function closeModal(modal) {
   if (modal == null) return
+  if(modal.classList.contains('forgot')){
+    $('#inviaemail').removeClass('active')
+    $('#inviaemail').text('Invia')
+  }
   modal.classList.remove('active')
   overlay.classList.remove('active')
 }
+
+/*Pulsante storico*/
+const dropdownMenu=document.getElementById('dropdownMenu')
+const overlays=document.getElementById('overlays')
+
+$('#storico').click(() => {
+  dropdownMenu.classList.add('active');
+  overlays.classList.add('active');
+
+});
+
+
+overlays.addEventListener('click', ()=>{
+  dropdownMenu.classList.remove('active');
+  overlays.classList.remove('active');
+})
+
+
+/*banner email*/
+$('#inviaemail').click(()=>{
+  $('#inviaemail').text('Email Inviata !!!')
+  $('#inviaemail').addClass('active')
+})
 
 /*Costanti*/
 const conteinercard= document.querySelectorAll('.conteinercard')
@@ -1008,8 +1036,21 @@ function aggiornaPunteggio() {
 
 let numpartite
 
+function calcoloFinalePunti(){
+  if(primoGioca){//utente
+
+  }else{ //cpu
+
+  }
+}
+
+function vittoriaAux_1(){
+
+}
+
 function vittoria(){
   numpartite= numpartite+1;
+  calcoloFinalePunti()
   preparazioneNuovoGioco();
   if(numpartite==1){
     vittoriaAux('Gioca le restanti due partite')
