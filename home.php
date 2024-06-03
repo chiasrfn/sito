@@ -1,7 +1,40 @@
 <?php 
 session_start();
-
+include "db_conn.php";
 if (isset($_SESSION['nome_utente'])) {
+  $nome_u = $_SESSION['nome_utente'];
+
+$briscole_perse = "SELECT briscola_perse FROM accesso WHERE nome_utente='$nome_u'";
+$briscole_pareggiate = "SELECT briscola_pareggiate FROM accesso WHERE nome_utente='$nome_u'";
+$briscole_vinte = "SELECT briscola_vinte FROM accesso WHERE nome_utente='$nome_u'";
+$traversone_perse = "SELECT traversone_perse FROM accesso WHERE nome_utente='$nome_u'";
+$traversone_pareggiate = "SELECT traversone_pareggiate FROM accesso WHERE nome_utente='$nome_u'";
+$traversone_vinte = "SELECT traversone_vinte FROM accesso WHERE nome_utente='$nome_u'";
+
+
+$r1 = mysqli_query($conn, $briscole_perse);
+$r1 = mysqli_fetch_assoc($r1);
+$r1 = $r1['briscola_perse'];
+
+$r2 = mysqli_query($conn, $briscole_pareggiate);
+$r2 = mysqli_fetch_assoc($r2);
+$r2 = $r2['briscola_pareggiate'];
+
+$r3 = mysqli_query($conn, $briscole_vinte);
+$r3 = mysqli_fetch_assoc($r3);
+$r3 = $r3['briscola_vinte'];
+
+$r4 = mysqli_query($conn, $traversone_perse);
+$r4 = mysqli_fetch_assoc($r4);
+$r4 = $r4['traversone_perse'];
+
+$r5 = mysqli_query($conn, $traversone_pareggiate);
+$r5 = mysqli_fetch_assoc($r5);
+$r5 = $r5['traversone_pareggiate'];
+
+$r6 = mysqli_query($conn, $traversone_vinte);
+$r6 = mysqli_fetch_assoc($r6);
+$r6 = $r6['traversone_vinte'];
 
  ?>
 
@@ -27,8 +60,8 @@ if (isset($_SESSION['nome_utente'])) {
       <button class="bheader storico" id="storico">Storico</button>
       <div class="dropdown-content" id="dropdownMenu">
         <a>Titolo</a>
-        <a>Briscola: <span id="ptbriscola"></span></a>
-        <a>Traversone: <span id="pttraversone"></span></a>
+        <a>Briscola: <?php echo "V" . $r3 . " - " . "P" . $r2 . " - " . "S" . $r1; ?><span id="ptbriscola"></span></a>
+        <a>Traversone: <?php echo "V" . $r6 . " - " . "P" . $r5 . " - " . "S" . $r4; ?><span id="pttraversone"></span></a>
       </div>
       <button data-modal-target=#gearmodal class="btn-gear" >
         <i class="bi bi-gear-fill"></i>
@@ -119,4 +152,3 @@ if (isset($_SESSION['nome_utente'])) {
      exit();
 }
  ?>
-
