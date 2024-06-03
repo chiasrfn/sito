@@ -122,3 +122,20 @@ $(document).ready(function() {
 
     cur();  // Chiama la funzione nome quando il documento è pronto
 });
+
+/*Parametro d'errore*/
+
+// Controlla se l'URL contiene il parametro di errore
+window.onload = function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has('error')) {
+      const error = urlParams.get('error');
+      $('#messaggioerrore').text(error);
+      openModal($('#errormodal'))
+  }
+};
+
+$('#errormodal').click(()=>{
+  closeModal($('#errormodal'))
+})
+

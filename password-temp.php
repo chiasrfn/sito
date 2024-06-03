@@ -29,7 +29,7 @@ if (isset($_POST['email_pswdimenticata'])) {
     $user_data = 'psw='. $pass. '&email='. $email;
 
     if (empty($email)) {
-        header("Location: index.php?error=Email is required&$user_data");
+        header("Location: index.php?error=L'email è richiesta&$user_data");
         exit();
     } else {
         $passmodificata = md5($pass);
@@ -43,7 +43,7 @@ if (isset($_POST['email_pswdimenticata'])) {
         $nome_utente = $row['nome_utente'];
 
         if (mysqli_num_rows($result) === 0) {
-            header("Location: index.php?error=The email isn't registered&$email");
+            header("Location: index.php?error=L'email non è registrata&$email");
             exit();
         } else {
             $sql2 = "UPDATE `accesso` SET `password` = '$passmodificata' WHERE `accesso`.`email` = '$email';";
@@ -62,7 +62,7 @@ if (isset($_POST['email_pswdimenticata'])) {
                     echo "Email sending failed.";
                 }
             } else {
-                header("Location: index.php?error=unknown error occurred");
+                header("Location: index.php?error=Si è verificato un errore sconosciuto");
                 exit();
             }
         }

@@ -30,13 +30,13 @@ if (isset($_POST['nuovo_username']) && isset($_POST['nuovo_email']) && isset($_P
     $user_data = 'username='. $uname. '&email='. $email;
 
     if (empty($uname)) {
-        header("Location: index.php?error=User Name is required&$user_data");
+        header("Location: index.php?error=User Name è richiesto&$user_data");
         exit();
     } else if (empty($pass)) {
-        header("Location: index.php?error=Password is required&$user_data");
+        header("Location: index.php?error=Password è richiesta&$user_data");
         exit();
     } else if (empty($email)) {
-        header("Location: index.php?error=Email is required&$user_data");
+        header("Location: index.php?error=Email è richiestad&$user_data");
         exit();
     } else {
         $pass = md5($pass);
@@ -49,10 +49,10 @@ if (isset($_POST['nuovo_username']) && isset($_POST['nuovo_email']) && isset($_P
         $result2 = mysqli_query($conn, $sql2);
 
         if (mysqli_num_rows($result) > 0) {
-            header("Location: index.php?error=The username is taken try another&$user_data");
+            header("Location: index.php?error=Lo username è già in uso, provane un altro&$user_data");
             exit();
         } else if (mysqli_num_rows($result2) > 0) {
-            header("Location: index.php?error=The email is taken try another&$user_data");
+            header("Location: index.php?error=L'email è già in uso, provane un altro&$user_data");
             exit();
         } else {
 
@@ -62,7 +62,7 @@ if (isset($_POST['nuovo_username']) && isset($_POST['nuovo_email']) && isset($_P
                 header("Location: home.php");
                 exit();
             } else {
-                header("Location: index.php?error=unknown error occurred&$user_data");
+                header("Location: index.php?Si è verificato un errore sconosciuto&$user_data");
                 exit();
             }
         }

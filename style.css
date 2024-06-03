@@ -219,32 +219,6 @@ header{
 }
 
 
-
-/*parte restante del sito*/
-
-
-table, th, td {
-  border-collapse: collapse;
-  padding: 5px;
-}
-
-table{
-  align-self: center;
-  width: 100%;
-  height: 100vh; 
-  margin-top: 2.5em;
-}
-
-td {
-  width: 5%; /* larghezza standard */
-  height: 11.11%; /* altezza standard */
-}
-td[colspan="10"] {
-  width: 50%; /* 50px * 5 */
-}
-
-
-
 /*carte, proporzione tra altezza e larghezza 1.386*/
 
 .conteinercard{
@@ -559,6 +533,8 @@ p{
   box-shadow: none;
   font-size: 22px;
 }
+
+
 
 /*Impostazioni*/
 

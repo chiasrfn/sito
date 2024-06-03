@@ -134,8 +134,15 @@ if (!isset($_SESSION['nome_utente'])) {
   </div>
 
   <div class="overlayaltri" id="overlayg"></div>
+
+
+  <!--Messaggio di errore-->
+  <div id="errormodal" class="modal error">
+    <div class="title errore">Errore: <span id="messaggioerrore"></span></div>
+  </div>
+
+
   <div class="container">
-    <!--Gioca-->
     <div class="left-side">
       <div class="cur">
         <h1 id="titolocur">Curiosità</h1>

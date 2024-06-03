@@ -10,23 +10,27 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script></script>
       </head>
 <body>
-    <form action="cambiomail.php" method="post" id="registratimodal" class="modal login registrati">
-        <div class="modal-header">
-          <h1 id="titleLogin">Reset Password</h1>
-        </div>
-        <div class="modal-input">
-          <input type="text" placeholder="Email" name="nuovo_email" required>
-          <i class="bi bi-envelope-fill"></i>
-        </div>
-        <div class="modal-input">
-          <input type="password" placeholder="Password Temporanea" name="password_temporanea" required>
-          <i class="bi bi-lock-fill"></i>
-        </div>
-        <div class="modal-input">
-            <input type="password" placeholder="Password Nuova" name="nuovo_psw" required>
+  <div class="container">
+    <div class="containerform">
+      <form action="cambiomail.php" method="post" id="registratimodal" class="modal login registrati">
+          <div class="modal-header">
+            <h1 id="titleLogin">Reset Password</h1>
+          </div>
+          <div class="modal-input">
+            <input type="text" placeholder="Email" name="nuovo_email" required>
+            <i class="bi bi-envelope-fill"></i>
+          </div>
+          <div class="modal-input">
+            <input type="password" placeholder="Password Temporanea" name="password_temporanea" required>
             <i class="bi bi-lock-fill"></i>
           </div>
-        <button type="submit" class="modal-btn registrati" id="buttonregistrati invia">Modifica</button>
-    </form>
+          <div class="modal-input">
+              <input type="password" placeholder="Password Nuova" name="nuovo_psw" required>
+              <i class="bi bi-lock-fill"></i>
+            </div>
+          <button type="submit" class="modal-btn registrati" id="buttonregistrati invia">Modifica</button>
+      </form>
+    </div>
+  </div>
 </body>
 </html>

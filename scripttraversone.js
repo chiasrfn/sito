@@ -1037,10 +1037,12 @@ function aggiornaPunteggio() {
 let numpartite
 
 function calcoloFinalePunti(){
-  if(primoGioca){//utente
-
+  if(primoGioca){//utente utltimo a prendere
+    ncpu=Math.trunc(puntiCPU)
+    puntiUtente=puntiUtente+ puntiCPU-ncpu +1/3
   }else{ //cpu
-
+    nute=Math.trunc(puntiUtente)
+    puntiCPU=puntiCPU+ puntiUtente-nute + 1/3
   }
 }
 
@@ -1054,13 +1056,28 @@ function vittoria(){
   preparazioneNuovoGioco();
   if(numpartite==1){
     vittoriaAux('Gioca le restanti due partite')
+    if(puntiCPU<1){
+      puntiCPU=puntiCPU+21
+      puntiUtente=puntiUtente-21
+    }else if(puntiUtente<1){
+      puntiUtente=puntiUtente+21
+      puntiCPU=puntiCPU-21
+    }
   }else if(numpartite==2){
     vittoriaAux('Gioca la restante partita')
+    if(puntiCPU<1){
+      puntiCPU=puntiCPU+21
+      puntiUtente=puntiUtente-21
+    }else if(puntiUtente<1){
+      puntiUtente=puntiUtente+21
+      puntiCPU=puntiCPU-21
   }else if(puntiCPU<1){
     puntiCPU=puntiCPU+21
+    puntiUtente=puntiUtente-21
     vittoriaAux('Cappotto')
   }else if(puntiUtente<1){
     puntiUtente=puntiUtente+21
+    puntiCPU=puntiCPU-21
     vittoriaAux('Cappotto')
   }else if(puntiCPU<puntiUtente){
     vittoriaAux('Sconfitta');
@@ -1070,6 +1087,7 @@ function vittoria(){
     vittoriaAux('Vittoria');
   }
   aggiornaPunteggio();
+  }
 }
 
 function vittoriaAux(frase){
