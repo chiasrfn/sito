@@ -153,7 +153,7 @@ if (!isset($_SESSION['nome_utente'])) {
           </div>
           <div class="back">
             <h2>Briscola</h2>
-            <p style="padding: 5px;">Il gioco perfetto per chi vuole sentirsi un fallito</p>
+            <p class="testocarte">Il gioco perfetto per chi vuole sentirsi un fallito</p>
             <a href="briscola.php" class="linkgioca">Gioca</a>
           </div>
         </div>
@@ -168,7 +168,7 @@ if (!isset($_SESSION['nome_utente'])) {
           </div>
           <div class="back">
             <h2>Traversone</h2>
-            <p>DESCRIZIONE</p>
+            <p class="testocarte">DESCRIZIONE</p>
             <a href="traversone.php" class="linkgioca">Gioca</a>
           </div>
         </div>
