@@ -202,22 +202,22 @@ async function turnoCPUGioca(m,cG) {
         s.push(i)
       }
     }
-    if(minimo3(s.length, d.length, c.length)== s.length){
+    if(s.length>0 && minimo3(s.length, d.length, c.length)== s.length){
       //scegliamo spade
       sceltaPuntiCPU(s,m)
-      console.log("s")
-    }else if(minimo3(s.length, d.length, c.length)== d.length){
+      console.log("s", s.length)
+    }else if(d.length>0 && minimo3(s.length, d.length, c.length)== d.length){
       //scegliamo denari
       sceltaPuntiCPU(d,m)
-      console.log("d")
-    }else if(minimo3(s.length, d.length, c.length)== c.length){
+      console.log("d", d.length)
+    }else if(c.length>0 && minimo3(s.length, d.length, c.length)== c.length){
       //scegliamo coppe
       sceltaPuntiCPU(c,m)
-      console.log("c")
+      console.log("c", c.length)
     }else{
       //come ultima scelta scegliamo i bastoni
       sceltaPuntiCPU(b,m)
-      console.log("b")
+      console.log("b", b.length)
     }
 
   }else{ //gioca in risposta all'utente
@@ -615,6 +615,7 @@ async function preseFinali(cGU,cGC,pG) {
     attesa2 = false
   }
   else { //prende la cpu
+    console.log("preso Cpu")
     puntiCPU = puntiCPU + conversionePunti(cartaGiocataCPU) + conversionePunti(cartaGiocataUtente);
     manoCPU[numeroCartaGiocataCPU]=pescaVuoto();
     manoGiocatore[numeroCartaGiocataUtente]=pescaVuoto();
@@ -793,6 +794,12 @@ function preparazioneNuovoGioco(){
   for(let i=1; i<=10; i++){
     contc=document.getElementById('conteinercardcpu'+i);
     retro(contc);
+  }
+
+  if(numpartite==3){
+    numpartite=0;
+    puntiCPU=0;
+    puntiUtente=0;
   }
 }
 
@@ -1002,8 +1009,8 @@ function aggiornaPunteggio() {
 let numpartite
 
 function vittoria(){
-  preparazioneNuovoGioco();
   numpartite= numpartite+1;
+  preparazioneNuovoGioco();
   if(numpartite==1){
     vittoriaAux('Gioca le restanti due partite')
   }else if(numpartite==2){
