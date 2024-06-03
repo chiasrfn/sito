@@ -11,18 +11,6 @@ if (isset($_POST['nuovo_username']) && isset($_POST['nuovo_email']) && isset($_P
         return $data;
     }
 
-    function generatePassword($length = 50) {
-        $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        $charactersLength = strlen($characters);
-        $randomPassword = '';
-
-        for ($i = 0; $i < $length; $i++) {
-            $randomPassword .= $characters[rand(0, $charactersLength - 1)];
-        }
-
-        return $randomPassword;
-    }
-
     $uname = validate($_POST['nuovo_username']);
     $pass = validate($_POST['nuovo_password']);
     $email = validate($_POST['nuovo_email']);
@@ -40,7 +28,6 @@ if (isset($_POST['nuovo_username']) && isset($_POST['nuovo_email']) && isset($_P
         exit();
     } else {
         $pass = md5($pass);
-        $biscotto = generatePassword();
 
         $sql = "SELECT * FROM accesso WHERE nome_utente='$uname'";
         $result = mysqli_query($conn, $sql);
@@ -55,8 +42,7 @@ if (isset($_POST['nuovo_username']) && isset($_POST['nuovo_email']) && isset($_P
             header("Location: index.php?error=The email is taken try another&$user_data");
             exit();
         } else {
-
-            $sql3 = "INSERT INTO accesso(nome_utente, password, email, biscotto) VALUES('$uname', '$pass', '$email', '$biscotto')";
+            $sql3 = "INSERT INTO accesso(nome_utente, password, email) VALUES('$uname', '$pass', '$email')";
             $result3 = mysqli_query($conn, $sql3);
             if ($result3) {
                 header("Location: home.php");
