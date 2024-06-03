@@ -1,9 +1,10 @@
 <?php 
 session_start();
 
-if (isset($_SESSION['nome_utente'])) {
+if (!isset($_SESSION['nome_utente'])) {
 
  ?>
+
 
 <!DOCTYPE html>
 <html lang="it">
@@ -23,7 +24,7 @@ if (isset($_SESSION['nome_utente'])) {
     </a>
     <div class="button-container">
       <button class="bheader gioca" id="gioca">Gioca</button>
-      <button action="logout.php" class="bheader login">Logout</button>
+      <button data-modal-target=#loginmodal class="bheader login">Login</button>
       <button class="bheader storico" id="storico">Storico</button>
       <div class="dropdown-content" id="dropdownMenu">
         <a>Titolo</a>
@@ -37,6 +38,78 @@ if (isset($_SESSION['nome_utente'])) {
   </header>
 
   <div class="overlayaltri" id="overlays"></div>
+
+  <!--parte di codice dedicata al modal-->
+  <div id="overlay"></div>
+  <!--login-->
+  <form action="login.php" method="post" id="loginmodal" class="modal login">
+    <div class="modal-header">
+      <h1 id="titleLogin">Login</h1>
+      <button data-close-button class="close-button" id="close-button-login">&times;</button>
+    </div>
+    <div class="modal-input">
+      <input type="text" placeholder="Nome Utente" name="username" required>
+      <i class="bi bi-person-fill"></i>
+    </div>
+    <div class="modal-input">
+      <input type="password" placeholder="Password" name="password" required>
+      <i class="bi bi-lock-fill"></i>
+    </div>
+    <div class="modal-remember">
+      <label>
+        <input type="checkbox" id="remember">Ricordami</input>
+      </label>
+      <button data-modal-target=#forgotmodal class="button login">Hai dimenticato la password?</button>
+    </div>
+
+    <button type="submit" class="modal-btn">Login</button>
+
+    <div class="modal-register">
+      <p>Non hai un account?
+        <button data-modal-target=#registratimodal class="button login" id="buttonregistrati">Registrati</button>
+      </p>
+    </div>
+  </form>
+
+  <!--login forgot-->
+  <div id="forgotmodal" class="modal login forgot">
+    <div class="modal-header">
+      <h1 id="titlePassword">Password</br>dimenticata?</h1>
+      <button data-close-button class="close-button" id="close-button-login">&times;</button>
+    </div>
+    <p style="text-align: center;">Inserisci la tua email, dopo</br> averla inviata controlla <br> la tua casella postale</p>
+    <div class="modal-input" id="myForm">
+      <input type="text" id="email" placeholder="Email" required>
+      <i class="bi bi-envelope-fill"></i>
+      <span id="emailError" style="color: red; display: none;">Perfavore metti una email valida</span>
+    </div>
+    <button class="modal-btn inviaemail" id="inviaemail">Invia</button>
+  </div>
+
+
+  <!--login registrati-->
+  <div id="registratimodal" class="modal login registrati">
+    <div class="modal-header">
+      <h1 id="titleLogin">Registrati</h1>
+      <button data-close-button class="close-button" id="close-button-login">&times;</button>
+    </div>
+    <div class="modal-input">
+      <input type="text" placeholder="Nome Utente" required>
+      <i class="bi bi-person-fill"></i>
+    </div>
+    <div class="modal-input">
+      <input type="text" placeholder="Email" required>
+      <i class="bi bi-envelope-fill"></i>
+    </div>
+    <div class="modal-input">
+      <input type="password" placeholder="Password" required>
+      <i class="bi bi-lock-fill"></i>
+    </div>
+    <button class="modal-btn registrati" id="buttonregistrati invia">Registrati</button>
+
+  </div>
+  
+  
 
   <!--gear-->
   <div id="gearmodal" class="modal gear">
@@ -105,7 +178,7 @@ if (isset($_SESSION['nome_utente'])) {
 
 <?php 
 }else{
-     header("Location: index.php");
+     header("Location: home.php");
      exit();
 }
  ?>
