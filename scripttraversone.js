@@ -148,38 +148,76 @@ function sceltaPuntiCPU(array,m){
   }
 }
 
+let nturno=0;
+
+let b
+let d
+let c
+let s
+
+//funzione minimo che non conta zero come minimo
+function minimo3(l1, l2, l3){
+  n=Math.min(l1, l2, l3)
+  if(n!=0){
+    return n;
+  }else{
+    if(l1==0){
+      if(l2==0){
+        return l3
+      }else if(l3==0){
+        return l2
+      }else{
+        return l3<l2?l3:l2
+      }
+    }else if(l2==0){
+      if(l3==0){
+        return l1
+      }else{
+        return l3<l1?l3:l1
+      }
+    }else{
+      return l1<l2?l1:l2
+    }
+  }
+}
+
 // Funzione per il turno della CPU
 async function turnoCPUGioca(m,cG) {
+  nturno+=1;
+  console.log("#turno", nturno);
   if(!primoGioca){ //primo a giocare
     //scegliamo il seme con meno carte
-    const b=[] //bastoni
-    const d=[] //denari
-    const c=[] //coppe
-    const s=[] //spade
-    const n=m.length
-    for(let i=0; i<n; i++){
+    b=[] //bastoni
+    d=[] //denari
+    c=[] //coppe
+    s=[] //spade
+    for(let i=0; i<10; i++){
       if(m[i].seme=='Bastoni'){
         b.push(i)
       }else if(m[i].seme=='Denari'){
         d.push(i)
       }else if(m[i].seme=='Coppe'){
         c.push(i)
-      }else{
+      }else if(m[i].seme=='Spade'){
         s.push(i)
       }
     }
-    if(s.length>0 && Math.min(s.length, d.length, c.length)== s.length){
+    if(s.length>0 && minimo3(s.length, d.length, c.length)== s.length){
       //scegliamo spade
       sceltaPuntiCPU(s,m)
-    }else if(d.length>0 && Math.min(s.length, d.length, c.length)== d.length){
+      console.log("s", s.length)
+    }else if(d.length>0 && minimo3(s.length, d.length, c.length)== d.length){
       //scegliamo denari
       sceltaPuntiCPU(d,m)
-    }else if(c.length>0 && Math.min(s.length, d.length, c.length)== c.length){
+      console.log("d", d.length)
+    }else if(c.length>0 && minimo3(s.length, d.length, c.length)== c.length){
       //scegliamo coppe
       sceltaPuntiCPU(c,m)
+      console.log("c", c.length)
     }else{
       //come ultima scelta scegliamo i bastoni
       sceltaPuntiCPU(b,m)
+      console.log("b", b.length)
     }
 
   }else{ //gioca in risposta all'utente
@@ -378,14 +416,14 @@ let primoGioca //true utente
 
 
 
-let puntiCPU = 0
-let puntiUtente = 0
+let puntiCPU
+let puntiUtente
 let attesa
 
 async function turno(pG) {
   attesa2 = true
   attesa = true
-  if (primoGioca) {
+  if (pG) {
     turnoUtenteGioca()
     while (attesa) {
       await sleep(500)
@@ -405,15 +443,14 @@ async function turno(pG) {
     await sleep(500)
   }
   presa(cartaGiocataUtente,cartaGiocataCPU,primoGioca)
-  console.log(numeroCartaGiocataUtente)
 }
 
 
 
-async function turniFinali(primoGioca) {
+async function turniFinali(pG) {
   attesa2 = true
   attesa = true
-  if (primoGioca) {
+  if (pG) {
     turnoUtenteGioca()
     while (attesa) {
       await sleep(500)
@@ -432,7 +469,7 @@ async function turniFinali(primoGioca) {
   while (attesa) {
     await sleep(500)
   }
-  preseFinali(cartaGiocataUtente,cartaGiocataCPU,primoGioca)
+  preseFinali(cartaGiocataUtente,cartaGiocataCPU,pG)
 }
 
 
@@ -485,15 +522,15 @@ function chiPrende(cGU,cGC,pG){
 function conversionePunti_aux(cV) {
   const val = {
     'Asso': 1,
-    'Due': 0.3,
-    'Tre': 0.3,
+    'Due': 1/3,
+    'Tre': 1/3,
     'Quattro': 0,
     'Cinque': 0,
     'Sei': 0,
     'Sette': 0,
-    'Fante': 0.3,
-    'Cavallo': 0.3,
-    'Re': 0.3
+    'Fante': 1/3,
+    'Cavallo': 1/3,
+    'Re': 1/3
   };
   return val[cV];
 }
@@ -525,7 +562,6 @@ async function presa(cGU,cGC,pG) {
     caricaCarte()
     comparizioneCarte()
     aggiornaPunteggio()
-    aggiornaCarte()
     attesa2 = false
   }
   else {
@@ -537,7 +573,6 @@ async function presa(cGU,cGC,pG) {
     caricaCarte()
     comparizioneCarte()
     aggiornaPunteggio()
-    aggiornaCarte()
     attesa2 = false
   }
 }
@@ -551,16 +586,14 @@ function comparizioneCarteUltime() {
     }
   })
 
-
-  contc=document.getElementById('conteinercardutente'+numeroCartaGiocataUtente);
-  if(contc!=undefined){
-    contc.style.pointerEvents = "none";
-    contc.style.cursor = "default";
-  }
+  n=numeroCartaGiocataUtente+1;
+  contc=document.getElementById('conteinercardutente'+n);
+  contc.style.pointerEvents = "none";
+  contc.style.cursor = "default";
 }
 
 
-async function preseFinali(cGU,cGC,cB,pG) {
+async function preseFinali(cGU,cGC,pG) {
   while (attesa) {
     await sleep(400)
   }
@@ -570,25 +603,26 @@ async function preseFinali(cGU,cGC,cB,pG) {
   else {
     await sleep(700)
   }
-  animazionepresa(chiPrende(cGU,cGC,cB,pG))
-  if (chiPrende(cGU,cGC,cB,pG) == 1) {
+  animazionepresa(chiPrende(cGU,cGC,pG))
+  if (chiPrende(cGU,cGC,pG) == 1) { //prende l'utente
     puntiUtente = puntiUtente + conversionePunti(cartaGiocataUtente) + conversionePunti(cartaGiocataCPU);
-    manoCPU[numeroCartaGiocataCPU]=pescaVuoto();
+    manoGiocatore[numeroCartaGiocataUtente]=pescaVuoto();
+    manoCPU[numeroCartaGiocataCPU]=pescaVuoto()
     primoGioca = true
     await sleep(1200)
     comparizioneCarteUltime()
     aggiornaPunteggio()
-    aggiornaCarte()
     attesa2 = false
   }
-  else {
+  else { //prende la cpu
+    console.log("preso Cpu")
     puntiCPU = puntiCPU + conversionePunti(cartaGiocataCPU) + conversionePunti(cartaGiocataUtente);
     manoCPU[numeroCartaGiocataCPU]=pescaVuoto();
+    manoGiocatore[numeroCartaGiocataUtente]=pescaVuoto();
     primoGioca = false
     await sleep(1200)
     comparizioneCarteUltime()
     aggiornaPunteggio()
-    aggiornaCarte()
     attesa2 = false
   }
 }
@@ -744,7 +778,10 @@ const backgiocatau=document.getElementById("backcardutentegiocata")
 const backgiocatac=document.getElementById("backcardcpugiocata")
 
 // Preparazione delle carte al caricamento della pagina
-window.onload = function() {
+window.onload = async function() {
+  puntiCPU=0;
+  puntiUtente=0;
+  numpartite=0;
   scompare(contgiocatac);
   scompare(contgiocatau);
   preparazioneNuovoGioco();
@@ -753,13 +790,22 @@ window.onload = function() {
 function preparazioneNuovoGioco(){
   appare(buttongioca);
   appare(buttongioca2);
+
+  for(let i=1; i<=10; i++){
+    contc=document.getElementById('conteinercardcpu'+i);
+    retro(contc);
+  }
+
+  if(numpartite==3){
+    numpartite=0;
+    puntiCPU=0;
+    puntiUtente=0;
+  }
 }
 
 buttongioca.addEventListener('click', ()=>{
   scompare(buttongioca);
   scompare(buttongioca2);
-  puntiCPU=0
-  puntiUtente=0
   aggiornaPunteggio()
   conteinercard.forEach(card=>{
     if(card.classList.contains('utente')){
@@ -775,7 +821,30 @@ buttongioca.addEventListener('click', ()=>{
   mazzoDiCarte = creaMazzo();
   mazzoDiCarte = mescolaMazzo(mazzoDiCarte);
   distribuisciCarte(); // Distribuisce le carte ai giocatori
-  aggiornaCarte();
+  console.log("Mano del giocatore:", manoGiocatore);
+  console.log("Mano del CPU:", manoCPU);
+  caricaCarte();
+  turni(turnoUtente);
+})
+
+buttongioca2.addEventListener('click', ()=>{
+  scompare(buttongioca);
+  scompare(buttongioca2);
+  aggiornaPunteggio()
+  conteinercard.forEach(card=>{
+    if(card.classList.contains('utente')){
+      card.style.pointerEvents = "auto";
+      card.style.cursor = "pointer";
+      retro(card);
+      fronte(card);
+    }
+  })
+  turnoUtente = Math.random() < 0.5;
+  scompare(contgiocatac);
+  scompare(contgiocatau);
+  mazzoDiCarte = creaMazzo();
+  mazzoDiCarte = mescolaMazzo(mazzoDiCarte);
+  distribuisciCarte(); // Distribuisce le carte ai giocatori
   console.log("Mano del giocatore:", manoGiocatore);
   console.log("Mano del CPU:", manoCPU);
   caricaCarte();
@@ -825,28 +894,28 @@ let mazzocarteseme=[];
 /*controlliamo che esista il semegiocato in un mazzo*/
 function controlloSeme(mazzo, n){
   esistecartastessoseme=false;
+  mazzocarteseme=[];
   if(n==0){
     for(let i=0; i<10; i++){
       if(isStessoSeme(mazzo[i], cartaGiocataUtente)){
         esistecartastessoseme=true;
-        if(primoGioca){
-          mazzocarteseme.push(i); //mi segno le carte che hanno lo stesso seme per il CPU
-        }
-        
+
+        mazzocarteseme.push(i); //mi segno le carte che hanno lo stesso seme per il CPU
+    
       }
     }
   }else if(n==1){
     for(let i=0; i<10; i++){
       if(isStessoSeme(mazzo[i], cartaGiocataCPU)){
         esistecartastessoseme=true;
-        if(primoGioca){
-          mazzocarteseme.push(i); //mi segno le carte che hanno lo stesso seme per il CPU
-        }
-        
       }
     }
   }
 }
+
+$('#messaggiomess').click(()=>{
+  $('#messaggiomess').removeClass('active')
+})
 
 /*rendo le carte utente cliccabili e le metto sul tavolo*/
 
@@ -863,12 +932,13 @@ conteinercardu.forEach(card=>{
     if(card==null) return
     if(ngiocateU!=1) return
     if(!primoGioca){
-      const n= card.id.slice(-1)-1
+      const n= parseInt(card.id.match(/(\d+)$/))-1
       if(!cliccabili(manoGiocatore, cartaGiocataCPU, n)){
-        
+        $('#messaggiomess').addClass('active')
         return;
       }
     }
+    $('#messaggiomess').removeClass('active')
     const backcardutente=card.querySelector('.back');
     
     const stile = backcardutente.style.backgroundImage;
@@ -877,7 +947,7 @@ conteinercardu.forEach(card=>{
     retro(card);
     scompare(card);
     ngiocateU=ngiocateU-1;
-    numeroCartaGiocataUtente=parseInt(card.id.charAt(card.id.length-1))-1;
+    numeroCartaGiocataUtente=parseInt(card.id.match(/(\d+)$/))-1;
     cartaGiocataUtente=manoGiocatore[numeroCartaGiocataUtente]
     attesa = false
 
@@ -920,29 +990,45 @@ async function animazionepresa(i){
   }
 }
 
+function arrotondaADecimale(num, decimale) {
+  var fattore = Math.pow(10, decimale);
+  return Math.round(num * fattore) / fattore;
+}
+
 function aggiornaPunteggio() {
+  var puntiCPUArrotondati = arrotondaADecimale(puntiCPU, 1);
+  var puntiUtenteArrotondati = arrotondaADecimale(puntiUtente, 1);
 
-  $('#valorepunteggiocpu').text(puntiCPU);
-  $('#valorepunteggioutente').text(puntiUtente);
+  $('#valorepunteggiocpu').text(puntiCPUArrotondati.toFixed(1));
+  $('#valorepunteggioutente').text(puntiUtenteArrotondati.toFixed(1));
 }
 
-function aggiornaCarte(){
-  $('#ncarteval').text(mazzo.length);
-}
 
 /*vittoria*/
 
+let numpartite
+
 function vittoria(){
+  numpartite= numpartite+1;
   preparazioneNuovoGioco();
-  if(puntiCPU>60){
+  if(numpartite==1){
+    vittoriaAux('Gioca le restanti due partite')
+  }else if(numpartite==2){
+    vittoriaAux('Gioca la restante partita')
+  }else if(puntiCPU<1){
+    puntiCPU=puntiCPU+21
+    vittoriaAux('Cappotto')
+  }else if(puntiUtente<1){
+    puntiUtente=puntiUtente+21
+    vittoriaAux('Cappotto')
+  }else if(puntiCPU<puntiUtente){
     vittoriaAux('Sconfitta');
-  }else if(puntiCPU==60 && puntiUtente==puntiCPU){
+  }else if(puntiUtente==puntiCPU){
     vittoriaAux('Pareggio');
-  }else if(puntiUtente>60){
-    vittoriaAux('Vittoria');
   }else{
-    return;
+    vittoriaAux('Vittoria');
   }
+  aggiornaPunteggio();
 }
 
 function vittoriaAux(frase){

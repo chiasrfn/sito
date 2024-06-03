@@ -303,21 +303,25 @@
         </div>
       </div>
 
-      <div class="space top"></div>
+      <div class="space messaggio" id="spacemess"></div>
+      <div class="messaggiomess" id="messaggiomess">
+        <h1 id="textmessaggiomess">Seleziona carte con lo stesso seme di quella giocata</h1>
+      </div>
+  
     </div>
 
     <div class="right-side">
       <div class="regole">
         <h1>Regole Traversone</h1>
         <p>
-            Il traversone si gioca con un mazzo da 40 carte italiane e da 2 a 8 giocatori. 
-            Ogni giocatore ha un punteggio individuale e si risponde sempre al seme della 
-            prima carta giocata. Le carte hanno un ordine gerarchico e valori simili al tressette. 
-            L'asso di bastoni o di fiori è l'eccezione, valendo 11 punti. Si stabilisce un limite 
-            di punteggio o di smazzate, e l'obiettivo è ottenere il punteggio minore. Dopo ogni 
-            smazzata, i giocatori contano i punti. Se il giocatore che ha preso l'ultima mano 
-            totalizza 21 punti, può "sola" e rimuoverli dal suo punteggio o distribuirli agli altri. 
-            È vietato contare le prese, tranne nella prima mano.
+          L'obiettivo del gioco è evitare di prendere prese. Si utilizza un mazzo di carte italiane da 40 carte, con quattro semi (coppe, denari, spade e bastoni), con carte dall'Asso al 7 e tre figure (Fante, Cavallo e Re) per ogni seme. 
+          In questo sito è presente la variante a due giocatori, ma è possibile giocare fino a 4 giocatori. Il giocatore che prende più prese contenenti carte di valore, perde. 
+          Le carte vengono mescolate e distribuite tutte ai giocatori, in modo che ogni giocatore abbia 10 carte. Il primo gioca una carta e l'altro giocatore risponde con una carta 
+          dello stesso se la possiede. Se no, si può giocare qualsiasi altra carta. La presa viene vinta dal giocatore che ha giocato la carta di valore più alto del seme iniziale. 
+          Il vincitore della presa raccoglie le carte e inizia il turno successivo.
+          L'ordine di presa è il seguente (3, Due, Asso, Re, Cavallo Fante, 7, 6, 5, 4). 
+          Inoltre se si fa meno di un punto si subisce il Cappotto: verranno atribuiti 21 punti a chi non ha raggiunto neanche un punto durante la partita e si l'avversario avrà 0 punti.
+          All'ultimo che prende verranno assegnati i punti non interi dell'altro giocatore.
         </p>
         <h2>Punti</h2>
         <div class="punti">

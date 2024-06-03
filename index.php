@@ -1,17 +1,9 @@
 <?php 
 session_start();
 
-if (isset($_COOKIE['remember']) && !isset($_SESSION['nome_utente'])){
-  header("Location: biscotto.php");
-  exit();
-}
-
-
-
 if (!isset($_SESSION['nome_utente'])) {
 
  ?>
-
 
 
 <!DOCTYPE html>
@@ -65,7 +57,7 @@ if (!isset($_SESSION['nome_utente'])) {
     </div>
     <div class="modal-remember">
       <label>
-        <input type="checkbox" name="remember" id="remember">Ricordami</input>
+        <input type="checkbox" id="remember">Ricordami</input>
       </label>
       <button data-modal-target=#forgotmodal class="button login">Hai dimenticato la password?</button>
     </div>
@@ -80,19 +72,19 @@ if (!isset($_SESSION['nome_utente'])) {
   </form>
 
   <!--login forgot-->
-  <form method="post" action="password-temp.php" id="forgotmodal" class="modal login forgot">
+  <div id="forgotmodal" class="modal login forgot">
     <div class="modal-header">
       <h1 id="titlePassword">Password</br>dimenticata?</h1>
       <button data-close-button class="close-button" id="close-button-login">&times;</button>
     </div>
     <p style="text-align: center;">Inserisci la tua email, dopo</br> averla inviata controlla <br> la tua casella postale</p>
     <div class="modal-input" id="myForm">
-      <input type="text" name="email_pswdimenticata" id="email" placeholder="Email" required>
+      <input type="text" id="email" placeholder="Email" required>
       <i class="bi bi-envelope-fill"></i>
-      <span id="emailError" style="color: red; display: none;">Perfavore inserisci una email valida</span>
+      <span id="emailError" style="color: red; display: none;">Perfavore metti una email valida</span>
     </div>
-    <button type="submit" class="modal-btn inviaemail" id="inviaemail">Invia</button>
-</form>
+    <button class="modal-btn inviaemail" id="inviaemail">Invia</button>
+  </div>
 
 
   <!--login registrati-->
@@ -153,7 +145,7 @@ if (!isset($_SESSION['nome_utente'])) {
           </div>
           <div class="back">
             <h2>Briscola</h2>
-            <p style="padding: 5px;">Il gioco perfetto per chi vuole sentirsi un fallito</p>
+            <p class="testocarte">Il gioco perfetto per chi vuole sentirsi un fallito</p>
             <a href="briscola.php" class="linkgioca">Gioca</a>
           </div>
         </div>
@@ -168,7 +160,7 @@ if (!isset($_SESSION['nome_utente'])) {
           </div>
           <div class="back">
             <h2>Traversone</h2>
-            <p>DESCRIZIONE</p>
+            <p class="testocarte">DESCRIZIONE</p>
             <a href="traversone.php" class="linkgioca">Gioca</a>
           </div>
         </div>
