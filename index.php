@@ -88,26 +88,25 @@ if (!isset($_SESSION['nome_utente'])) {
 
 
   <!--login registrati-->
-  <div id="registratimodal" class="modal login registrati">
+  <form action="signup-check.php" method="post" id="registratimodal" class="modal login registrati">
     <div class="modal-header">
       <h1 id="titleLogin">Registrati</h1>
       <button data-close-button class="close-button" id="close-button-login">&times;</button>
     </div>
     <div class="modal-input">
-      <input type="text" placeholder="Nome Utente" required>
+      <input type="text" placeholder="Nome Utente" name="nuovo_username" required>
       <i class="bi bi-person-fill"></i>
     </div>
     <div class="modal-input">
-      <input type="text" placeholder="Email" required>
+      <input type="text" placeholder="Email" name="nuovo_email" required>
       <i class="bi bi-envelope-fill"></i>
     </div>
     <div class="modal-input">
-      <input type="password" placeholder="Password" required>
+      <input type="password" placeholder="Password" name="nuovo_password" required>
       <i class="bi bi-lock-fill"></i>
     </div>
-    <button class="modal-btn registrati" id="buttonregistrati invia">Registrati</button>
-
-  </div>
+    <button type="submit" class="modal-btn registrati" id="buttonregistrati invia">Registrati</button>
+  </form>
   
   
 
