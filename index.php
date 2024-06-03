@@ -1,13 +1,6 @@
 <?php 
 session_start();
 
-if (isset($_COOKIE['remember']) && !isset($_SESSION['nome_utente'])){
-  header("Location: biscotto.php");
-  exit();
-}
-
-
-
 if (!isset($_SESSION['nome_utente'])) {
 
  ?>
