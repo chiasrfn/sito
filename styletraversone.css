@@ -326,7 +326,7 @@
     overflow:  hidden;
     box-sizing: border-box;
     gap: 1em;
-    background-image: url(./Immagini/sfondo4.jpg);
+    background-image: url(./Immagini/sfondo5.jpg);
     background-position: center;
     background-size: cover;
     text-align: center;
@@ -372,33 +372,6 @@
     align-self: center;
   }
 
-  .space.messaggio{
-    grid-column: span 10;
-  }
-
-
-  .messaggiomess{
-    grid-column: span 10;
-    background-color: rgb(255, 255, 255, 0.85);
-    text-align: center;
-    align-items: center;
-    border-radius: 1rem;
-    padding:  0.5em 0 0.5em 0;
-    margin-right: 5px;
-    color: var(--dark-green);
-    font-size: 30px;
-    text-decoration: solid;
-    display: none;
-    z-index: 2000;
-  }
-
-  .messaggiomess.active{
-    display: block;
-  }
-
-
-
-
 
 /*Carte*/
 
@@ -408,6 +381,7 @@
   width: 120px;
   perspective: 600px;
   position: relative;
+  margin-top: 10px;
   grid-column: span 1;
   align-self: center;
   align-items: center;
@@ -488,7 +462,6 @@
 
   /*testo*/
   .regole{
-    row-gap: 10px;
     align-items: left;
     text-align: left;
     height: auto;
@@ -527,10 +500,6 @@
   .valorepunteggio{
     text-decoration: bold;
   }
-
-  .punteggiotitle{
-    font-size:15;
-  }
   
   .item-punti{
     font-size: 18px;
@@ -547,7 +516,6 @@
 
   .punteggi{
     align-self: center;
-    align-items: center;
   }
   .punteggio{
     display: grid;
@@ -612,7 +580,6 @@
     color: var(--dark-green);
     align-self: center;
     align-items: center;
-    text-align: center;
   }
   
   #overlayv {
@@ -664,9 +631,6 @@
     margin-top: 50px;
   }
 
-  .messaggiomess{
-    margin-top: -6em;
-  }
   
 
 }
@@ -674,14 +638,14 @@
 @media all and (max-width: 945px) {
   .left-side {
     grid-template-columns: repeat(5, 1fr);
+    max-height: 170%;
     justify-items: center;
 
   }
 
-  .space.top, .space.messaggio, .messaggiomess{
+  .space.top{
     grid-column: span 5;
   }
-
 
   .spacepunteggio {
     display: none;
@@ -690,19 +654,11 @@
   .spacefine {
     grid-column: span 1;
   }
-
-  .messaggiomess{
-    margin-top: -12em;
-  }
 }
 
 @media all and (max-width:641px){
   .left-side{
     margin-left: 0;
-  }
-
-  .messaggiomess{
-    margin-left: 5px;
   }
 }
 
@@ -750,7 +706,9 @@
     place-items: center;
   }
   
-
+  .punteggio{
+    transform: translateX(60%);
+  }
 
 }
 
@@ -783,11 +741,6 @@
   .left-side{
     margin-left: 7%;
   }
-
-  .messaggiomess{
-    margin-right: 100px;
-    font-size: 25px;
-  }
 }
 
 @media all and (max-width:397px){
@@ -809,7 +762,9 @@
   }
 
   .button.gioca{
-    display: none;
+    width: 50px;
+    height: 20px;
+    font-size:15px;
   }
 
 }

@@ -1,3 +1,5 @@
+
+
 <?php 
 session_start();
 
@@ -14,7 +16,7 @@ if (isset($_SESSION['nome_utente'])) {
     <title>Giochi di carte</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script></script>
   </head>
 <body>
   <header>
@@ -23,7 +25,7 @@ if (isset($_SESSION['nome_utente'])) {
     </a>
     <div class="button-container">
       <button class="bheader gioca" id="gioca">Gioca</button>
-      <button action="logout.php" class="bheader login">Logout</button>
+      <a href="logout.php" class="bheader logout">Logout</a>
       <button class="bheader storico" id="storico">Storico</button>
       <div class="dropdown-content" id="dropdownMenu">
         <a>Titolo</a>
@@ -37,6 +39,9 @@ if (isset($_SESSION['nome_utente'])) {
   </header>
 
   <div class="overlayaltri" id="overlays"></div>
+
+  <!--parte di codice dedicata al modal-->
+  <div id="overlay"></div>
 
   <!--gear-->
   <div id="gearmodal" class="modal gear">
@@ -103,9 +108,11 @@ if (isset($_SESSION['nome_utente'])) {
 </body>
 </html>
 
+
 <?php 
 }else{
      header("Location: index.php");
      exit();
 }
  ?>
+

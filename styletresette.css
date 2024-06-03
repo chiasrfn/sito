@@ -353,6 +353,7 @@
     flex: 3;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
+    height: 100Vh;
     position: relative;
     margin-left: 5px;
 

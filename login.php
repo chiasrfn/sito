@@ -26,11 +26,11 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             header("Location: home.php");
             exit();
         }else{
-            header("Location: index.php?error=Incorect User name or password");
+            header("Location: index.php?error=Incorrect User name or password");
             exit();
         }
     }else{
-        header("Location: index.php?error=Incorect User name or password");
+        header("Location: index.php?error=Incorrect User name or password");
         exit();
     }
 	
