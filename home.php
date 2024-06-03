@@ -14,7 +14,7 @@ if (isset($_SESSION['nome_utente'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giochi di carte</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stylehome.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script></script>
   </head>
@@ -60,7 +60,13 @@ if (isset($_SESSION['nome_utente'])) {
 
   <div class="overlayaltri" id="overlayg"></div>
   <div class="container">
-    <!--Gioca-->
+    <div class="top-side">
+      <div class="benvenuto">
+        <h1 id="textbenvenuto">Benvenuto <?php echo $_SESSION['nome_utente'];?></h1>
+      </div>
+    </div>
+
+
     <div class="left-side">
       <div class="cur">
         <h1 id="titolocur">Curiosità</h1>
@@ -78,7 +84,7 @@ if (isset($_SESSION['nome_utente'])) {
           </div>
           <div class="back">
             <h2>Briscola</h2>
-            <p style="padding: 5px;">Il gioco perfetto per chi vuole sentirsi un fallito</p>
+            <p class="testocarte" >Il gioco perfetto per chi vuole sentirsi un fallito</p>
             <a href="briscola.php" class="linkgioca">Gioca</a>
           </div>
         </div>
@@ -93,7 +99,7 @@ if (isset($_SESSION['nome_utente'])) {
           </div>
           <div class="back">
             <h2>Traversone</h2>
-            <p>DESCRIZIONE</p>
+            <p class="testocarte">DESCRIZIONE</p>
             <a href="traversone.php" class="linkgioca">Gioca</a>
           </div>
         </div>

@@ -50,11 +50,20 @@ button {
   z-index: 1000;
 }
 
-.left-side {
+.top-side{
+  margin-top: 55px;
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.left-side {
+flex: 1;
+display: flex;
+align-items: center;
+justify-content: center;
+row-gap: 10px;
 }
 
 /*grid*/
@@ -165,6 +174,7 @@ header{
   transform: rotate(360deg);
 }
 
+
 /*Menu a tendina*/
 
 .dropdown-content {
@@ -217,32 +227,6 @@ header{
   pointer-events: all;
   display: block;
 }
-
-
-
-/*parte restante del sito*/
-
-
-table, th, td {
-  border-collapse: collapse;
-  padding: 5px;
-}
-
-table{
-  align-self: center;
-  width: 100%;
-  height: 100vh; 
-  margin-top: 2.5em;
-}
-
-td {
-  width: 5%; /* larghezza standard */
-  height: 11.11%; /* altezza standard */
-}
-td[colspan="10"] {
-  width: 50%; /* 50px * 5 */
-}
-
 
 
 /*carte, proporzione tra altezza e larghezza 1.386*/
@@ -341,18 +325,30 @@ td[colspan="10"] {
   letter-spacing: 0.1em;
 }*/
 
+/*Benvenuto*/
+
+#textbenvenuto{
+  font-size: 50px; 
+  color: var(--dark-green);
+  padding: 10px; 
+}
+
+
 /*Curiosità che cambiano*/
-.cur{
+.cur, .benvenuto{
   align-self: center;
-  height: auto;
-  width: auto;
-  margin: 1em 1em;
   text-align: left;
   background-color: rgb(255,255,255, 0.65);
-  padding: 0 1em 1em 1em;
   border-radius: 1rem;
-
 }
+
+.cur{
+  padding: 0 1em 1em 1em;
+  margin: 1em;
+}
+
+
+
 
 #titolocur{
   font-size: 60px; 
@@ -642,13 +638,18 @@ p{
     height: 100vh;
     background-position: center;
     background-size: cover;
-    flex-direction: column;
-    justify-content: space-between;
     overflow-x: none;
     overflow-y: scroll;
   }
-  .cur{
-    margin-top: 15%;
+  .top-side{
+    margin-top: 60px;
+  }
+}
+
+@media all and (max-width:450px){
+ 
+  .top-side{
+    margin-top: 70px;
   }
 }
 
@@ -658,12 +659,13 @@ p{
     width: 130px;
   }
 
-  .cur{
-    margin-top: 20%;
-  }
 
   .testocarte{
     font-size: 14px;
     padding: auto;
+  }
+
+  .top-side{
+    margin-top: 90px;
   }
 }
