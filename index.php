@@ -6,6 +6,7 @@ if (!isset($_SESSION['nome_utente'])) {
  ?>
 
 
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -57,7 +58,7 @@ if (!isset($_SESSION['nome_utente'])) {
     </div>
     <div class="modal-remember">
       <label>
-        <input type="checkbox" id="remember">Ricordami</input>
+        <input type="checkbox" name="remember" id="remember">Ricordami</input>
       </label>
       <button data-modal-target=#forgotmodal class="button login">Hai dimenticato la password?</button>
     </div>
@@ -72,19 +73,19 @@ if (!isset($_SESSION['nome_utente'])) {
   </form>
 
   <!--login forgot-->
-  <div id="forgotmodal" class="modal login forgot">
+  <form method="post" action="password-temp.php" id="forgotmodal" class="modal login forgot">
     <div class="modal-header">
       <h1 id="titlePassword">Password</br>dimenticata?</h1>
       <button data-close-button class="close-button" id="close-button-login">&times;</button>
     </div>
     <p style="text-align: center;">Inserisci la tua email, dopo</br> averla inviata controlla <br> la tua casella postale</p>
     <div class="modal-input" id="myForm">
-      <input type="text" id="email" placeholder="Email" required>
+      <input type="text" name="email_pswdimenticata" id="email" placeholder="Email" required>
       <i class="bi bi-envelope-fill"></i>
-      <span id="emailError" style="color: red; display: none;">Perfavore metti una email valida</span>
+      <span id="emailError" style="color: red; display: none;">Perfavore inserisci una email valida</span>
     </div>
-    <button class="modal-btn inviaemail" id="inviaemail">Invia</button>
-  </div>
+    <button type="submit" class="modal-btn inviaemail" id="inviaemail">Invia</button>
+</form>
 
 
   <!--login registrati-->
