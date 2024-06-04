@@ -33,6 +33,12 @@ if (!isset($_SESSION['nome_utente'])) {
     <div class="button-container">
       <button class="bheader gioca" id="gioca">Gioca</button>
       <button data-modal-target=#loginmodal class="bheader login">Login</button>
+      <button class="bheader storico" id="storico">Storico</button>
+      <div class="dropdown-content" id="dropdownMenu">
+        <a>Titolo</a>
+        <a>Briscola: <span id="ptbriscola"></span></a>
+        <a>Traversone: <span id="pttraversone"></span></a>
+      </div>
       <button data-modal-target=#gearmodal class="btn-gear" >
         <i class="bi bi-gear-fill"></i>
       </button>
@@ -54,8 +60,8 @@ if (!isset($_SESSION['nome_utente'])) {
       <i class="bi bi-person-fill"></i>
     </div>
     <div class="modal-input">
-      <input type="password" placeholder="Password" name="password" required>
-      <i class="bi bi-lock-fill"></i>
+      <input type="password"  id="password"  placeholder="Password" name="password" required>
+      <i class="bi bi-lock-fill" id='togglePassword'></i>
     </div>
     <div class="modal-remember">
       <label>
@@ -104,8 +110,8 @@ if (!isset($_SESSION['nome_utente'])) {
       <i class="bi bi-envelope-fill"></i>
     </div>
     <div class="modal-input">
-      <input type="password" placeholder="Password" name="nuovo_password" required>
-      <i class="bi bi-lock-fill"></i>
+      <input type="password" id="password2" placeholder="Password" name="nuovo_password" required>
+      <i class="bi bi-lock-fill" id='togglePassword2'></i>
     </div>
     <button type="submit" class="modal-btn registrati" id="buttonregistrati invia">Registrati</button>
   </form>
@@ -132,7 +138,9 @@ if (!isset($_SESSION['nome_utente'])) {
 
   <!--Messaggio di errore-->
   <div id="errormodal" class="modal error">
-    <div class="title errore">Errore: <span id="messaggioerrore"></span></div>
+    <div class="modal-header" id="modal-header-error">
+      <div class="title errore" style="padding-top:10px; font-size: 50px; color:darkred">Errore: <span id="messaggioerrore"></span></div>
+    </div>
   </div>
 
 

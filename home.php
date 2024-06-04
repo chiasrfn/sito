@@ -90,6 +90,14 @@ $r6 = $r6['traversone_vinte'];
   </div>
 
   <div class="overlayaltri" id="overlayg"></div>
+
+  <!--Messaggio di errore-->
+  <div id="errormodal" class="modal error">
+    <div class="modal-header" id="modal-header-error">
+      <div class="title errore" style="padding-top:10px; font-size: 50px; color:darkred">Errore: <span id="messaggioerrore"></span></div>
+    </div>
+  </div>
+
   <div class="container">
     <div class="top-side">
       <div class="benvenuto">

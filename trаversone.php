@@ -105,6 +105,8 @@ if (isset($_SESSION['nome_utente'])) {
 
 <div class="overlayaltri" id="overlayg"></div>
 
+
+
   <!--messaggio di vittoria-->
 
   <div class="modal messaggio" id="contvittoria">
@@ -112,6 +114,13 @@ if (isset($_SESSION['nome_utente'])) {
   </div>
 
   <div id="overlayv"></div>
+
+  <!--Messaggio di errore-->
+  <div id="errormodal" class="modal error">
+    <div class="modal-header" id="modal-header-error">
+      <div class="title errore" style="padding-top:10px; font-size: 50px; color:darkred">Errore: <span id="messaggioerrore"></span></div>
+    </div>
+  </div>
 
   <div class="container">
 

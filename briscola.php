@@ -54,8 +54,8 @@ if (!isset($_SESSION['nome_utente'])) {
       <i class="bi bi-person-fill"></i>
     </div>
     <div class="modal-input">
-      <input type="password" placeholder="Password" name="password" required>
-      <i class="bi bi-lock-fill"></i>
+      <input type="password"  id="password"  placeholder="Password" name="password" required>
+      <i class="bi bi-lock-fill" id='togglePassword'></i>
     </div>
     <div class="modal-remember">
       <label>
@@ -104,8 +104,8 @@ if (!isset($_SESSION['nome_utente'])) {
       <i class="bi bi-envelope-fill"></i>
     </div>
     <div class="modal-input">
-      <input type="password" placeholder="Password" name="nuovo_password" required>
-      <i class="bi bi-lock-fill"></i>
+      <input type="password" id="password2" placeholder="Password" name="nuovo_password" required>
+      <i class="bi bi-lock-fill" id='togglePassword2'></i>
     </div>
     <button type="submit" class="modal-btn registrati" id="buttonregistrati invia">Registrati</button>
   </form>
@@ -136,6 +136,13 @@ if (!isset($_SESSION['nome_utente'])) {
   </div>
 
   <div id="overlayv"></div>
+
+  <!--Messaggio di errore-->
+  <div id="errormodal" class="modal error">
+    <div class="modal-header" id="modal-header-error">
+      <div class="title errore" style="padding-top:10px; font-size: 50px; color:darkred">Errore: <span id="messaggioerrore"></span></div>
+    </div>
+  </div>
 
 
   <div class="container"> 

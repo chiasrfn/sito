@@ -114,6 +114,12 @@ if (isset($_SESSION['nome_utente'])) {
 
   <div id="overlayv"></div>
 
+  <!--Messaggio di errore-->
+  <div id="errormodal" class="modal error">
+    <div class="modal-header" id="modal-header-error">
+      <div class="title errore" style="padding-top:10px; font-size: 50px; color:darkred">Errore: <span id="messaggioerrore"></span></div>
+    </div>
+  </div>
 
   <div class="container"> 
 

@@ -95,11 +95,6 @@ $('#inviaemail').click(()=>{
   $('#inviaemail').addClass('active')
 })
 
-/*
-var loginlock=document.getElementById(login-lock-btn);
-login-lock-btn.addEventListener('click', function(){
-  login-lock-btn.i.class = 'bi bi-lock-fill-open';
-})*/
 
 $(document).ready(function() {
     function cur() {
@@ -123,6 +118,7 @@ $(document).ready(function() {
     cur();  // Chiama la funzione nome quando il documento è pronto
 });
 
+
 /*Parametro d'errore*/
 
 // Controlla se l'URL contiene il parametro di errore
@@ -131,11 +127,41 @@ window.onload = function() {
   if (urlParams.has('error')) {
       const error = urlParams.get('error');
       $('#messaggioerrore').text(error);
-      openModal($('#errormodal'))
+      $('#errormodal').addClass('active')
+      overlay.classList.add('active')
+      console.log('ciao')
   }
 };
 
+
 $('#errormodal').click(()=>{
-  closeModal($('#errormodal'))
+  $('#errormodal').removeClass('active')
+  overlay.classList.remove('active')
 })
 
+/*password*/
+document.getElementById('togglePassword').addEventListener('click', function() {
+  const passwordInput = document.getElementById('password');
+  const icon = this;
+
+  // Toggle the type attribute
+  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+  passwordInput.setAttribute('type', type);
+
+  // Toggle the icon
+  icon.classList.toggle('bi-lock-fill');
+  icon.classList.toggle('bi-unlock-fill');
+});
+
+document.getElementById('togglePassword2').addEventListener('click', function() {
+  const passwordInput = document.getElementById('password2');
+  const icon = this;
+
+  // Toggle the type attribute
+  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+  passwordInput.setAttribute('type', type);
+
+  // Toggle the icon
+  icon.classList.toggle('bi-lock-fill');
+  icon.classList.toggle('bi-unlock-fill');
+});

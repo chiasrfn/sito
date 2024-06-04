@@ -10,6 +10,15 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script></script>
       </head>
 <body>
+  <div id="overlay"></div>
+
+  <!--Messaggio di errore-->
+  <div id="errormodal" class="modal error">
+    <div class="modal-header" id="modal-header-error">
+      <div class="title errore" style="padding-top:10px; font-size: 50px; color:darkred">Errore: <span id="messaggioerrore"></span></div>
+    </div>
+  </div>
+
   <div class="container">
     <div class="containerform">
       <form action="cambiomail.php" method="post" id="registratimodal" class="modal login registrati">
@@ -21,12 +30,12 @@
             <i class="bi bi-envelope-fill"></i>
           </div>
           <div class="modal-input">
-            <input type="password" placeholder="Password Temporanea" name="password_temporanea" required>
-            <i class="bi bi-lock-fill"></i>
+            <input type="password" id="password" placeholder="Password" name="nuovo_password" required>
+            <i class="bi bi-lock-fill" id='togglePassword'></i>
           </div>
           <div class="modal-input">
-              <input type="password" placeholder="Password Nuova" name="nuovo_psw" required>
-              <i class="bi bi-lock-fill"></i>
+            <input type="password" id="password2" placeholder="Password" name="nuovo_password" required>
+            <i class="bi bi-lock-fill" id='togglePassword2'></i>
             </div>
           <button type="submit" class="modal-btn registrati" id="buttonregistrati invia">Modifica</button>
       </form>
