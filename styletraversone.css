@@ -588,7 +588,6 @@ p{
     background-color: rgb(255,255,255, 0.65);
     padding: 0 1em 1em 1em;
     border-radius: 1rem;
-    overflow-y: scroll;
   }
   
   h1{

@@ -53,7 +53,7 @@ if (isset($_SESSION['nome_utente'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Treversone</title>
+    <title>Traversone</title>
     <link rel="stylesheet" href="styletraversone.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -365,7 +365,7 @@ if (isset($_SESSION['nome_utente'])) {
           Il vincitore della presa raccoglie le carte e inizia il turno successivo.
           L'ordine di presa è il seguente (3, Due, Asso, Re, Cavallo Fante, 7, 6, 5, 4). 
           Inoltre se si fa meno di un punto si subisce il Cappotto: verranno atribuiti 21 punti a chi non ha raggiunto neanche un punto durante la partita e si l'avversario avrà 0 punti.
-          All'ultimo che prende verranno assegnati i punti non interi dell'altro giocatore.
+          All'ultimo che prende verranno assegnati i punti non interi dell'altro giocatore. In questo sito una partita consiste in tre turni.
         </p>
         <h2>Punti</h2>
         <div class="punti">

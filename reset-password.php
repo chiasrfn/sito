@@ -31,11 +31,11 @@
           </div>
           <div class="modal-input">
             <input type="password" id="password" placeholder="Password" name="nuovo_password" required>
-            <i class="bi bi-lock-fill" id='togglePassword'></i>
+            <i class="bi bi-lock-fill" id='togglePassword' style="cursor:pointer"></i>
           </div>
           <div class="modal-input">
             <input type="password" id="password2" placeholder="Password" name="nuovo_password" required>
-            <i class="bi bi-lock-fill" id='togglePassword2'></i>
+            <i class="bi bi-lock-fill" id='togglePassword2' style="cursor:pointer"></i>
             </div>
           <button type="submit" class="modal-btn registrati" id="buttonregistrati invia">Modifica</button>
       </form>
