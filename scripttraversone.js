@@ -801,32 +801,33 @@ $('#errormodal').click(()=>{
 })
 
 /*password*/
-document.getElementById('togglePassword').addEventListener('click', function() {
-  const passwordInput = document.getElementById('password');
-  const icon = this;
+if (!(typeof isLoggedIn !== 'undefined' && isLoggedIn)) {
+  document.getElementById('togglePassword').addEventListener('click', function() {
+    const passwordInput = document.getElementById('password');
+    const icon = this;
 
-  // Toggle the type attribute
-  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-  passwordInput.setAttribute('type', type);
+    // Toggle the type attribute
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
 
-  // Toggle the icon
-  icon.classList.toggle('bi-lock-fill');
-  icon.classList.toggle('bi-unlock-fill');
-});
+    // Toggle the icon
+    icon.classList.toggle('bi-lock-fill');
+    icon.classList.toggle('bi-unlock-fill');
+  });
 
 
-document.getElementById('togglePassword2').addEventListener('click', function() {
-  const passwordInput = document.getElementById('password2');
-  const icon = this;
+  document.getElementById('togglePassword2').addEventListener('click', function() {
+    const passwordInput = document.getElementById('password2');
+    const icon = this;
 
-  // Toggle the type attribute
-  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-  passwordInput.setAttribute('type', type);
+    // Toggle the type attribute
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
 
-  // Toggle the icon
-  icon.classList.toggle('bi-lock-fill');
-  icon.classList.toggle('bi-unlock-fill');
-});
+    // Toggle the icon
+    icon.classList.toggle('bi-lock-fill');
+    icon.classList.toggle('bi-unlock-fill');
+  });}
 
 /*Costanti*/
 const conteinercard= document.querySelectorAll('.conteinercard')
@@ -869,13 +870,7 @@ function preparazioneNuovoGioco(){
     retro(contc);
   }
 
-  if(numpartite==3){
-    numpartite=0;
-    puntiCPU=0;
-    puntiUtente=0;
-    puntiCPUvecchi=0
-    puntiUtentevecchi=0
-  }
+
 }
 
 buttongioca.addEventListener('click', ()=>{
@@ -1078,8 +1073,7 @@ function aggiornaPunteggio() {
   $('#valorepunteggioutente').text(puntiUtenteArrotondati.toFixed(1));
 
   
-  puntiCPUvecchi=puntiCPU
-  puntiUtentevecchi=puntiCPUvecchi
+
 }
 
 
@@ -1091,37 +1085,45 @@ function calcoloFinalePunti(){
   if(primoGioca){//utente utltimo a prendere
     ncpu=Math.trunc(puntiCPU)
     puntiUtente=puntiUtente+ puntiCPU-ncpu +1/3
+    puntiCPU=ncpu
   }else{ //cpu
     nute=Math.trunc(puntiUtente)
     puntiCPU=puntiCPU+ puntiUtente-nute + 1/3
+    puntiUtente=nute
   }
 }
 
 let puntiCPUvecchi=0;
 let puntiUtentevecchi=0;
+let cappotto=false;
 
 
 function verificaCappotto(){
   diffcpu= puntiCPU-puntiCPUvecchi
   diffute= puntiUtente-puntiUtentevecchi
   if(diffcpu<1){
-    puntiCPU=puntiCPU+21
-    puntiUtente=puntiUtente-21
+    puntiCPU=puntiCPUvecchi+21
+    puntiUtente=puntiUtentevecchi
+    cappotto=true
   }else if(diffute<1){
-    puntiUtente=puntiUtente+21
-    puntiCPU=puntiCPU-21
+    puntiUtente=puntiUtentevecchi+21
+    puntiCPU=puntiCPUvecchi
+    cappotto=true
   }
 }
 
 function vittoria(){
   numpartite= numpartite+1;
-  calcoloFinalePunti()
-  preparazioneNuovoGioco();
   verificaCappotto();
+  if (!cappotto) {
+    calcoloFinalePunti()
+  }
+  cappotto=false
+  preparazioneNuovoGioco();
   if(numpartite==1){
     vittoriaAux('Gioca le restanti due partite')
   }else if(numpartite==2){
-    vittoriaAux('Gioca la restante partita')
+    vittoriaAux('Gioca la partita restante')
   }else if(puntiCPU<puntiUtente){
     vittoriaAux('Sconfitta');
     if (typeof isLoggedIn !== 'undefined' && isLoggedIn) {
@@ -1129,7 +1131,9 @@ function vittoria(){
         url: 'aggiorna_storico_traversone.php',
         type: 'POST',
         data: {vincitore: 0, nomeUt: nomeU},
-        });}
+        });
+    numpartite=5
+    }
   }else if(puntiUtente==puntiCPU){
     vittoriaAux('Pareggio');
     if (typeof isLoggedIn !== 'undefined' && isLoggedIn) {
@@ -1137,7 +1141,9 @@ function vittoria(){
         url: 'aggiorna_storico_traversone.php',
         type: 'POST',
         data: {vincitore: 1, nomeUt: nomeU},
-        });}
+        });
+    numpartite=5  
+    }
   }else{
     vittoriaAux('Vittoria');
     if (typeof isLoggedIn !== 'undefined' && isLoggedIn) {
@@ -1146,7 +1152,17 @@ function vittoria(){
         type: 'POST',
         data: {vincitore: 2, nomeUt: nomeU},
         });}
+    numpartite=5
   }
+  if(numpartite==5){
+    numpartite=0;
+    puntiCPU=0;
+    puntiUtente=0;
+    puntiCPUvecchi=0
+    puntiUtentevecchi=0
+  }
+  puntiCPUvecchi=puntiCPU
+  puntiUtentevecchi=puntiUtente
   aggiornaPunteggio();
 }
 

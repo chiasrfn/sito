@@ -139,29 +139,30 @@ $('#errormodal').click(()=>{
   overlay.classList.remove('active')
 })
 
-/*password*/
-document.getElementById('togglePassword').addEventListener('click', function() {
-  const passwordInput = document.getElementById('password');
-  const icon = this;
+if (!(typeof isLoggedIn !== 'undefined' && isLoggedIn)) {
+  /*password*/
+  document.getElementById('togglePassword').addEventListener('click', function() {
+    const passwordInput = document.getElementById('password');
+    const icon = this;
 
-  // Toggle the type attribute
-  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-  passwordInput.setAttribute('type', type);
+    // Toggle the type attribute
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
 
-  // Toggle the icon
-  icon.classList.toggle('bi-lock-fill');
-  icon.classList.toggle('bi-unlock-fill');
-});
+    // Toggle the icon
+    icon.classList.toggle('bi-lock-fill');
+    icon.classList.toggle('bi-unlock-fill');
+  });
 
-document.getElementById('togglePassword2').addEventListener('click', function() {
-  const passwordInput = document.getElementById('password2');
-  const icon = this;
+  document.getElementById('togglePassword2').addEventListener('click', function() {
+    const passwordInput = document.getElementById('password2');
+    const icon = this;
 
-  // Toggle the type attribute
-  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-  passwordInput.setAttribute('type', type);
+    // Toggle the type attribute
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
 
-  // Toggle the icon
-  icon.classList.toggle('bi-lock-fill');
-  icon.classList.toggle('bi-unlock-fill');
-});
+    // Toggle the icon
+    icon.classList.toggle('bi-lock-fill');
+    icon.classList.toggle('bi-unlock-fill');
+  });}

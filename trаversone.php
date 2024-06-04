@@ -393,7 +393,7 @@ if (isset($_SESSION['nome_utente'])) {
 
 <?php 
 }else{
-     header("Location: briscola.php");
+     header("Location: traversone.php");
      exit();
 }
  ?>
