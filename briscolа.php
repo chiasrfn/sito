@@ -43,6 +43,7 @@ if (isset($_SESSION['nome_utente'])) {
     $r6 = mysqli_fetch_assoc($r6);
     $r6 = $r6['traversone_vinte'];   
     $is_logged_in = isset($_SESSION['nome_utente']);
+    $nomeU = $_SESSION['nome_utente'];
  ?>
 
 
@@ -61,6 +62,7 @@ if (isset($_SESSION['nome_utente'])) {
 <body>
     <script>
         var isLoggedIn = <?php echo json_encode($is_logged_in); ?>;
+        var nomeU = <?php echo json_encode($nomeU); ?>;
     </script>
   <header>
     <a href="home.php">
@@ -114,12 +116,6 @@ if (isset($_SESSION['nome_utente'])) {
 
   <div id="overlayv"></div>
 
-  <!--Messaggio di errore-->
-  <div id="errormodal" class="modal error">
-    <div class="modal-header" id="modal-header-error">
-      <div class="title errore" style="padding-top:10px; font-size: 50px; color:darkred">Errore: <span id="messaggioerrore"></span></div>
-    </div>
-  </div>
 
   <div class="container"> 
 

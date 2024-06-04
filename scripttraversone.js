@@ -792,42 +792,6 @@ $('#inviaemail').click(()=>{
   $('#inviaemail').addClass('active')
 })
 
-/*Parametro d'errore*/
-
-
-$('#errormodal').click(()=>{
-  $('#errormodal').removeClass('active')
-  overlay.classList.remove('active')
-})
-
-/*password*/
-document.getElementById('togglePassword').addEventListener('click', function() {
-  const passwordInput = document.getElementById('password');
-  const icon = this;
-
-  // Toggle the type attribute
-  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-  passwordInput.setAttribute('type', type);
-
-  // Toggle the icon
-  icon.classList.toggle('bi-lock-fill');
-  icon.classList.toggle('bi-unlock-fill');
-});
-
-
-document.getElementById('togglePassword2').addEventListener('click', function() {
-  const passwordInput = document.getElementById('password2');
-  const icon = this;
-
-  // Toggle the type attribute
-  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-  passwordInput.setAttribute('type', type);
-
-  // Toggle the icon
-  icon.classList.toggle('bi-lock-fill');
-  icon.classList.toggle('bi-unlock-fill');
-});
-
 /*Costanti*/
 const conteinercard= document.querySelectorAll('.conteinercard')
 const contgiocatac= document.getElementById('conteinercardcpugiocata')
@@ -849,15 +813,6 @@ window.onload = async function() {
   scompare(contgiocatac);
   scompare(contgiocatau);
   preparazioneNuovoGioco();
-  // Controlla se l'URL contiene il parametro di errore
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.has('error')) {
-      const error = urlParams.get('error');
-      $('#messaggioerrore').text(error);
-      $('#errormodal').addClass('active')
-      overlay.classList.add('active')
-      console.log('ciao')
-  }
 }
 
 function preparazioneNuovoGioco(){
@@ -1130,7 +1085,7 @@ function vittoria(){
       $.ajax({
         url: 'aggiorna_storico_traversone.php',
         type: 'POST',
-        data: {vincitore: 0},
+        data: {vincitore: 0, nomeUt: nomeU},
         });}
   }else if(puntiUtente==puntiCPU){
     vittoriaAux('Pareggio');
@@ -1138,7 +1093,7 @@ function vittoria(){
       $.ajax({
         url: 'aggiorna_storico_traversone.php',
         type: 'POST',
-        data: {vincitore: 1},
+        data: {vincitore: 1, nomeUt: nomeU},
         });}
   }else{
     vittoriaAux('Vittoria');
@@ -1146,7 +1101,7 @@ function vittoria(){
       $.ajax({
         url: 'aggiorna_storico_traversone.php',
         type: 'POST',
-        data: {vincitore: 2},
+        data: {vincitore: 2, nomeUt: nomeU},
         });}
   }
   aggiornaPunteggio();
