@@ -33,12 +33,6 @@ if (!isset($_SESSION['nome_utente'])) {
     <div class="button-container">
       <button class="bheader gioca" id="gioca">Gioca</button>
       <button data-modal-target=#loginmodal class="bheader login">Login</button>
-      <button class="bheader storico" id="storico">Storico</button>
-      <div class="dropdown-content" id="dropdownMenu">
-        <a>Titolo</a>
-        <a>Briscola: <span id="ptbriscola"></span></a>
-        <a>Traversone: <span id="pttraversone"></span></a>
-      </div>
       <button data-modal-target=#gearmodal class="btn-gear" >
         <i class="bi bi-gear-fill"></i>
       </button>

@@ -1081,10 +1081,28 @@ function vittoria(){
     vittoriaAux('Cappotto')
   }else if(puntiCPU<puntiUtente){
     vittoriaAux('Sconfitta');
+    if (typeof isLoggedIn !== 'undefined' && isLoggedIn) {
+      $.ajax({
+        url: 'aggiorna_storico_traversone.php',
+        type: 'POST',
+        data: {vincitore: 0},
+        });}
   }else if(puntiUtente==puntiCPU){
     vittoriaAux('Pareggio');
+    if (typeof isLoggedIn !== 'undefined' && isLoggedIn) {
+      $.ajax({
+        url: 'aggiorna_storico_traversone.php',
+        type: 'POST',
+        data: {vincitore: 1},
+        });}
   }else{
     vittoriaAux('Vittoria');
+    if (typeof isLoggedIn !== 'undefined' && isLoggedIn) {
+      $.ajax({
+        url: 'aggiorna_storico_traversone.php',
+        type: 'POST',
+        data: {vincitore: 2},
+        });}
   }
   aggiornaPunteggio();
   }

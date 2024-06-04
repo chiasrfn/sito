@@ -60,7 +60,6 @@ $r6 = $r6['traversone_vinte'];
       <a href="logout.php" class="bheader logout">Logout</a>
       <button class="bheader storico" id="storico">Storico</button>
       <div class="dropdown-content" id="dropdownMenu">
-        <a>Titolo</a>
         <a>Briscola: <?php echo "V" . $r3 . " - " . "P" . $r2 . " - " . "S" . $r1; ?><span id="ptbriscola"></span></a>
         <a>Traversone: <?php echo "V" . $r6 . " - " . "P" . $r5 . " - " . "S" . $r4; ?><span id="pttraversone"></span></a>
       </div>

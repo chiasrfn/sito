@@ -1,5 +1,6 @@
 <?php 
 session_start();
+include "db_conn.php";
 
 if (isset($_COOKIE['remember']) && !isset($_SESSION['nome_utente'])){
   header("Location: biscotto.php");
@@ -8,8 +9,40 @@ if (isset($_COOKIE['remember']) && !isset($_SESSION['nome_utente'])){
 
 
 
-if (!isset($_SESSION['nome_utente'])) {
-
+if (isset($_SESSION['nome_utente'])) {
+    $nome_u = $_SESSION['nome_utente'];
+    $briscole_perse = "SELECT briscola_perse FROM accesso WHERE nome_utente='$nome_u'";
+    $briscole_pareggiate = "SELECT briscola_pareggiate FROM accesso WHERE nome_utente='$nome_u'";
+    $briscole_vinte = "SELECT briscola_vinte FROM accesso WHERE nome_utente='$nome_u'";
+    $traversone_perse = "SELECT traversone_perse FROM accesso WHERE nome_utente='$nome_u'";
+    $traversone_pareggiate = "SELECT traversone_pareggiate FROM accesso WHERE nome_utente='$nome_u'";
+    $traversone_vinte = "SELECT traversone_vinte FROM accesso WHERE nome_utente='$nome_u'";
+    
+    
+    $r1 = mysqli_query($conn, $briscole_perse);
+    $r1 = mysqli_fetch_assoc($r1);
+    $r1 = $r1['briscola_perse'];
+    
+    $r2 = mysqli_query($conn, $briscole_pareggiate);
+    $r2 = mysqli_fetch_assoc($r2);
+    $r2 = $r2['briscola_pareggiate'];
+    
+    $r3 = mysqli_query($conn, $briscole_vinte);
+    $r3 = mysqli_fetch_assoc($r3);
+    $r3 = $r3['briscola_vinte'];
+    
+    $r4 = mysqli_query($conn, $traversone_perse);
+    $r4 = mysqli_fetch_assoc($r4);
+    $r4 = $r4['traversone_perse'];
+    
+    $r5 = mysqli_query($conn, $traversone_pareggiate);
+    $r5 = mysqli_fetch_assoc($r5);
+    $r5 = $r5['traversone_pareggiate'];
+    
+    $r6 = mysqli_query($conn, $traversone_vinte);
+    $r6 = mysqli_fetch_assoc($r6);
+    $r6 = $r6['traversone_vinte'];   
+    $is_logged_in = isset($_SESSION['nome_utente']);
  ?>
 
 
@@ -25,16 +58,25 @@ if (!isset($_SESSION['nome_utente'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
 <body>
-<header>
-      <a href="home.php">
-          <img src="./immagini/logo2.jpg" class="logo" margine-top="0px">
-      </a>
-      <div class="button-container">
-          <button class="bheader gioca" id="gioca2">Gioca</button>
-          <button data-modal-target=#loginmodal class="bheader login">Login</button>
-          <button data-modal-target=#gearmodal class="btn-gear" >
-              <i class="bi bi-gear-fill"></i>
-          </button>
+    <script>
+        var isLoggedIn = <?php echo json_encode($is_logged_in); ?>;
+    </script>
+    <header>
+    <a href="home.php">
+        <img src="./immagini/logo2.jpg" class="logo" margine-top="0px">
+    </a>
+    <div class="button-container">
+        <button class="bheader gioca" id="gioca2">Gioca</button>
+        <a href="logout.php" class="bheader logout">Logout</a>
+        <button class="bheader storico" id="storico">Storico</button>
+        <div class="dropdown-content" id="dropdownMenu">
+            <a>Per aggiornare lo storico aggiorna la pagina</a>
+            <a>Briscola: <?php echo "V" . $r3 . " - " . "P" . $r2 . " - " . "S" . $r1; ?><span id="ptbriscola"></span></a>
+            <a>Traversone: <?php echo "V" . $r6 . " - " . "P" . $r5 . " - " . "S" . $r4; ?><span id="pttraversone"></span></a>
+        </div>
+        <button data-modal-target=#gearmodal class="btn-gear" >
+            <i class="bi bi-gear-fill"></i>
+        </button>
       </div>
   </header>
   
@@ -42,72 +84,7 @@ if (!isset($_SESSION['nome_utente'])) {
 
   <!--parte di codice dedicata al modal-->
   <div id="overlay"></div>
-  <!--login-->
-  <form action="login.php" method="post" id="loginmodal" class="modal login">
-    <div class="modal-header">
-      <h1 id="titleLogin">Login</h1>
-      <button data-close-button class="close-button" id="close-button-login">&times;</button>
-    </div>
-    <div class="modal-input">
-      <input type="text" placeholder="Nome Utente" name="username" required>
-      <i class="bi bi-person-fill"></i>
-    </div>
-    <div class="modal-input">
-      <input type="password" placeholder="Password" name="password" required>
-      <i class="bi bi-lock-fill"></i>
-    </div>
-    <div class="modal-remember">
-      <label>
-        <input type="checkbox" name="remember" id="remember">Ricordami</input>
-      </label>
-      <button data-modal-target=#forgotmodal class="button login">Hai dimenticato la password?</button>
-    </div>
-
-    <button type="submit" class="modal-btn">Login</button>
-
-    <div class="modal-register">
-      <p>Non hai un account?
-        <button data-modal-target=#registratimodal class="button login" id="buttonregistrati">Registrati</button>
-      </p>
-    </div>
-  </form>
-
-  <!--login forgot-->
-  <form method="post" action="password-temp.php" id="forgotmodal" class="modal login forgot">
-    <div class="modal-header">
-      <h1 id="titlePassword">Password</br>dimenticata?</h1>
-      <button data-close-button class="close-button" id="close-button-login">&times;</button>
-    </div>
-    <p style="text-align: center;">Inserisci la tua email, dopo</br> averla inviata controlla <br> la tua casella postale</p>
-    <div class="modal-input" id="myForm">
-      <input type="text" name="email_pswdimenticata" id="email" placeholder="Email" required>
-      <i class="bi bi-envelope-fill"></i>
-      <span id="emailError" style="color: red; display: none;">Perfavore inserisci una email valida</span>
-    </div>
-    <button type="submit" class="modal-btn inviaemail" id="inviaemail">Invia</button>
-</form>
-
-
-  <!--login registrati-->
-  <form action="signup-check.php" method="post" id="registratimodal" class="modal login registrati">
-    <div class="modal-header">
-      <h1 id="titleLogin">Registrati</h1>
-      <button data-close-button class="close-button" id="close-button-login">&times;</button>
-    </div>
-    <div class="modal-input">
-      <input type="text" placeholder="Nome Utente" name="nuovo_username" required>
-      <i class="bi bi-person-fill"></i>
-    </div>
-    <div class="modal-input">
-      <input type="text" placeholder="Email" name="nuovo_email" required>
-      <i class="bi bi-envelope-fill"></i>
-    </div>
-    <div class="modal-input">
-      <input type="password" placeholder="Password" name="nuovo_password" required>
-      <i class="bi bi-lock-fill"></i>
-    </div>
-    <button type="submit" class="modal-btn registrati" id="buttonregistrati invia">Registrati</button>
-  </form>
+  
   
   
 
@@ -407,7 +384,7 @@ if (!isset($_SESSION['nome_utente'])) {
 
 <?php 
 }else{
-     header("Location: trаversone.php");
+     header("Location: briscola.php");
      exit();
 }
  ?>

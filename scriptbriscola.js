@@ -2323,10 +2323,28 @@ function vittoria(){
   preparazioneNuovoGioco();
   if(puntiCPU>60){
     vittoriaAux('Sconfitta');
+    if (typeof isLoggedIn !== 'undefined' && isLoggedIn) {
+      $.ajax({
+        url: 'aggiorna_storico_briscola.php',
+        type: 'POST',
+        data: {vincitore: 0},
+        });}
   }else if(puntiCPU==60 && puntiUtente==puntiCPU){
     vittoriaAux('Pareggio');
+    if (typeof isLoggedIn !== 'undefined' && isLoggedIn) {
+      $.ajax({
+        url: 'aggiorna_storico_briscola.php',
+        type: 'POST',
+        data: {vincitore: 1},
+        });}
   }else if(puntiUtente>60){
     vittoriaAux('Vittoria');
+    if (typeof isLoggedIn !== 'undefined' && isLoggedIn) {
+      $.ajax({
+        url: 'aggiorna_storico_briscola.php',
+        type: 'POST',
+        data: {vincitore: 2},
+        });}
   }else{
     return;
   }
