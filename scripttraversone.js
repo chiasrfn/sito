@@ -873,6 +873,8 @@ function preparazioneNuovoGioco(){
     numpartite=0;
     puntiCPU=0;
     puntiUtente=0;
+    puntiCPUvecchi=0
+    puntiUtentevecchi=0
   }
 }
 
@@ -1074,6 +1076,10 @@ function aggiornaPunteggio() {
 
   $('#valorepunteggiocpu').text(puntiCPUArrotondati.toFixed(1));
   $('#valorepunteggioutente').text(puntiUtenteArrotondati.toFixed(1));
+
+  
+  puntiCPUvecchi=puntiCPU
+  puntiUtentevecchi=puntiCPUvecchi
 }
 
 
@@ -1091,39 +1097,31 @@ function calcoloFinalePunti(){
   }
 }
 
-function vittoriaAux_1(){
+let puntiCPUvecchi=0;
+let puntiUtentevecchi=0;
 
+
+function verificaCappotto(){
+  diffcpu= puntiCPU-puntiCPUvecchi
+  diffute= puntiUtente-puntiUtentevecchi
+  if(diffcpu<1){
+    puntiCPU=puntiCPU+21
+    puntiUtente=puntiUtente-21
+  }else if(diffute<1){
+    puntiUtente=puntiUtente+21
+    puntiCPU=puntiCPU-21
+  }
 }
 
 function vittoria(){
   numpartite= numpartite+1;
   calcoloFinalePunti()
   preparazioneNuovoGioco();
+  verificaCappotto();
   if(numpartite==1){
     vittoriaAux('Gioca le restanti due partite')
-    if(puntiCPU<1){
-      puntiCPU=puntiCPU+21
-      puntiUtente=puntiUtente-21
-    }else if(puntiUtente<1){
-      puntiUtente=puntiUtente+21
-      puntiCPU=puntiCPU-21
-    }
   }else if(numpartite==2){
     vittoriaAux('Gioca la restante partita')
-    if(puntiCPU<1){
-      puntiCPU=puntiCPU+21
-      puntiUtente=puntiUtente-21
-    }else if(puntiUtente<1){
-      puntiUtente=puntiUtente+21
-      puntiCPU=puntiCPU-21
-  }else if(puntiCPU<1){
-    puntiCPU=puntiCPU+21
-    puntiUtente=puntiUtente-21
-    vittoriaAux('Cappotto')
-  }else if(puntiUtente<1){
-    puntiUtente=puntiUtente+21
-    puntiCPU=puntiCPU-21
-    vittoriaAux('Cappotto')
   }else if(puntiCPU<puntiUtente){
     vittoriaAux('Sconfitta');
     if (typeof isLoggedIn !== 'undefined' && isLoggedIn) {
@@ -1150,7 +1148,6 @@ function vittoria(){
         });}
   }
   aggiornaPunteggio();
-  }
 }
 
 function vittoriaAux(frase){
